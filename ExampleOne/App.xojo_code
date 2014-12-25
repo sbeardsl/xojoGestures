@@ -3,6 +3,15 @@ Protected Class App
 Inherits IOSApplication
 	#tag CompatibilityFlags = TargetIOS
 	#tag Method, Flags = &h0
+		Sub ClearEvents()
+		  App.LatestEventPos = nil
+		  App.LatestEventInfo = nil
+		  App.LatestNumTaps = 0
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub DrawBorder(g as iOSGraphics)
 		  g.SaveState
 		  g.LineWidth = 2.0
@@ -15,7 +24,7 @@ Inherits IOSApplication
 		Sub DrawPress(g as iOSGraphics)
 		  g.SaveState
 		  
-		  Dim thisRectSize as integer = 50
+		  Dim thisRectSize as integer = 80
 		  Dim halfSize as Integer = thisRectSize / 2
 		  g.DrawOval( LatestEventPos.X - halfSize, LatestEventPos.Y - halfSize, thisRectSize, thisRectSize )
 		  
@@ -124,7 +133,7 @@ Inherits IOSApplication
 		Sub DrawTap(g as iOSGraphics)
 		  g.SaveState
 		  
-		  Dim tapRectSize as integer = 10
+		  Dim tapRectSize as integer = 20
 		  
 		  for i as integer = LatestNumTaps DownTo 1
 		    Dim thisRectSize as integer = tapRectSize * i
@@ -145,7 +154,7 @@ Inherits IOSApplication
 		  if (LatestEventInfo.PointerCount > 1) then
 		    for i as integer =  1 to LatestEventInfo.PointerCount
 		      Dim thisPointer as integer = i - 1
-		      Dim thisOvalSize as integer = 10
+		      Dim thisOvalSize as integer = 20
 		      Dim halfSize as Integer = thisOvalSize / 2
 		      g.DrawOval( LatestEventInfo.PointerPosition(thisPointer).X - halfSize, LatestEventInfo.PointerPosition(thisPointer).Y - halfSize, thisOvalSize, thisOvalSize )
 		      g.DrawLine( LatestEventInfo.PointerPosition(thisPointer).X, LatestEventInfo.PointerPosition(thisPointer).Y, LatestEventPos.X, LatestEventPos.Y )

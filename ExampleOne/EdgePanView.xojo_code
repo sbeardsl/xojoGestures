@@ -10,9 +10,9 @@ Begin iosView EdgePanView
    Begin iOSSegmentedControl TouchesControl
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
+      AutoLayout      =   TouchesControl, 8, , 0, True, +1.00, 1, 1, 29, 
       AutoLayout      =   TouchesControl, 1, <Parent>, 1, False, +1.00, 2, 1, *kStdGapCtlToViewH, 
       AutoLayout      =   TouchesControl, 4, BottomLayoutGuide, 3, False, +1.00, 1, 1, -5, 
-      AutoLayout      =   TouchesControl, 8, , 0, True, +1.00, 1, 1, 29, 
       AutoLayout      =   TouchesControl, 2, <Parent>, 2, False, +1.00, 2, 1, -*kStdGapCtlToViewH, 
       Caption         =   ""
       Enabled         =   True
@@ -29,9 +29,9 @@ Begin iosView EdgePanView
    Begin iosCanvas Canvas1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
+      AutoLayout      =   Canvas1, 3, TopLayoutGuide, 4, False, +1.00, 2, 1, 0, 
       AutoLayout      =   Canvas1, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
       AutoLayout      =   Canvas1, 1, <Parent>, 1, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   Canvas1, 3, TopLayoutGuide, 4, False, +1.00, 2, 1, 0, 
       Height          =   336.0
       Left            =   0
       LockedInPosition=   False

@@ -10,10 +10,10 @@ Begin iosView PinchPanRotateView
    Begin iosCanvas Canvas1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   Canvas1, 3, TopLayoutGuide, 4, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   Canvas1, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   Canvas1, 1, <Parent>, 1, False, +1.00, 2, 1, 0, 
       AutoLayout      =   Canvas1, 4, BottomLayoutGuide, 3, False, +1.00, 2, 1, 0, 
+      AutoLayout      =   Canvas1, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
+      AutoLayout      =   Canvas1, 3, TopLayoutGuide, 4, False, +1.00, 2, 1, 0, 
+      AutoLayout      =   Canvas1, 1, <Parent>, 1, False, +1.00, 2, 1, 0, 
       Height          =   415.0
       Left            =   0
       LockedInPosition=   False
@@ -23,42 +23,39 @@ Begin iosView PinchPanRotateView
       Width           =   320.0
    End
    Begin iOSGestures.panGesture panGesture1
-      Compatibility   =   ""
       Enabled         =   True
       Gesture         =   "baseGesture"
-      Height          =   32
       Left            =   60
       LockedInPosition=   False
       MaxNumberOfTouches=   1
       MinNumberOfTouches=   1
+      PanelIndex      =   -1
+      Parent          =   ""
       RecognizerType  =   "baseClass"
       Scope           =   1
       Top             =   60
-      Width           =   32
    End
    Begin iOSGestures.pinchGesture pinchGesture1
-      Compatibility   =   ""
       Enabled         =   True
       Gesture         =   "baseGesture"
-      Height          =   32
       Left            =   80
       LockedInPosition=   False
+      PanelIndex      =   -1
+      Parent          =   ""
       RecognizerType  =   "baseClass"
       Scope           =   1
       Top             =   80
-      Width           =   32
    End
    Begin iOSGestures.rotateGesture rotateGesture1
-      Compatibility   =   ""
       Enabled         =   True
       Gesture         =   "baseGesture"
-      Height          =   32
       Left            =   100
       LockedInPosition=   False
+      PanelIndex      =   -1
+      Parent          =   ""
       RecognizerType  =   "baseClass"
       Scope           =   1
       Top             =   100
-      Width           =   32
    End
 End
 #tag EndIOSView
@@ -167,6 +164,18 @@ End
 		Group="Position"
 		InitialValue="0"
 		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="m_DrawRotation"
+		Group="Behavior"
+		InitialValue="0"
+		Type="Double"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="m_DrawScale"
+		Group="Behavior"
+		InitialValue="1"
+		Type="Double"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Name"
