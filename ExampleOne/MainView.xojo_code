@@ -10,12 +10,12 @@ Begin iosView MainView
    Begin iOSTable Table1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   Table1, 1, <Parent>, 1, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   Table1, 2, <Parent>, 2, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   Table1, 4, BottomLayoutGuide, 3, False, +1.00, 2, 1, 0, 
       AutoLayout      =   Table1, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   Table1, 2, UnderRightEdgeCanvas, 1, False, +1.00, 1, 1, 0, TableRightEdge
+      AutoLayout      =   Table1, 1, UnderLeftEdgeCanvas, 2, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   Table1, 4, BottomLabel, 3, False, +1.00, 2, 1, -*kStdControlGapV, 
       Format          =   "0"
-      Height          =   460.0
+      Height          =   422.0
       Left            =   0
       LockedInPosition=   False
       Scope           =   0
@@ -23,6 +23,85 @@ Begin iosView MainView
       Top             =   20
       Visible         =   True
       Width           =   320.0
+      Begin iOSCanvas UnderLeftEdgeCanvas
+         AccessibilityHint=   ""
+         AccessibilityLabel=   ""
+         AutoLayout      =   UnderLeftEdgeCanvas, 4, BottomLayoutGuide, 3, False, +1.00, 2, 1, 0, 
+         AutoLayout      =   UnderLeftEdgeCanvas, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, 
+         AutoLayout      =   UnderLeftEdgeCanvas, 7, , 0, False, +1.00, 2, 1, 0, LeftEdgeCanvasWidth
+         AutoLayout      =   UnderLeftEdgeCanvas, 1, <Parent>, 1, False, +1.00, 1, 1, 0, 
+         Height          =   460.0
+         Left            =   0
+         LockedInPosition=   False
+         PanelIndex      =   0
+         Parent          =   "Table1"
+         Scope           =   0
+         Top             =   20
+         Visible         =   True
+         Width           =   0.0
+      End
+      Begin iOSLabel BottomLabel
+         AutoLayout      =   BottomLabel, 4, BottomLayoutGuide, 3, False, +1.00, 1, 1, 0, 
+         AutoLayout      =   BottomLabel, 8, , 0, False, +1.00, 1, 1, 30, 
+         AutoLayout      =   BottomLabel, 1, <Parent>, 1, False, +1.00, 1, 1, 0, 
+         AutoLayout      =   BottomLabel, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
+         Enabled         =   True
+         Height          =   30.0
+         Left            =   0.0
+         LockedInPosition=   False
+         PanelIndex      =   -1
+         Parent          =   "Table1"
+         Scope           =   0
+         Text            =   "<  Drag from left and right edges >"
+         TextAlignment   =   "1"
+         TextColor       =   &c00000000
+         TextFont        =   ""
+         TextSize        =   0
+         Top             =   450.0
+         Visible         =   True
+         Width           =   320.0
+      End
+   End
+   Begin iOSGestures.edgePanLeftGesture edgePanLeftGesture1
+      Enabled         =   True
+      Gesture         =   "baseGesture"
+      Left            =   60
+      LockedInPosition=   False
+      MaxNumberOfTouches=   1
+      MinNumberOfTouches=   1
+      PanelIndex      =   -1
+      Parent          =   ""
+      RecognizerType  =   "baseClass"
+      Scope           =   1
+      Top             =   60
+   End
+   Begin iOSCanvas UnderRightEdgeCanvas
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      AutoLayout      =   UnderRightEdgeCanvas, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   UnderRightEdgeCanvas, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
+      AutoLayout      =   UnderRightEdgeCanvas, 1, <Parent>, 2, False, +1.00, 1, 1, 0, UnderRightEdgeCanvasLeft
+      AutoLayout      =   UnderRightEdgeCanvas, 4, BottomLayoutGuide, 3, False, +1.00, 2, 1, 0, 
+      Height          =   460.0
+      Left            =   320
+      LockedInPosition=   False
+      Scope           =   0
+      Top             =   20
+      Visible         =   True
+      Width           =   0.0
+   End
+   Begin iOSGestures.edgePanRightGesture edgePanRightGesture1
+      Enabled         =   True
+      Gesture         =   "baseGesture"
+      Left            =   140
+      LockedInPosition=   False
+      MaxNumberOfTouches=   1
+      MinNumberOfTouches=   1
+      PanelIndex      =   -1
+      Parent          =   ""
+      RecognizerType  =   "baseClass"
+      Scope           =   1
+      Top             =   140
    End
 End
 #tag EndIOSView
@@ -31,8 +110,48 @@ End
 	#tag Event
 		Sub Activate()
 		  App.ClearEvents()
+		  
+		  SetLeftEdgeCanvasWidth( 0 )
+		  
+		  edgePanLeftGesture1.Attach( Handle )
+		  edgePanRightGesture1.Attach( Handle )
 		End Sub
 	#tag EndEvent
+
+
+	#tag Method, Flags = &h0
+		Sub SetLeftEdgeCanvasWidth(width as integer)
+		  Dim c As iOSLayoutConstraint = Self.Constraint("LeftEdgeCanvasWidth")
+		  
+		  if (width < 4) then
+		    width = 0
+		  end if
+		  
+		  if (c.Offset <> width) then
+		    c.Offset = width
+		    UnderLeftEdgeCanvas.Invalidate()
+		  end if
+		  
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub SetRightEdgeCanvasLeft(newLeft as Double)
+		  Dim newOffset as double = newLeft - self.size.Width
+		  if (newOffset > -4) then
+		    newOffset = 0
+		  end if
+		  
+		  Dim c As iOSLayoutConstraint = Self.Constraint("UnderRightEdgeCanvasLeft")
+		  Dim currentLeftOffset as double = c.Offset 
+		  if (newOffset <> currentLeftOffset) then
+		    c.Offset = newOffset
+		    UnderRightEdgeCanvas.Invalidate()
+		  end if
+		  
+		End Sub
+	#tag EndMethod
 
 
 #tag EndWindowCode
@@ -71,6 +190,61 @@ End
 		  if (newView <> nil) then
 		    Self.PushTo(newView)
 		  end if
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events UnderLeftEdgeCanvas
+	#tag Event
+		Sub Paint(g As iOSGraphics)
+		  g.FillColor = Color.Green
+		  g.FillRect( 0, 0, g.Width, g.Height )
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edgePanLeftGesture1
+	#tag Event
+		Sub PanEnds(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo, translation as xojo.core.Point, velocity as xojo.core.Point)
+		  App.ClearEvents()
+		  
+		  
+		  SetLeftEdgeCanvasWidth( 0 )
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub PanChanged(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo, translation as xojo.core.Point, velocity as xojo.core.Point)
+		  App.LatestEventPos = pos
+		  App.LatestEventInfo = eventInfo
+		  App.LatestNumTaps = 0
+		  
+		  SetLeftEdgeCanvasWidth( pos.X )
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events UnderRightEdgeCanvas
+	#tag Event
+		Sub Paint(g As iOSGraphics)
+		  g.FillColor = Color.Red
+		  g.FillRect( 0, 0, g.Width, g.Height )
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events edgePanRightGesture1
+	#tag Event
+		Sub PanEnds(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo, translation as xojo.core.Point, velocity as xojo.core.Point)
+		  App.ClearEvents()
+		  
+		  
+		  SetRightEdgeCanvasLeft( self.size.width )
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub PanChanged(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo, translation as xojo.core.Point, velocity as xojo.core.Point)
+		  App.LatestEventPos = pos
+		  App.LatestEventInfo = eventInfo
+		  App.LatestNumTaps = 0
+		  
+		  SetRightEdgeCanvasLeft(  pos.x )
 		End Sub
 	#tag EndEvent
 #tag EndEvents

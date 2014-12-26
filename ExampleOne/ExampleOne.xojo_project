@@ -8,7 +8,6 @@ iOSView=MainView;MainView.xojo_code;&h9C1F705;&h0;false
 iOSView=TapView;TapView.xojo_code;&h71C1549B;&h0;false
 iOSView=LongPressView;LongPressView.xojo_code;&h4035C586;&h0;false
 iOSView=SwipeView;SwipeView.xojo_code;&h34250C13;&h0;false
-iOSView=EdgePanView;EdgePanView.xojo_code;&h22C1C522;&h0;false
 iOSView=PinchPanRotateView;PinchPanRotateView.xojo_code;&h3236837;&h0;false
 Module=iOSGestures;../iOSGestures.xojo_code;&h5E7DC4EC;&h0;false
 Folder=App Icon;App Icon;&h4B9A081B;&h0;false
