@@ -8,11 +8,11 @@ easy so we can have fun playing with them starting now.
 
 Supported Gestures:  (with configurable parameters)
 
-Tap (1-N taps by 1-N touches)
-Swipe (Left, Right, Up, Down, 1-N Touches)
-Long Press (1-N Touches, delay)
-Pinch, Rotate, Pan (1-N Touches)
-Edge Pan From(Left, Right, Top, Bottom, 1-N Touches)
+	Tap (1-N taps by 1-N touches)
+	Swipe (Left, Right, Up, Down, 1-N Touches)
+	Long Press (1-N Touches, delay)
+	Pinch, Rotate, Pan (1-N Touches)
+	Edge Pan From(Left, Right, Top, Bottom, 1-N Touches)
 
 Gestures may be attached to either a view (e.g. to detect a swipe over the entire
 current view) or a specific control (e.g. to detect taps on a canvas).
