@@ -12,7 +12,6 @@ Swipe (Left, Right, Up, Down, 1-N Touches)
 Long Press (1-N Touches, delay)
 Pinch, Rotate, Pan (1-N Touches)
 Edge Pan From(Left, Right, Top, Bottom, 1-N Touches)
-[Touches are called fingers by most users so a "two-finger swipe" is a swipe with nNumTouchesRequired set to 2 in iOS speak.]
 
 Gestures may be attached to either a view (e.g. to detect a swipe over the entire
 current view) or a specific control (e.g. to detect taps on a canvas).
