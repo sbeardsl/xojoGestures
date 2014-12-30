@@ -7,10 +7,15 @@ events will be added to a future version of Xojo until then this makes adding th
 easy so we can have fun playing with them starting now.
 
 Supported Gestures:  (with configurable parameters)
+
 Tap (1-N taps by 1-N touches)
+
 Swipe (Left, Right, Up, Down, 1-N Touches)
+
 Long Press (1-N Touches, delay)
+
 Pinch, Rotate, Pan (1-N Touches)
+
 Edge Pan From(Left, Right, Top, Bottom, 1-N Touches)
 
 Gestures may be attached to either a view (e.g. to detect a swipe over the entire
@@ -21,19 +26,27 @@ a view or directly from code.
 
 If you drag a gesture to your view's shelf:
 You MUST add the following line of code to the view or canvas's Open or Activate event:
+
 theGesture.Attach(yourView)
+
 or 
+
 theGesture.Attach(yourCanvas)
 
 To create and attach a gesture in code:
+
 Dim myGesture as swipeLeftGesture   ' watch for a swipe to the left'
+
 myGesture = new swipeLeftGesture() 
 
 ' Initalize properties such a how many taps or fingers for your gesture
+
 myGesture.numTouchesRequired = 2 'respond to a two-fingered left swipe
 
 ' Attach an event handler to one or more of the gesture's events
+
 AddHandler myGesture.Swipe, AddressOf swipeHandler
+
 [To get the parameters for your eventHandler method, copy the Parameters list
 from the gesture’s EventDelegate for the corresponding event.
 For example, to get the parameter list for swipeLeftGesture’s Swipe event
@@ -41,6 +54,7 @@ copy the parameter list from baseSwipeGesture’s swipeEventDelegate
 “recognizer as iosGestures.baseSwipeGesture, pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo”]
 
 ' finally, attach the gesture recognizer to a canvas or view
+
 myGesture.Attach( myView )
 
 To see the module in action run the ExampleOne which shows off most of the supported gestures.
@@ -50,13 +64,20 @@ Until an update with the fix is released you will need to copy and paste
 from after opening the iOSGesture_module instead of importing the module directly.]
 
 To begin experimenting for yourself:
+
 1) Create a new iOS Project
+
 2) Open iosGesutres_module, Copy iOSGestures, and Paste it into your project.
+
 3) Select a view (e.g. View1)
+
 4) Open the iOSGesture module list of classes
+
 5) Drag a copy of tapGesture to the shelf under your View.
 [As of 3.0/3.1 you need to save your project after dragging a gesture object to the shelf, Feedback #37005, #36698]
+
 6) Add an Open event handler to your View and add "tapGesture1.Attach(Me)" to connect the gesture to your view
+
 7) Add a "Tap" event handler the tapGesture1 and add code
 
 8) You can drag a second tapGesture to the shelf (Save) and set its NumberOfTapsRequired
@@ -66,6 +87,7 @@ and your app will exhibit correct behavior when the user has enabled some
 of the accessibility features in the OS.
 
 Special Thanks:
+
 To Michel Bujardet, for XojoiOSWrapper and his TableView setup for sample code, which I
 stole shamelessly and for the inspiration to release this to the larger Xojo community.
 
