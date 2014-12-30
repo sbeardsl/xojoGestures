@@ -30,13 +30,5 @@ Special Thanks:
 To Michel Bujardet, for XojoiOSWrapper and his TableView setup for sample code, which I
 stole shamelessly and for the inspiration to release this to the larger Xojo community.
 
-To the Xojo Team, first for the Xojo examples, especially for iosAlert without which I
-would probably still be stumbling over getting the delegate for gesture events setup
-correctly. More importantly, I'm blown away by the stability of the first release of
-Xojo for iOS.  Great job and I'm really looking forward to what comes next including
-making this module obsolete when you add gesture events to Views and Controls
-directly from the Xojo iOS Framework.
-
-For those who want to go deeper - Apple ios Documentation on the UIGestureRecognizer
-
-https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIGestureRecognizer_Class/index.html#//apple_ref/occ/cl/UIGestureRecognizer
+To the Xojo Team, for the Xojo examples, especially for iosAlert for showing how
+to get the delegate for gesture events setup correctly.
