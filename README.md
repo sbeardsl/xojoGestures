@@ -25,10 +25,4 @@ current view) or a specific control (e.g. to detect taps on a canvas).
 You may attach a gesture recognizer either from the IDE by placing it on the shelf under
 a view or directly from code.  
 
-Special Thanks:
-
-To Michel Bujardet, for XojoiOSWrapper and his TableView setup for sample code, which I
-stole shamelessly and for the inspiration to release this to the larger Xojo community.
-
-To the Xojo Team, for the Xojo examples, especially for iosAlert for showing how
-to get the delegate for gesture events setup correctly.
+Special Thanks: To Michel Bujardet, for XojoiOSWrapper and his TableView setup for sample code and the Xojo Team for the Xojo examples, especially for iosAlert for showing how to get the delegate for gesture events setup correctly.
