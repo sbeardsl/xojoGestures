@@ -12,6 +12,18 @@ Protected Class baseGestureRecognizer
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub Attach(theControl as iOSControl)
+		  Attach( theControl.Handle )
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Attach(theView as iOSView)
+		  Attach( theView.Handle )
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub Attach(targetViewHandle as Ptr)
 		  if (m_bAttached) then
 		    RemoveRecognizer()
@@ -242,16 +254,6 @@ Protected Class baseGestureRecognizer
 		  m_NextDelegateID = m_NextDelegateID + 1
 		  
 		  return "sjb-iosGestures-" + RecognizerType() + "-DelegateClass-" + m_NextDelegateID().ToText()
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Function xGetTheDelegateMethodSelector() As Ptr
-		  if (m_delegateMethodSelector = nil) then
-		    m_delegateMethodSelector = Foundation.NSSelectorFromString(kDelegateMethodName)
-		  end if
-		  
-		  return m_delegateMethodSelector
 		End Function
 	#tag EndMethod
 
