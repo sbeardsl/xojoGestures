@@ -41,15 +41,17 @@ Begin iosView MainView
          Width           =   0.0
       End
       Begin iOSLabel BottomLabel
+         AccessibilityHint=   ""
+         AccessibilityLabel=   ""
          AutoLayout      =   BottomLabel, 4, BottomLayoutGuide, 3, False, +1.00, 1, 1, 0, 
          AutoLayout      =   BottomLabel, 8, , 0, False, +1.00, 1, 1, 30, 
          AutoLayout      =   BottomLabel, 1, <Parent>, 1, False, +1.00, 1, 1, 0, 
          AutoLayout      =   BottomLabel, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
          Enabled         =   True
          Height          =   30.0
-         Left            =   0.0
+         Left            =   0
          LockedInPosition=   False
-         PanelIndex      =   -1
+         PanelIndex      =   0
          Parent          =   "Table1"
          Scope           =   0
          Text            =   "<  Drag from left and right edges >"
@@ -57,7 +59,7 @@ Begin iosView MainView
          TextColor       =   &c00000000
          TextFont        =   ""
          TextSize        =   0
-         Top             =   450.0
+         Top             =   450
          Visible         =   True
          Width           =   320.0
       End
@@ -113,8 +115,8 @@ End
 		  
 		  SetLeftEdgeCanvasWidth( 0 )
 		  
-		  edgePanLeftGesture1.Attach( Handle )
-		  edgePanRightGesture1.Attach( Handle )
+		  edgePanLeftGesture1.Attach( Me )
+		  edgePanRightGesture1.Attach( Me )
 		End Sub
 	#tag EndEvent
 
@@ -144,7 +146,7 @@ End
 		  end if
 		  
 		  Dim c As iOSLayoutConstraint = Self.Constraint("UnderRightEdgeCanvasLeft")
-		  Dim currentLeftOffset as double = c.Offset 
+		  Dim currentLeftOffset as double = c.Offset
 		  if (newOffset <> currentLeftOffset) then
 		    c.Offset = newOffset
 		    UnderRightEdgeCanvas.Invalidate()
@@ -204,6 +206,11 @@ End
 #tag Events edgePanLeftGesture1
 	#tag Event
 		Sub PanEnds(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo, translation as xojo.core.Point, velocity as xojo.core.Point)
+		  #Pragma Unused pos
+		  #Pragma Unused eventInfo
+		  #Pragma Unused translation
+		  #Pragma Unused velocity
+		  
 		  App.ClearEvents()
 		  
 		  
@@ -212,6 +219,9 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub PanChanged(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo, translation as xojo.core.Point, velocity as xojo.core.Point)
+		  #Pragma Unused translation
+		  #Pragma Unused velocity
+		  
 		  App.LatestEventPos = pos
 		  App.LatestEventInfo = eventInfo
 		  App.LatestNumTaps = 0
@@ -232,6 +242,11 @@ End
 #tag Events edgePanRightGesture1
 	#tag Event
 		Sub PanEnds(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo, translation as xojo.core.Point, velocity as xojo.core.Point)
+		  #Pragma Unused pos
+		  #Pragma Unused eventInfo
+		  #Pragma Unused translation
+		  #Pragma Unused velocity
+		  
 		  App.ClearEvents()
 		  
 		  
@@ -240,6 +255,9 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub PanChanged(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo, translation as xojo.core.Point, velocity as xojo.core.Point)
+		  #Pragma Unused translation
+		  #Pragma Unused velocity
+		  
 		  App.LatestEventPos = pos
 		  App.LatestEventInfo = eventInfo
 		  App.LatestNumTaps = 0

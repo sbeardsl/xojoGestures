@@ -41,12 +41,13 @@ Inherits IOSApplication
 		  Dim x as Double = App.LatestEventPos.X
 		  Dim y as Double = g.Height
 		  
-		  if (App.LatestEventInfo.PointerCount < 2) then
-		    g.DrawLine( x, g.Height/2 , x, Y )
-		    g.DrawLine( x, y, x-10, y-10 )
-		    g.DrawLine( x, y, x+10, y-10 )
-		  else
-		    DrawSwipeTouches( g, x, y )
+		  
+		  g.DrawLine( x, g.Height/2 , x, Y )
+		  g.DrawLine( x, y, x-10, y-10 )
+		  g.DrawLine( x, y, x+10, y-10 )
+		  
+		  if (App.LatestEventInfo.PointerCount > 1) then
+		    DrawSwipeTouches( g, x, g.Height/2 )
 		  end if
 		  
 		  g.RestoreState
@@ -60,12 +61,13 @@ Inherits IOSApplication
 		  Dim x as Double = 0
 		  Dim y as Double = App.LatestEventPos.Y
 		  
-		  if (App.LatestEventInfo.PointerCount < 2) then
-		    g.DrawLine( g.Width/2, y, x, Y )
-		    g.DrawLine( 0, y, 10, y - 10)
-		    g.DrawLine( 0, y, 10, y + 10)
-		  else
-		    DrawSwipeTouches( g, x, y )
+		  
+		  g.DrawLine( g.Width/2, y, x, Y )
+		  g.DrawLine( 0, y, 10, y - 10)
+		  g.DrawLine( 0, y, 10, y + 10)
+		  
+		  if (App.LatestEventInfo.PointerCount > 1) then
+		    DrawSwipeTouches( g, g.Width/2, y )
 		  end if
 		  
 		  g.RestoreState
@@ -80,12 +82,12 @@ Inherits IOSApplication
 		  Dim y as Double = App.LatestEventPos.Y
 		  
 		  
-		  if (App.LatestEventInfo.PointerCount < 2) then
-		    g.DrawLine( g.Width/2, y, x, Y )
-		    g.DrawLine( x, y, x-10, y - 10)
-		    g.DrawLine( x, y, x-10, y + 10)
-		  else
-		    DrawSwipeTouches( g, x, y )
+		  g.DrawLine( g.Width/2, y, x, Y )
+		  g.DrawLine( x, y, x-10, y - 10)
+		  g.DrawLine( x, y, x-10, y + 10)
+		  
+		  if (App.LatestEventInfo.PointerCount > 1) then
+		    DrawSwipeTouches( g, g.Width/2, y )
 		  end if
 		  
 		  g.RestoreState
@@ -117,12 +119,12 @@ Inherits IOSApplication
 		  Dim x as Double = App.LatestEventPos.X
 		  Dim y as Double = 0
 		  
-		  if (App.LatestEventInfo.PointerCount < 2) then
-		    g.DrawLine( x, g.Height/2 , x, Y )
-		    g.DrawLine( x, y, x-10, y+10 )
-		    g.DrawLine( x, y, x+10, y+10 )
-		  else
-		    DrawSwipeTouches( g, x, y )
+		  g.DrawLine( x, g.Height/2 , x, Y )
+		  g.DrawLine( x, y, x-10, y+10 )
+		  g.DrawLine( x, y, x+10, y+10 )
+		  
+		  if (App.LatestEventInfo.PointerCount > 1) then
+		    DrawSwipeTouches( g, x, g.Height/2 )
 		  end if
 		  
 		  g.RestoreState
