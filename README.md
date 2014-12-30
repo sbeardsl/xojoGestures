@@ -1,4 +1,4 @@
-xojoGestures
+xojoGestures 
 ============
 
 iOSGestures is a Xojo module designed to make detecting user gestures such as
