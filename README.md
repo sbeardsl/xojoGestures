@@ -1,9 +1,10 @@
 xojoGestures
 ============
 
-XoJo module for attaching UIGestureRecognizers to Views
-
-iOSGestures is a Xojo module designed to make detecting user gestures such as Tap, Swipe, Pinch, and Rotate as easy a possible.   While its certainly possible that gesture events will be adding to a future version of Xojo until then this makes adding them easy and they can be a lot of fun to play with.
+iOSGestures is a Xojo module designed to make detecting user gestures such as
+Tap, Swipe,  Pinch, and Rotate as easy a possible.   While its likely that gesture
+events will be added to a future version of Xojo until then this makes adding them
+easy so we can have fun playing with them starting now.
 
 Supported Gestures:  (with configurable parameters)
 Tap (1-N taps by 1-N touches)
@@ -11,33 +12,70 @@ Swipe (Left, Right, Up, Down, 1-N Touches)
 Long Press (1-N Touches, delay)
 Pinch, Rotate, Pan (1-N Touches)
 Edge Pan From(Left, Right, Top, Bottom, 1-N Touches)
+[Touches are called fingers by most users so a "two-finger swipe" is a swipe with nNumTouchesRequired set to 2 in iOS speak.]
 
-Gestures may be attached to either a view (e.g. to detect a swipe over the entire current view) or a specific control (e.g. to detect taps on a canvas).
+Gestures may be attached to either a view (e.g. to detect a swipe over the entire
+current view) or a specific control (e.g. to detect taps on a canvas).
 
-You may attach a gesture recognizer either from the IDE by placing it on the shelf under a view and or directly from code.  If you drag a gesture to the shelf you MUST add the following line of code to your Open or Activate event:
-[B]theGesture.Attach(yourView.Handle) or theGesture.Attach(yourControl.Handle)[/B]
+You may attach a gesture recognizer either from the IDE by placing it on the shelf under
+a view or directly from code.  
 
-To see the module in action run the ExampleOne which shows off most of the supported gestures. 
+If you drag a gesture to your view's shelf:
+You MUST add the following line of code to the view or canvas's Open or Activate event:
+theGesture.Attach(yourView)
+or 
+theGesture.Attach(yourCanvas)
 
-[Note: When a version of Xojo that fixes 3.x's problem with importing a module with classes I'll add a binary copy of the module but for now, please copy and paste from the GestureBase project, its the only way I seem to be able to get it to work.]
+To create and attach a gesture in code:
+Dim myGesture as swipeLeftGesture   ' watch for a swipe to the left'
+myGesture = new swipeLeftGesture() 
 
-To begin experimenting for yourself: 
-1) Create a new iOS Project and copy the iOSGestures Module from XojoiOSGesturesBase.xojo_binary_project and paste it into your project.
-2) Select your view
-3) Open the iOSGesture module listing of classes
-4) Drag a copy of tapGesture to the shelf under your View.
-5) Add an Open event handler to your View and add "tapGesture1.Attach(View1.Handle)" to connect the gesture to your view
-6) Add a "Tap" event handler the tapGesture1/
-7) You are now ready to add code to handle tap events.
-8) You can drag a second tapGesture to the shelf and modify its NumberOfTapsRequired to 2 to create an event handler for double taps.  Since we are using Apple's system recognizers we don't have to worry about sorting out what is a single or double tap, its taken care of for us including correct behavior when the user has enabled some of the accessibility features in the OS.'
+' Initalize properties such a how many taps or fingers for your gesture
+myGesture.numTouchesRequired = 2 'respond to a two-fingered left swipe
 
+' Attach an event handler to one or more of the gesture's events
+AddHandler myGesture.Swipe, AddressOf swipeHandler
+[To get the parameters for your eventHandler method, copy the Parameters list
+from the gesture’s EventDelegate for the corresponding event.
+For example, to get the parameter list for swipeLeftGesture’s Swipe event
+copy the parameter list from baseSwipeGesture’s swipeEventDelegate
+“recognizer as iosGestures.baseSwipeGesture, pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo”]
 
-Warning: This is my first public GitHub project, there will be a bit of churn as I work out exactly what the best way to organize the project to provide access and receive feedback.    
+' finally, attach the gesture recognizer to a canvas or view
+myGesture.Attach( myView )
 
-Special Thanks: 
-To Michel Bujardet, for XojoiOSWrapper and his TableView setup for sample code, which I stole shamelessly and for the inspiration to release this to the larger Xojo community.
+To see the module in action run the ExampleOne which shows off most of the supported gestures.
 
-To the Xojo Team, first for the Xojo examples, especially for iosAlert without which I would probably still be stumbling over getting the delegate for gesture events setup correctly. More importantly, I'm blown away by the stability of the first release of Xojo for iOS.  Great job and I'm really looking forward to what comes next including making this module obsolete when you add gesture events to Views and Controls directly from the Xojo iOS Framework.
+[Note: Xojo 2014 3.0 and 3.1 have a bug with importing modules containing classes. (Feedback #37436, fixed Dec 19th)
+Until an update with the fix is released you will need to copy and paste
+from after opening the iOSGesture_module instead of importing the module directly.]
+
+To begin experimenting for yourself:
+1) Create a new iOS Project
+2) Open iosGesutres_module, Copy iOSGestures, and Paste it into your project.
+3) Select a view (e.g. View1)
+4) Open the iOSGesture module list of classes
+5) Drag a copy of tapGesture to the shelf under your View.
+[As of 3.0/3.1 you need to save your project after dragging a gesture object to the shelf, Feedback #37005, #36698]
+6) Add an Open event handler to your View and add "tapGesture1.Attach(Me)" to connect the gesture to your view
+7) Add a "Tap" event handler the tapGesture1 and add code
+
+8) You can drag a second tapGesture to the shelf (Save) and set its NumberOfTapsRequired
+to 2 to create an event handler for double taps.  Since we are using Apple's system
+recognizers we don't have to worry about sorting out what is a single or double tap,
+and your app will exhibit correct behavior when the user has enabled some
+of the accessibility features in the OS.
+
+Special Thanks:
+To Michel Bujardet, for XojoiOSWrapper and his TableView setup for sample code, which I
+stole shamelessly and for the inspiration to release this to the larger Xojo community.
+
+To the Xojo Team, first for the Xojo examples, especially for iosAlert without which I
+would probably still be stumbling over getting the delegate for gesture events setup
+correctly. More importantly, I'm blown away by the stability of the first release of
+Xojo for iOS.  Great job and I'm really looking forward to what comes next including
+making this module obsolete when you add gesture events to Views and Controls
+directly from the Xojo iOS Framework.
 
 For those who want to go deeper - Apple ios Documentation on the UIGestureRecognizer
 
