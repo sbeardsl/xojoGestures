@@ -70,8 +70,8 @@ Protected Module iOSGestures
 		of the accessibility features in the OS.
 		
 		Special Thanks:
-		To Michel Bujardet, for XojoiOSWrapper and his TableView setup for sample code, which I
-		stole shamelessly and for the inspiration to release this to the larger Xojo community.
+		To Michel Bujardet, the curator of XojoiOSWrapper and Jason King for many contributions
+		to the Xojo community including the TableView setup I borrowed for ExampleOne.
 		
 		To the Xojo Team, first for the Xojo examples, especially for iosAlert without which I
 		would probably still be stumbling over getting the delegate for gesture events setup

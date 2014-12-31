@@ -47,8 +47,8 @@ myGesture.Attach( myView )
 To see the module in action run the ExampleOne which shows off most of the supported gestures.
 
 [Note: Xojo 2014 3.0 and 3.1 have a bug with importing modules containing classes. (Feedback #37436, fixed Dec 19th)
-Until an update with the fix is released you will need to copy and paste
-from after opening the iOSGesture_module instead of importing the module directly.]
+Until an update with the fix is released you will need to open the iOSGestures_module in the
+IDE and copy and paste iOSGestures from there instead of importing the module directly.]
 
 To begin experimenting for yourself:
 1) Create a new iOS Project
@@ -67,8 +67,8 @@ and your app will exhibit correct behavior when the user has enabled some
 of the accessibility features in the OS.
 
 Special Thanks:
-To Michel Bujardet, for XojoiOSWrapper and his TableView setup for sample code, which I
-stole shamelessly and for the inspiration to release this to the larger Xojo community.
+To Michel Bujardet, the curator of XojoiOSWrapper and Jason King for many contributions
+to the Xojo community including the TableView setup I borrowed for ExampleOne.
 
 To the Xojo Team, first for the Xojo examples, especially for iosAlert without which I
 would probably still be stumbling over getting the delegate for gesture events setup
