@@ -14,13 +14,13 @@ Protected Module view
 
 	#tag Method, Flags = &h1
 		Protected Function get(objPtr as Ptr) As Ptr
-		  Declare Function viewFromControler lib "Foundation.Framework" selector "view" (objPtr as Ptr) as Ptr
+		  Declare Function viewFromObjPtr lib "Foundation.Framework" selector "view" (objPtr as Ptr) as Ptr
 		  
 		  Dim pView as Ptr
 		  
 		  if (objPtr <> nil) then
 		    if (Foundation.objRespondsTo( objPtr, "view" )) then
-		      pView = viewFromControler(objPtr)
+		      pView = viewFromObjPtr(objPtr)
 		    else
 		      debug.ASSERT_FAILED_RESPONDS_TO( objPtr, "view")
 		    end if
@@ -30,10 +30,6 @@ Protected Module view
 		  
 		End Function
 	#tag EndMethod
-
-	#tag ExternalMethod, Flags = &h1
-		Protected Declare Function objc_allocateClassPair Lib "Foundation.Framework" (superclass As Ptr, className As CString, extraBytes As Integer) As Ptr
-	#tag EndExternalMethod
 
 
 	#tag ViewBehavior

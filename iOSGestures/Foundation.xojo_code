@@ -141,20 +141,6 @@ Protected Module Foundation
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h1
-		Protected Function view(objRef as Ptr) As Ptr
-		  Declare Function viewFromObjPtr lib "Foundation.Framework" selector "view" (objRef as Ptr) as Ptr
-		  
-		  Dim viewPtr as Ptr
-		  Dim bSupportsView as Boolean = Foundation.objRespondsTo( objRef, "view" )
-		  if (bSupportsView) then
-		    viewPtr = viewFromObjPtr( objRef )
-		  end if
-		  
-		  return viewPtr
-		End Function
-	#tag EndMethod
-
 
 	#tag ViewBehavior
 		#tag ViewProperty
