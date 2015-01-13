@@ -66,7 +66,9 @@ Protected Class baseGestureRecognizer
 		    m_dictOfRecognizers = new Dictionary
 		  end if
 		  
-		  m_delegateMethodSelector = Foundation.NSSelectorFromString(kDelegateMethodName)
+		  if (m_delegateMethodSelector = nil) then
+		    m_delegateMethodSelector = Foundation.NSSelectorFromString(kDelegateMethodName)
+		  end if
 		  
 		  RecognizerType =  theRecognizerType
 		  
@@ -264,14 +266,6 @@ Protected Class baseGestureRecognizer
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h21
-		Private Function UniqueClassName() As Text
-		  m_NextDelegateID = m_NextDelegateID + 1
-		  
-		  return "sjb-iosGestures-" + RecognizerType() + "-DelegateClass-" + m_NextDelegateID().ToText()
-		End Function
-	#tag EndMethod
-
 
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
@@ -350,15 +344,11 @@ Protected Class baseGestureRecognizer
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
-		Private m_delegateMethodSelector As Ptr
+		Private Shared m_delegateMethodSelector As Ptr
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
 		Protected Shared m_dictOfRecognizers As Dictionary
-	#tag EndProperty
-
-	#tag Property, Flags = &h21
-		Private Shared m_NextDelegateID As Integer = 0
 	#tag EndProperty
 
 	#tag Property, Flags = &h1
@@ -418,10 +408,10 @@ Protected Class baseGestureRecognizer
 	#tag Constant, Name = kDelegateClassName, Type = Text, Dynamic = False, Default = \"iOSGestures-Delegate-Class", Scope = Private
 	#tag EndConstant
 
-	#tag Constant, Name = kDelegateMethodName, Type = Text, Dynamic = False, Default = \"handleGesture:", Scope = Protected
+	#tag Constant, Name = kDelegateMethodName, Type = Text, Dynamic = False, Default = \"handleGesture:", Scope = Private
 	#tag EndConstant
 
-	#tag Constant, Name = kDelegateMethodTypeSignature, Type = Text, Dynamic = False, Default = \"v@:@", Scope = Protected
+	#tag Constant, Name = kDelegateMethodTypeSignature, Type = Text, Dynamic = False, Default = \"v@:@", Scope = Private
 	#tag EndConstant
 
 

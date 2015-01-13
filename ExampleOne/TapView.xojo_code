@@ -10,9 +10,9 @@ Begin iosView TapView
    Begin iOSSegmentedControl TapsControl
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
+      AutoLayout      =   TapsControl, 1, TouchesControl, 1, False, +1.00, 1, 1, 0, 
       AutoLayout      =   TapsControl, 8, , 0, True, +1.00, 1, 1, 29, 
       AutoLayout      =   TapsControl, 2, TouchesControl, 2, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   TapsControl, 1, TouchesControl, 1, False, +1.00, 1, 1, 0, 
       AutoLayout      =   TapsControl, 4, TouchesControl, 3, False, +1.00, 1, 1, -*kStdControlGapV, 
       Caption         =   ""
       Enabled         =   True
@@ -29,9 +29,9 @@ Begin iosView TapView
    Begin iOSSegmentedControl TouchesControl
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
+      AutoLayout      =   TouchesControl, 8, , 0, True, +1.00, 1, 1, 29, 
       AutoLayout      =   TouchesControl, 9, <Parent>, 9, False, +1.00, 2, 1, 0, 
       AutoLayout      =   TouchesControl, 7, , 0, False, +1.00, 1, 1, 200, 
-      AutoLayout      =   TouchesControl, 8, , 0, True, +1.00, 1, 1, 29, 
       AutoLayout      =   TouchesControl, 4, BottomLayoutGuide, 3, False, +1.00, 1, 1, -5, 
       Caption         =   ""
       Enabled         =   True
@@ -48,10 +48,10 @@ Begin iosView TapView
    Begin iosCanvas Canvas1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   Canvas1, 4, TapsControl, 3, False, +1.00, 1, 1, -*kStdControlGapV, 
-      AutoLayout      =   Canvas1, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   Canvas1, 3, TopLayoutGuide, 4, False, +1.00, 2, 1, 0, 
       AutoLayout      =   Canvas1, 1, <Parent>, 1, False, +1.00, 2, 1, 0, 
+      AutoLayout      =   Canvas1, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
+      AutoLayout      =   Canvas1, 4, TapsControl, 3, False, +1.00, 1, 1, -*kStdControlGapV, 
+      AutoLayout      =   Canvas1, 3, TopLayoutGuide, 4, False, +1.00, 2, 1, 0, 
       Height          =   336.0
       Left            =   0
       LockedInPosition=   False
