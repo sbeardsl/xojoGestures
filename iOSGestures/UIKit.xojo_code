@@ -1,7 +1,19 @@
 #tag Module
 Protected Module UIKit
 	#tag Method, Flags = &h1
-		Protected Function getLcationInView(objPtr as Ptr, referenceViewPtr as Ptr) As xojo.Core.Point
+		Protected Sub addGestureRecognizer(viewObjPtr as Ptr, recognizerPtr as Ptr)
+		  Declare Sub addGestureRecognizer lib "UIKit.Framework" selector "addGestureRecognizer:" (target_view_handle as Ptr, recognizer as Ptr)
+		  
+		  if (Foundation.objRespondsTo( viewObjPtr,"addGestureRecognizer:") ) then
+		    addGestureRecognizer( viewObjPtr, recognizerPtr )
+		  else
+		    debug.ASSERT_FAILED_RESPONDS_TO( viewObjPtr, "addGestureRecognizer:" )
+		  end if
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function getLocationInView(objPtr as Ptr, referenceViewPtr as Ptr) As xojo.Core.Point
 		  Declare Function getLocationInView lib "UIKit.Framework" selector "locationInView:" (objRef As Ptr, viewPtr as Ptr) As CoreGraphics.CGPoint
 		  
 		  Dim locationInView as xojo.Core.Point
@@ -167,6 +179,53 @@ Protected Module UIKit
 		  objPtr = doInitWithTargetAction( objPtr, theDelegate, delegateMethodSelector )
 		  
 		  return objPtr
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function isDescendantOfView(thisView as Ptr, theParentView as Ptr) As Boolean
+		  Declare Function isDescendantOfView lib "UIKit.Framework" selector "isDescendantOfView:" (objRef as Ptr, parentView as Ptr) as Boolean
+		  
+		  Dim bIsDescendant as Boolean = false
+		  
+		  if (thisView <> nil) then
+		    if (Foundation.objRespondsTo(thisView, "isDescendantOfView:" )) then
+		      bIsDescendant = isDescendantOfView( thisView, theParentView )
+		    end if
+		  end if
+		  
+		  return bIsDescendant
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub removeGestureRecognizer(viewObjPtr as Ptr, recognizerPtr as Ptr)
+		  Declare Sub removeGestureRecognizer lib "UIKit.Framework" selector "removeGestureRecognizer:" (target_view_handle as Ptr, recognizer as Ptr)
+		  
+		  if (Foundation.objRespondsTo( viewObjPtr,"removeGestureRecognizer:") ) then
+		    removeGestureRecognizer( viewObjPtr, recognizerPtr )
+		  else
+		    debug.ASSERT_FAILED_RESPONDS_TO( viewObjPtr, "removeGestureRecognizer:" )
+		  end if
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function view(objPtr as Ptr) As Ptr
+		  Declare Function viewFromObjPtr lib "Foundation.Framework" selector "view" (objPtr as Ptr) as Ptr
+		  
+		  Dim pView as Ptr
+		  
+		  if (objPtr <> nil) then
+		    if (Foundation.objRespondsTo( objPtr, "view" )) then
+		      pView = viewFromObjPtr(objPtr)
+		    else
+		      debug.ASSERT_FAILED_RESPONDS_TO( objPtr, "view")
+		    end if
+		  end if
+		  
+		  return pView
+		  
 		End Function
 	#tag EndMethod
 

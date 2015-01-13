@@ -43,7 +43,6 @@ Class=edgePanBottomGesture;../iOSGestures/edgePanBottomGesture.xojo_code;&h19BEE
 Class=edgePanRightGesture;../iOSGestures/edgePanRightGesture.xojo_code;&h65F88058;&h5E7DC4EC;false
 Class=longPressGesture;../iOSGestures/longPressGesture.xojo_code;&h5FBBFA5C;&h5E7DC4EC;false
 Module=Foundation;../iOSGestures/Foundation.xojo_code;&h62B7F1DA;&h5E7DC4EC;false
-Module=view;../iOSGestures/Foundation/view.xojo_code;&h5B19E0;&h62B7F1DA;false
 Picture=iPad762x;App Icon/iPad762x.png;&h536E9CD0;&h4B9A081B;false;0;&h0
 Picture=iPhone603x;App Icon/iPhone603x.png;&h2F98821;&h4B9A081B;false;0;&h0
 Picture=iPhone5Portrait;Launch Images/iPhone5Portrait.png;&h4C5871B3;&h6D8A8D09;false;0;&h0

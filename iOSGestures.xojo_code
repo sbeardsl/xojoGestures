@@ -6,6 +6,100 @@ Protected Module iOSGestures
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h1
+		Protected Sub removeRecognizers(extends theControl as iOSControl)
+		  iOSGestures.baseGestureRecognizer.RemoveRecognizers( theControl.Handle )
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub removeRecognizers(extends theView as iOSView)
+		  iOSGestures.baseGestureRecognizer.RemoveRecognizers( UIViewPtrFromView( theView ) )
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub removeRecognizersIncludingSubViews(theControl as iOSControl)
+		  iOSGestures.baseGestureRecognizer.RemoveRecognizersIncludingSubViews( theControl.Handle )
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Sub removeRecognizersIncludingSubViews(theView as iOSView)
+		  iOSGestures.baseGestureRecognizer.RemoveRecognizersIncludingSubViews( UIViewPtrFromView( theView ) )
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub respondsToTap(extends theControl as iOSControl, handler as iOSGestures.tapGesture.tapEventDelegate, taps as integer, touches as integer, name as Text)
+		  Dim newRecognizer as iOSGestures.tapGesture = new iOSGestures.tapGesture( theControl.Handle, handler, taps, touches, name )
+		  
+		  'A reference to the recognizer is kept in baseGestureRecognizer.m_dictofRecognizers so this won't go away when we exit the method
+		  #Pragma unused newRecognizer
+		  
+		  
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub respondsToTap(extends theControl as iOSControl, handler as iOSGestures.tapGesture.tapEventDelegate, taps as integer, name as Text)
+		  Dim newRecognizer as iOSGestures.tapGesture = new iOSGestures.tapGesture( theControl.Handle, handler, taps, 1, name )
+		  
+		  'A reference to the recognizer is kept in baseGestureRecognizer.m_dictofRecognizers so this won't go away when we exit the method
+		  #Pragma unused newRecognizer
+		  
+		  
+		  
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub respondsToTap(extends theView as iOSView, handler as iOSGestures.tapGesture.tapEventDelegate, taps as integer, touches as integer, name as Text)
+		  Dim newRecognizer as iOSGestures.tapGesture = new iOSGestures.tapGesture( theView.Handle, handler, taps, touches, name )
+		  
+		  'A reference to the recognizer is kept in baseGestureRecognizer.m_dictofRecognizers so this won't go away when we exit the method
+		  #Pragma unused newRecognizer
+		  
+		  
+		  
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub respondsToTap(extends theView as iOSView, handler as iOSGestures.tapGesture.tapEventDelegate, taps as integer, name as Text)
+		  Dim newRecognizer as iOSGestures.tapGesture = new iOSGestures.tapGesture( theView.Handle, handler, taps, 1, name )
+		  
+		  'A reference to the recognizer is kept in baseGestureRecognizer.m_dictofRecognizers so this won't go away when we exit the method
+		  #Pragma unused newRecognizer
+		  
+		  
+		  
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h1
+		Protected Function UIViewPtrFromView(theView as iOSView) As Ptr
+		  Dim theViewPtr as Ptr = theView.Handle
+		  
+		  if (not Foundation.isKindOfClass( theViewPtr, "UIView" )) then
+		    
+		    if (Foundation.objRespondsTo( theViewPtr, "view" )) then
+		      theViewPtr = UIKit.view( theViewPtr )
+		      
+		      if (not Foundation.isKindOfClass( theViewPtr, "UIView" ))  then
+		        theViewPtr = nil
+		      end if
+		    end if
+		  end if
+		  
+		  return theViewPtr
+		End Function
+	#tag EndMethod
+
 
 	#tag Note, Name = About iOSGestures Module
 		xojoGestures

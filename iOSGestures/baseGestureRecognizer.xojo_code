@@ -2,12 +2,12 @@
 Protected Class baseGestureRecognizer
 	#tag CompatibilityFlags = ( TargetIOS )
 	#tag Method, Flags = &h21
-		Private Sub AddRecognizerToDict(theDelegate as Ptr, theRecognizer as iosGestures.baseGestureRecognizer)
+		Private Sub AddRecognizerToDict(osRecognizerPtr as Ptr, ourGesture as iosGestures.baseGestureRecognizer)
 		  if (m_dictOfRecognizers = nil) then
 		    m_dictOfRecognizers = new Dictionary()
 		  end if
 		  
-		  m_dictOfRecognizers.Value(theDelegate) = theRecognizer
+		  m_dictOfRecognizers.Value(osRecognizerPtr) = ourGesture
 		End Sub
 	#tag EndMethod
 
@@ -40,7 +40,7 @@ Protected Class baseGestureRecognizer
 		  if (not Foundation.objRespondsTo( targetViewHandle, "addGestureRecognizer:" )) then
 		    
 		    if (Foundation.objRespondsTo( targetViewHandle, "view" )) then
-		      targetViewHandle = Foundation.view.get( targetViewHandle )
+		      targetViewHandle = UIKit.view( targetViewHandle )
 		      
 		      if (not Foundation.objRespondsTo( targetViewHandle, "addGestureRecognizer:" ))  then
 		        targetViewHandle = nil
@@ -53,7 +53,7 @@ Protected Class baseGestureRecognizer
 		  if ( GetTheTargetViewHandle() <> nil) then
 		    AddRecognizerToDict( theRecognizer, self )
 		    m_bAttached = true
-		    Foundation.view.addGestureRecognizer( GetTheTargetViewHandle(), theRecognizer)
+		    UIKit.addGestureRecognizer( GetTheTargetViewHandle(), theRecognizer)
 		  end if
 		  
 		End Sub
@@ -219,7 +219,7 @@ Protected Class baseGestureRecognizer
 
 	#tag Method, Flags = &h0
 		Function Position() As xojo.Core.Point
-		  return UIKit.getLcationInView( theRecognizer, GetTheTargetViewHandle())
+		  return UIKit.getLocationInView( theRecognizer, GetTheTargetViewHandle())
 		  
 		End Function
 	#tag EndMethod
@@ -227,7 +227,7 @@ Protected Class baseGestureRecognizer
 	#tag Method, Flags = &h0
 		 Shared Function recognizerByName(sName as Text) As baseGestureRecognizer
 		  Dim theRecognizer as baseGestureRecognizer
-		   
+		  
 		  For Each thisRecognizerAsEntry As DictionaryEntry In m_dictOfRecognizers
 		    
 		    Dim thisRecognizer as iOSGestures.baseGestureRecognizer = thisRecognizerAsEntry.Value()
@@ -261,13 +261,63 @@ Protected Class baseGestureRecognizer
 	#tag Method, Flags = &h0
 		Sub RemoveRecognizer()
 		  if (m_bAttached) then
-		    Declare Sub removeGestureRecognizer lib "UIKit.Framework" selector "removeGestureRecognizer:" (target_view_handle as Ptr, recognizer as Ptr)
+		    
+		    RemoveRecognizerFromDict()
+		    
 		    Dim targetViewHandle as Ptr = GetTheTargetViewHandle()
 		    Dim recognizer as Ptr = theRecognizer
-		    removeGestureRecognizer( targetViewHandle, recognizer )
+		    UIKit.removeGestureRecognizer( targetViewHandle, recognizer )
 		    
 		    m_bAttached = false
 		  end if
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub RemoveRecognizerFromDict()
+		  if (m_dictOfRecognizers <> nil) then
+		    if (m_dictOfRecognizers.HasKey(theRecognizer)) then
+		      m_dictOfRecognizers.Remove(theRecognizer)
+		    end if
+		  end if
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		 Shared Sub RemoveRecognizers(theUIViewPtr as Ptr)
+		  Dim recognizersToRemove() as baseGestureRecognizer
+		  
+		  For Each thisRecognizerAsEntry As DictionaryEntry In m_dictOfRecognizers
+		    Dim thisRecognizer as iOSGestures.baseGestureRecognizer = thisRecognizerAsEntry.Value()
+		    if (thisRecognizer.m_TargetViewHandle = theUIViewPtr) then
+		      recognizersToRemove.Append(thisRecognizer)
+		    end if
+		  next
+		  
+		  ' Don't change the contents of the Dictionary in the middle of the iterator
+		  for Each thisRecognizer as baseGestureRecognizer In recognizersToRemove
+		    thisRecognizer.RemoveRecognizer()
+		  next
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		 Shared Sub RemoveRecognizersIncludingSubViews(theUIViewPtr as Ptr)
+		  Dim recognizersToRemove() as baseGestureRecognizer
+		  
+		  For Each thisRecognizerAsEntry As DictionaryEntry In m_dictOfRecognizers
+		    Dim thisRecognizer as iOSGestures.baseGestureRecognizer = thisRecognizerAsEntry.Value()
+		    if (UIKit.isDescendantOfView( thisRecognizer.m_TargetViewHandle, theUIViewPtr)) then
+		      recognizersToRemove.Append(thisRecognizer)
+		    end if
+		  next
+		  
+		  ' Don't change the contents of the Dictionary in the middle of the iterator
+		  for Each thisRecognizer as baseGestureRecognizer In recognizersToRemove
+		    thisRecognizer.RemoveRecognizer()
+		  next
+		  
 		End Sub
 	#tag EndMethod
 

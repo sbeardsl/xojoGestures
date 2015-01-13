@@ -9,6 +9,21 @@ Inherits iosGestures.baseGestureRecognizer
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h1000, CompatibilityFlags = (TargetIOS)
+		Sub Constructor(theView as Ptr, handler as iOSGestures.tapGesture.tapEventDelegate, taps as integer, touches as integer = 1, gestureName as Text = "")
+		  Super.Constructor("UITapGestureRecognizer")
+		  
+		  Name = gestureName
+		  NumberOfTapsRequired = taps
+		  NumberOfTouchesRequired = touches
+		  AddHandler Tap, handler
+		  
+		  Attach( theView )
+		  
+		  
+		End Sub
+	#tag EndMethod
+
 	#tag Method, Flags = &h0
 		Sub DoGesture(recognizer as Ptr)
 		  Dim recState as UIKit.UIGestureRecognizerState = UIKit.getRecognizerState( recognizer )

@@ -45,6 +45,26 @@ Protected Module Foundation
 		Protected Declare Function class_replaceMethod Lib "Foundation.Framework" (cls as Ptr, name as Ptr, imp as Ptr, types as CString) As Ptr
 	#tag EndExternalMethod
 
+	#tag Method, Flags = &h1
+		Protected Function isKindOfClass(objRef as Ptr, superClassName as Text) As Boolean
+		  ' return TRUE if the objRef is an object of superClass or a sub-class of superClass
+		  ' e.g. a pointer to a UIView isKindOfClass UIView
+		  ' e.g. a pointer to a XojoiOSView isKindOfClass UIView
+		  
+		  Declare Function isKindOfClass lib "Foundation.Framework" selector "isKindOfClass:" (objRef as Ptr, superClassObj as Ptr) as Boolean
+		  
+		  Dim superClassPtr as Ptr = NSClassFromString( superClassName )
+		  
+		  Dim bIsKindOf as Boolean = false
+		  
+		  if (objRef <> nil) and (superClassPtr <> nil) then
+		    bIsKindOf = isKindOfClass( objRef, superClassPtr )
+		  end if
+		  
+		  return bIsKindOf
+		End Function
+	#tag EndMethod
+
 	#tag ExternalMethod, Flags = &h1
 		Protected Declare Function NSClassFromString Lib "Foundation.Framework" (classname as CFStringRef) As Ptr
 	#tag EndExternalMethod
