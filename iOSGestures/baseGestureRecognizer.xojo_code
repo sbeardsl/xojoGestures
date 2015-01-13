@@ -82,19 +82,34 @@ Protected Class baseGestureRecognizer
 		Private Function CreateDelegate() As Ptr
 		  Dim theDelegate as Ptr
 		  
-		  Dim nsObjectClassRef As ptr=Foundation.NSClassFromString("NSObject")
+		  if (m_DelegateClassRef = nil) then
+		    m_DelegateClassRef = CreateDelegateClassRef()
+		  end if
 		  
-		  Dim DelegateClassRef As ptr= Foundation.objc_allocateClassPair( nsObjectClassRef, UniqueClassName())
-		  Dim delegateCallback as Ptr = AddressOf handleGesture
-		  Dim bAdded As Boolean = Foundation.class_addMethod(DelegateClassRef, kDelegateMethodName, delegateCallback, kDelegateMethodTypeSignature, CurrentMethodName)
-		  if (bAdded) then
-		    
-		    Foundation.objc_registerClassPair(DelegateClassRef)
-		    
-		    theDelegate = Foundation.alloc(DelegateClassRef)
+		  if (m_DelegateClassRef <> nil) then
+		    theDelegate = Foundation.alloc(m_DelegateClassRef)
 		  end if
 		  
 		  return theDelegate
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function CreateDelegateClassRef() As Ptr
+		  if (m_DelegateClassRef = nil) then
+		    
+		    Dim nsObjectClassRef As ptr=Foundation.NSClassFromString("NSObject")
+		    
+		    m_DelegateClassRef = Foundation.objc_allocateClassPair( nsObjectClassRef, kDelegateClassName ) 'UniqueClassName())
+		    Dim delegateCallback as Ptr = AddressOf handleGesture
+		    Dim bAdded As Boolean = Foundation.class_addMethod(m_DelegateClassRef, kDelegateMethodName, delegateCallback, kDelegateMethodTypeSignature, CurrentMethodName)
+		    if (bAdded) then
+		      Foundation.objc_registerClassPair(m_DelegateClassRef)
+		    end if
+		    
+		  end if
+		  
+		  return m_DelegateClassRef
 		End Function
 	#tag EndMethod
 
@@ -331,6 +346,10 @@ Protected Class baseGestureRecognizer
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
+		Private Shared m_DelegateClassRef As Ptr
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
 		Private m_delegateMethodSelector As Ptr
 	#tag EndProperty
 
@@ -395,6 +414,9 @@ Protected Class baseGestureRecognizer
 		theRecognizer As Ptr
 	#tag EndComputedProperty
 
+
+	#tag Constant, Name = kDelegateClassName, Type = Text, Dynamic = False, Default = \"iOSGestures-Delegate-Class", Scope = Private
+	#tag EndConstant
 
 	#tag Constant, Name = kDelegateMethodName, Type = Text, Dynamic = False, Default = \"handleGesture:", Scope = Protected
 	#tag EndConstant
