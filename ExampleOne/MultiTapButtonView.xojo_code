@@ -10,9 +10,9 @@ Begin iosView MultiTapButtonView
    Begin iOSButton MultiTapBtn
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
+      AutoLayout      =   MultiTapBtn, 9, <Parent>, 9, False, +1.00, 2, 1, 0, 
       AutoLayout      =   MultiTapBtn, 8, , 0, False, +1.00, 1, 1, 30, 
       AutoLayout      =   MultiTapBtn, 10, <Parent>, 10, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   MultiTapBtn, 9, <Parent>, 9, False, +1.00, 2, 1, 0, 
       AutoLayout      =   MultiTapBtn, 7, , 0, False, +1.00, 2, 1, 300, 
       Caption         =   "OneOrTwoTapButton"
       Enabled         =   True
@@ -30,9 +30,9 @@ Begin iosView MultiTapButtonView
    Begin iOSLabel Result
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
+      AutoLayout      =   Result, 4, MultiTapBtn, 3, False, +1.00, 2, 1, -50, 
       AutoLayout      =   Result, 8, , 0, False, +1.00, 1, 1, 30, 
       AutoLayout      =   Result, 1, <Parent>, 1, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   Result, 4, MultiTapBtn, 3, False, +1.00, 2, 1, -50, 
       AutoLayout      =   Result, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
       Enabled         =   True
       Height          =   30.0
@@ -51,9 +51,9 @@ Begin iosView MultiTapButtonView
    Begin iOSLabel Label1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
+      AutoLayout      =   Label1, 8, , 0, False, +1.00, 1, 1, 30, 
       AutoLayout      =   Label1, 1, <Parent>, 1, False, +1.00, 1, 1, 0, 
       AutoLayout      =   Label1, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   Label1, 8, , 0, False, +1.00, 1, 1, 30, 
       AutoLayout      =   Label1, 3, MultiTapBtn, 4, False, +1.00, 1, 1, 50, 
       Enabled         =   True
       Height          =   30.0
@@ -99,7 +99,7 @@ End
 		    tapHandlerForButton = new iOSGestures.tapGesture( MultiTapBtn.Handle,  AddressOf tapHandler, numTaps, numTouches, gestureName )
 		  end if
 		  
-		  Dim bButtonIsSubView as Boolean = iOSGestures.UIKit.isDescendantOfView( MultiTapBtn.Handle, iOSGestures.UIViewPtrFromView(self) )
+		  'Dim bButtonIsSubView as Boolean = iOSGestures.UIKit.isDescendantOfView( MultiTapBtn.Handle, iOSGestures.UIViewPtrFromView(self) )
 		End Sub
 	#tag EndEvent
 
