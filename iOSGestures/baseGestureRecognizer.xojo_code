@@ -224,6 +224,23 @@ Protected Class baseGestureRecognizer
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		 Shared Function recognizerByName(sName as Text) As baseGestureRecognizer
+		  Dim theRecognizer as baseGestureRecognizer
+		   
+		  For Each thisRecognizerAsEntry As DictionaryEntry In m_dictOfRecognizers
+		    
+		    Dim thisRecognizer as iOSGestures.baseGestureRecognizer = thisRecognizerAsEntry.Value()
+		    if (thisRecognizer.Name = sName) then
+		      theRecognizer = thisRecognizer
+		      Exit
+		    end if
+		  next
+		  
+		  return theRecognizer
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h1
 		Protected Function RecognizerRespondsTo(selectorName as Text, sourceMethodName as Text) As Boolean
 		  ' Make sure this recognizer is of the correct Class and that it will respond to this selector

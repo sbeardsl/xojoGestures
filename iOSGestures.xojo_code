@@ -1,5 +1,12 @@
 #tag Module
 Protected Module iOSGestures
+	#tag Method, Flags = &h0
+		Function recognizerByName(sName as Text) As iOSGestures.baseGestureRecognizer
+		  return baseGestureRecognizer.recognizerByName( sName )
+		End Function
+	#tag EndMethod
+
+
 	#tag Note, Name = About iOSGestures Module
 		xojoGestures
 		============
