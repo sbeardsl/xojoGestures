@@ -10,10 +10,10 @@ Begin iosView MainView
    Begin iOSTable Table1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   Table1, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   Table1, 2, UnderRightEdgeCanvas, 1, False, +1.00, 1, 1, 0, TableRightEdge
-      AutoLayout      =   Table1, 1, UnderLeftEdgeCanvas, 2, False, +1.00, 1, 1, 0, 
       AutoLayout      =   Table1, 4, BottomLabel, 3, False, +1.00, 2, 1, -*kStdControlGapV, 
+      AutoLayout      =   Table1, 2, UnderRightEdgeCanvas, 1, False, +1.00, 1, 1, 0, TableRightEdge
+      AutoLayout      =   Table1, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   Table1, 1, UnderLeftEdgeCanvas, 2, False, +1.00, 1, 1, 0, 
       Format          =   "0"
       Height          =   422.0
       Left            =   0
@@ -26,10 +26,10 @@ Begin iosView MainView
       Begin iOSCanvas UnderLeftEdgeCanvas
          AccessibilityHint=   ""
          AccessibilityLabel=   ""
-         AutoLayout      =   UnderLeftEdgeCanvas, 4, BottomLayoutGuide, 3, False, +1.00, 2, 1, 0, 
-         AutoLayout      =   UnderLeftEdgeCanvas, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, 
-         AutoLayout      =   UnderLeftEdgeCanvas, 7, , 0, False, +1.00, 2, 1, 0, LeftEdgeCanvasWidth
          AutoLayout      =   UnderLeftEdgeCanvas, 1, <Parent>, 1, False, +1.00, 1, 1, 0, 
+         AutoLayout      =   UnderLeftEdgeCanvas, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, 
+         AutoLayout      =   UnderLeftEdgeCanvas, 4, BottomLayoutGuide, 3, False, +1.00, 2, 1, 0, 
+         AutoLayout      =   UnderLeftEdgeCanvas, 7, , 0, False, +1.00, 2, 1, 0, LeftEdgeCanvasWidth
          Height          =   460.0
          Left            =   0
          LockedInPosition=   False
@@ -43,9 +43,9 @@ Begin iosView MainView
       Begin iOSLabel BottomLabel
          AccessibilityHint=   ""
          AccessibilityLabel=   ""
+         AutoLayout      =   BottomLabel, 1, <Parent>, 1, False, +1.00, 1, 1, 0, 
          AutoLayout      =   BottomLabel, 4, BottomLayoutGuide, 3, False, +1.00, 1, 1, 0, 
          AutoLayout      =   BottomLabel, 8, , 0, False, +1.00, 1, 1, 30, 
-         AutoLayout      =   BottomLabel, 1, <Parent>, 1, False, +1.00, 1, 1, 0, 
          AutoLayout      =   BottomLabel, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
          Enabled         =   True
          Height          =   30.0
@@ -80,10 +80,10 @@ Begin iosView MainView
    Begin iOSCanvas UnderRightEdgeCanvas
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   UnderRightEdgeCanvas, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   UnderRightEdgeCanvas, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   UnderRightEdgeCanvas, 1, <Parent>, 2, False, +1.00, 1, 1, 0, UnderRightEdgeCanvasLeft
       AutoLayout      =   UnderRightEdgeCanvas, 4, BottomLayoutGuide, 3, False, +1.00, 2, 1, 0, 
+      AutoLayout      =   UnderRightEdgeCanvas, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
+      AutoLayout      =   UnderRightEdgeCanvas, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   UnderRightEdgeCanvas, 1, <Parent>, 2, False, +1.00, 1, 1, 0, UnderRightEdgeCanvasLeft
       Height          =   460.0
       Left            =   320
       LockedInPosition=   False
@@ -166,7 +166,7 @@ End
 		  me.AddRow(0, "Long Press >")
 		  me.AddRow(0, "Swipe >")
 		  me.AddRow(0, "Pinch, Pan, and Rotate >")
-		  'me.AddRow(0, "Edge Pan >")
+		  me.AddRow(0, "Multi-Tap Button >")
 		  
 		  
 		End Sub
@@ -187,6 +187,8 @@ End
 		    newView = New SwipeView
 		  case 3
 		    newView = New PinchPanRotateView
+		  case 4
+		    newView = New MultiTapButtonView
 		  end select
 		  
 		  if (newView <> nil) then
