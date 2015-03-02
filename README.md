@@ -1,6 +1,9 @@
 xojoGestures 
 ============
 
+WARNING - as of 3-2-2015 the example probject, ExampleOne is not compatable with 2015-R1.
+ExampleOne crashes when run in both the simulator and on devices.  I'm looking into it.'
+
 iOSGestures is a Xojo module designed to make detecting user gestures such as
 Tap, Swipe,  Pinch, and Rotate as easy a possible.   While its likely that gesture
 events will be added to a future version of Xojo until then this makes adding them
