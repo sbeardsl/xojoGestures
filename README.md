@@ -24,7 +24,6 @@ Supported Gestures:  (with configurable parameters)
 
 * Edge Pan From(Left, Right, Top, Bottom, 1-N Touches)
 
-
 Gestures may be attached to either a view (e.g. to detect a swipe over the entire
 current view) or a specific control (e.g. to detect taps on a canvas).
 
@@ -33,7 +32,7 @@ a view or directly from code.
 
 Update Apr-17th-2015
     iOSGestures is now compatible with Xojo 2015 Release 1.
-    Updates to support 64 bit builds  (Warning-limited testing PLEASE report any problems)
+    Updates to support 64 bit builds
     Some general code cleanup
 
 Update Jan-13th-2014
