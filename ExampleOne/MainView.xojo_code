@@ -7,63 +7,6 @@ Begin iosView MainView
    TabTitle        =   ""
    Title           =   ""
    Top             =   0
-   Begin iOSTable Table1
-      AccessibilityHint=   ""
-      AccessibilityLabel=   ""
-      AutoLayout      =   Table1, 4, BottomLabel, 3, False, +1.00, 2, 1, -*kStdControlGapV, 
-      AutoLayout      =   Table1, 2, UnderRightEdgeCanvas, 1, False, +1.00, 1, 1, 0, TableRightEdge
-      AutoLayout      =   Table1, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   Table1, 1, UnderLeftEdgeCanvas, 2, False, +1.00, 1, 1, 0, 
-      Format          =   "0"
-      Height          =   422.0
-      Left            =   0
-      LockedInPosition=   False
-      Scope           =   0
-      SectionCount    =   0
-      Top             =   20
-      Visible         =   True
-      Width           =   320.0
-      Begin iOSCanvas UnderLeftEdgeCanvas
-         AccessibilityHint=   ""
-         AccessibilityLabel=   ""
-         AutoLayout      =   UnderLeftEdgeCanvas, 1, <Parent>, 1, False, +1.00, 1, 1, 0, 
-         AutoLayout      =   UnderLeftEdgeCanvas, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, 
-         AutoLayout      =   UnderLeftEdgeCanvas, 4, BottomLayoutGuide, 3, False, +1.00, 2, 1, 0, 
-         AutoLayout      =   UnderLeftEdgeCanvas, 7, , 0, False, +1.00, 2, 1, 0, LeftEdgeCanvasWidth
-         Height          =   460.0
-         Left            =   0
-         LockedInPosition=   False
-         PanelIndex      =   0
-         Parent          =   "Table1"
-         Scope           =   0
-         Top             =   20
-         Visible         =   True
-         Width           =   0.0
-      End
-      Begin iOSLabel BottomLabel
-         AccessibilityHint=   ""
-         AccessibilityLabel=   ""
-         AutoLayout      =   BottomLabel, 1, <Parent>, 1, False, +1.00, 1, 1, 0, 
-         AutoLayout      =   BottomLabel, 4, BottomLayoutGuide, 3, False, +1.00, 1, 1, 0, 
-         AutoLayout      =   BottomLabel, 8, , 0, False, +1.00, 1, 1, 30, 
-         AutoLayout      =   BottomLabel, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
-         Enabled         =   True
-         Height          =   30.0
-         Left            =   0
-         LockedInPosition=   False
-         PanelIndex      =   0
-         Parent          =   "Table1"
-         Scope           =   0
-         Text            =   "<  Drag from left and right edges >"
-         TextAlignment   =   "1"
-         TextColor       =   &c00000000
-         TextFont        =   ""
-         TextSize        =   0
-         Top             =   450
-         Visible         =   True
-         Width           =   320.0
-      End
-   End
    Begin iOSGestures.edgePanLeftGesture edgePanLeftGesture1
       Enabled         =   True
       Gesture         =   "baseGesture"
@@ -80,10 +23,10 @@ Begin iosView MainView
    Begin iOSCanvas UnderRightEdgeCanvas
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   UnderRightEdgeCanvas, 4, BottomLayoutGuide, 3, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   UnderRightEdgeCanvas, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   UnderRightEdgeCanvas, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, 
       AutoLayout      =   UnderRightEdgeCanvas, 1, <Parent>, 2, False, +1.00, 1, 1, 0, UnderRightEdgeCanvasLeft
+      AutoLayout      =   UnderRightEdgeCanvas, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
+      AutoLayout      =   UnderRightEdgeCanvas, 4, BottomLayoutGuide, 3, False, +1.00, 2, 1, 0, 
+      AutoLayout      =   UnderRightEdgeCanvas, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, 
       Height          =   460.0
       Left            =   320
       LockedInPosition=   False
@@ -104,6 +47,63 @@ Begin iosView MainView
       RecognizerType  =   "baseClass"
       Scope           =   1
       Top             =   140
+   End
+   Begin iOSTable Table1
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      AutoLayout      =   Table1, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   Table1, 4, BottomLabel, 3, False, +1.00, 2, 1, -*kStdControlGapV, 
+      AutoLayout      =   Table1, 2, UnderRightEdgeCanvas, 1, False, +1.00, 1, 1, 0, TableRightEdge
+      AutoLayout      =   Table1, 1, UnderLeftEdgeCanvas, 2, False, +1.00, 1, 1, 0, 
+      Format          =   "0"
+      Height          =   422.0
+      Left            =   0
+      LockedInPosition=   False
+      Scope           =   0
+      SectionCount    =   0
+      Top             =   20
+      Visible         =   True
+      Width           =   320.0
+   End
+   Begin iOSCanvas UnderLeftEdgeCanvas
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      AutoLayout      =   UnderLeftEdgeCanvas, 4, BottomLayoutGuide, 3, False, +1.00, 2, 1, 0, 
+      AutoLayout      =   UnderLeftEdgeCanvas, 1, <Parent>, 1, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   UnderLeftEdgeCanvas, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   UnderLeftEdgeCanvas, 7, , 0, False, +1.00, 2, 1, 0, LeftEdgeCanvasWidth
+      Height          =   460.0
+      Left            =   0
+      LockedInPosition=   False
+      PanelIndex      =   -1
+      Parent          =   "nil"
+      Scope           =   0
+      Top             =   20
+      Visible         =   True
+      Width           =   0.0
+   End
+   Begin iOSLabel BottomLabel
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      AutoLayout      =   BottomLabel, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
+      AutoLayout      =   BottomLabel, 4, BottomLayoutGuide, 3, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   BottomLabel, 1, <Parent>, 1, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   BottomLabel, 8, , 0, False, +1.00, 1, 1, 30, 
+      Enabled         =   True
+      Height          =   30.0
+      Left            =   0
+      LockedInPosition=   False
+      PanelIndex      =   -1
+      Parent          =   "nil"
+      Scope           =   0
+      Text            =   "<  Drag from left and right edges >"
+      TextAlignment   =   "1"
+      TextColor       =   &c00000000
+      TextFont        =   ""
+      TextSize        =   0
+      Top             =   450
+      Visible         =   True
+      Width           =   320.0
    End
 End
 #tag EndIOSView
@@ -158,53 +158,6 @@ End
 
 #tag EndWindowCode
 
-#tag Events Table1
-	#tag Event
-		Sub Open()
-		  me.AddSection("")
-		  me.AddRow(0, "Tap >")
-		  me.AddRow(0, "Long Press >")
-		  me.AddRow(0, "Swipe >")
-		  me.AddRow(0, "Pinch, Pan, and Rotate >")
-		  me.AddRow(0, "Multi-Tap Button >")
-		  
-		  
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Action(section As Integer, row As Integer)
-		  #pragma unused section
-		  
-		  Dim newView As iOSView
-		  
-		  select case row
-		    
-		  case 0
-		    newView = New TapView
-		  case 1
-		    newView = New LongPressView
-		  case 2
-		    newView = New SwipeView
-		  case 3
-		    newView = New PinchPanRotateView
-		  case 4
-		    newView = New MultiTapButtonView
-		  end select
-		  
-		  if (newView <> nil) then
-		    Self.PushTo(newView)
-		  end if
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events UnderLeftEdgeCanvas
-	#tag Event
-		Sub Paint(g As iOSGraphics)
-		  g.FillColor = Color.Green
-		  g.FillRect( 0, 0, g.Width, g.Height )
-		End Sub
-	#tag EndEvent
-#tag EndEvents
 #tag Events edgePanLeftGesture1
 	#tag Event
 		Sub PanEnds(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo, translation as xojo.core.Point, velocity as xojo.core.Point)
@@ -265,6 +218,53 @@ End
 		  App.LatestNumTaps = 0
 		  
 		  SetRightEdgeCanvasLeft(  pos.x )
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events Table1
+	#tag Event
+		Sub Open()
+		  me.AddSection("")
+		  me.AddRow(0, "Tap >")
+		  me.AddRow(0, "Long Press >")
+		  me.AddRow(0, "Swipe >")
+		  me.AddRow(0, "Pinch, Pan, and Rotate >")
+		  me.AddRow(0, "Multi-Tap Button >")
+		  
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Action(section As Integer, row As Integer)
+		  #pragma unused section
+		  
+		  Dim newView As iOSView
+		  
+		  select case row
+		    
+		  case 0
+		    newView = New TapView
+		  case 1
+		    newView = New LongPressView
+		  case 2
+		    newView = New SwipeView
+		  case 3
+		    newView = New PinchPanRotateView
+		  case 4
+		    newView = New MultiTapButtonView
+		  end select
+		  
+		  if (newView <> nil) then
+		    Self.PushTo(newView)
+		  end if
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events UnderLeftEdgeCanvas
+	#tag Event
+		Sub Paint(g As iOSGraphics)
+		  g.FillColor = Color.Green
+		  g.FillRect( 0, 0, g.Width, g.Height )
 		End Sub
 	#tag EndEvent
 #tag EndEvents

@@ -2,7 +2,7 @@
 Protected Module maxNumberOfTouches
 	#tag Method, Flags = &h1
 		Protected Function get(objPtr as Ptr) As Integer
-		  Declare Function getMaxNumberOfTouches lib "UIKit.Framework" selector "maximumNumberOfTouches" (objRef as ptr) as integer
+		  Declare Function getMaxNumberOfTouches lib UIKitFramework selector "maximumNumberOfTouches" (objRef as ptr) as integer
 		  
 		  Dim nMaxTouches as integer
 		  
@@ -19,7 +19,7 @@ Protected Module maxNumberOfTouches
 
 	#tag Method, Flags = &h1
 		Protected Sub set(objPtr as Ptr, nMaxTouches as integer, sourceMethodName as Text)
-		  Declare Sub setMaxNumberOfTouches Lib "UIKit.Framework" selector "setMaximumNumberOfTouches:" (objRef As Ptr, value As integer)
+		  Declare Sub setMaxNumberOfTouches Lib UIKitFramework selector "setMaximumNumberOfTouches:" (objRef As Ptr, value As integer)
 		  
 		  if (objPtr <> nil) then
 		    if (Foundation.TestObjRespondsToSelector(objPtr, "setMaximumNumberOfTouches:", sourceMethodName)) then

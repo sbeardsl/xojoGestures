@@ -105,6 +105,10 @@ Protected Module iOSGestures
 		xojoGestures
 		============
 		
+		iOSGestures IS compatible with Xojo 2014 R3.2 and 2015 2 and later
+		
+		iOSGestures is NOT compatible with Xojo 2015 Release 1.
+		
 		iOSGestures is a Xojo module designed to make detecting user gestures such as
 		Tap, Swipe,  Pinch, and Rotate as easy a possible.   While its likely that gesture
 		events will be added to a future version of Xojo until then this makes adding them

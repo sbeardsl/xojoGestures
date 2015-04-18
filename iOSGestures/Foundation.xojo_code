@@ -2,7 +2,7 @@
 Protected Module Foundation
 	#tag Method, Flags = &h1
 		Protected Function alloc(classPtr as Ptr) As Ptr
-		  Declare Function alloc Lib "-" selector "alloc" (classRef As Ptr) As Ptr
+		  Declare Function alloc Lib FoundationFramework selector "alloc" (classRef As Ptr) As Ptr
 		  
 		  return alloc( classPtr )
 		End Function
@@ -10,7 +10,7 @@ Protected Module Foundation
 
 	#tag Method, Flags = &h1
 		Protected Function classRespondsTo(classPtr as Ptr, selector as Text) As Boolean
-		  Declare Function instancesRespondToSelector lib "Foundation.Framework" selector "instancesRespondToSelector:" (classRef as Ptr, Sel as Ptr) as Boolean
+		  Declare Function instancesRespondToSelector lib FoundationFramework selector "instancesRespondToSelector:" (classRef as Ptr, Sel as Ptr) as Boolean
 		  
 		  Dim bResponds as Boolean = false
 		  
@@ -27,7 +27,7 @@ Protected Module Foundation
 
 	#tag Method, Flags = &h1
 		Protected Function class_addMethod(classPtr as Ptr, selector as Text, implementationPtr as Ptr, types as Text, sourceMethodName as Text) As Boolean
-		  Declare Function class_addMethod Lib "Foundation.Framework" (cls as Ptr, name as Ptr, imp as Ptr, types as CString) As Boolean
+		  Declare Function class_addMethod Lib FoundationFramework (cls as Ptr, name as Ptr, imp as Ptr, types as CString) As Boolean
 		  
 		  Dim selectorPtr as Ptr = Foundation.NSSelectorFromString( selector )
 		  Dim typesAsCString as CString = types.ToCString(TextEncoding.ASCII)
@@ -41,17 +41,13 @@ Protected Module Foundation
 		End Function
 	#tag EndMethod
 
-	#tag ExternalMethod, Flags = &h1
-		Protected Declare Function class_replaceMethod Lib "Foundation.Framework" (cls as Ptr, name as Ptr, imp as Ptr, types as CString) As Ptr
-	#tag EndExternalMethod
-
 	#tag Method, Flags = &h1
 		Protected Function isKindOfClass(objRef as Ptr, superClassName as Text) As Boolean
 		  ' return TRUE if the objRef is an object of superClass or a sub-class of superClass
 		  ' e.g. a pointer to a UIView isKindOfClass UIView
 		  ' e.g. a pointer to a XojoiOSView isKindOfClass UIView
 		  
-		  Declare Function isKindOfClass lib "Foundation.Framework" selector "isKindOfClass:" (objRef as Ptr, superClassObj as Ptr) as Boolean
+		  Declare Function isKindOfClass lib FoundationFramework selector "isKindOfClass:" (objRef as Ptr, superClassObj as Ptr) as Boolean
 		  
 		  Dim superClassPtr as Ptr = NSClassFromString( superClassName )
 		  
@@ -66,20 +62,20 @@ Protected Module Foundation
 	#tag EndMethod
 
 	#tag ExternalMethod, Flags = &h1
-		Protected Declare Function NSClassFromString Lib "Foundation.Framework" (classname as CFStringRef) As Ptr
+		Protected Declare Function NSClassFromString Lib FoundationFramework (classname as CFStringRef) As Ptr
 	#tag EndExternalMethod
 
 	#tag ExternalMethod, Flags = &h1
-		Protected Declare Function NSSelectorFromString Lib "Foundation.Framework" (aSelectorName as CFStringRef) As Ptr
+		Protected Declare Function NSSelectorFromString Lib FoundationFramework (aSelectorName as CFStringRef) As Ptr
 	#tag EndExternalMethod
 
 	#tag ExternalMethod, Flags = &h1
-		Protected Declare Function NSStringFromClass Lib "Foundation.Framework" (obj as Ptr) As CFStringRef
+		Protected Declare Function NSStringFromClass Lib FoundationFramework (obj as Ptr) As CFStringRef
 	#tag EndExternalMethod
 
 	#tag Method, Flags = &h1
 		Protected Function objc_allocateClassPair(superclass as Ptr, className as Text, optional extraBytes as integer = 0) As Ptr
-		  Declare Function objc_allocateClassPair Lib "Foundation.Framework" (superclass As Ptr, className As CString, extraBytes As Integer) As Ptr
+		  Declare Function objc_allocateClassPair Lib FoundationFramework (superclass As Ptr, className As CString, extraBytes As Integer) As Ptr
 		  
 		  Dim classNameAsCString as CString =  className.ToCString(TextEncoding.ASCII())
 		  
@@ -91,7 +87,7 @@ Protected Module Foundation
 	#tag EndMethod
 
 	#tag ExternalMethod, Flags = &h1
-		Protected Declare Sub objc_registerClassPair Lib "Foundation.Framework" (classPtr as Ptr)
+		Protected Declare Sub objc_registerClassPair Lib FoundationFramework (classPtr as Ptr)
 	#tag EndExternalMethod
 
 	#tag Method, Flags = &h1
@@ -105,7 +101,7 @@ Protected Module Foundation
 
 	#tag Method, Flags = &h1
 		Protected Function objPtrToClassPtr(objPtr as Ptr) As Ptr
-		  Declare Function getClassPtrFromObjPtr lib "Foundation.Framework" selector "class" (classRef as Ptr) as Ptr
+		  Declare Function getClassPtrFromObjPtr lib FoundationFramework selector "class" (classRef as Ptr) as Ptr
 		  
 		  Dim classPtr as Ptr
 		  
@@ -160,6 +156,14 @@ Protected Module Foundation
 		  return bTestPassed
 		End Function
 	#tag EndMethod
+
+	#tag ExternalMethod, Flags = &h1
+		Protected Declare Function x_class_replaceMethod Lib FoundationFramework (cls as Ptr, name as Ptr, imp as Ptr, types as CString) As Ptr
+	#tag EndExternalMethod
+
+
+	#tag Constant, Name = FoundationFramework, Type = Text, Dynamic = False, Default = \"Foundation.Framework", Scope = Protected
+	#tag EndConstant
 
 
 	#tag ViewBehavior

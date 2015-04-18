@@ -1,8 +1,11 @@
 xojoGestures 
 ============
 
-WARNING - as of 3-2-2015 the example probject, ExampleOne is not compatable with 2015-R1.
-ExampleOne crashes when run in both the simulator and on devices.  I'm looking into it.'
+iOSGestures will work with Xojo 2014 R3.2 and Xojo 2015 Release 2 and later.
+
+WARNING - as of this release 64 bit support is untested - PLEASE report any problems
+
+WARNING - iOSGestures is NOT compatible with Xojo 2015 Release 1.
 
 iOSGestures is a Xojo module designed to make detecting user gestures such as
 Tap, Swipe,  Pinch, and Rotate as easy a possible.   While its likely that gesture
@@ -27,6 +30,11 @@ current view) or a specific control (e.g. to detect taps on a canvas).
 
 You may attach a gesture recognizer either from the IDE by placing it on the shelf under
 a view or directly from code.  
+
+Update Apr-17th-2015
+    iOSGestures is now compatible with Xojo 2015 Release 1.
+    Updates to support 64 bit builds  (Warning-limited testing PLEASE report any problems)
+    Some general code cleanup
 
 Update Jan-13th-2014
     Added MultiTapButtonView which responds to both single and double taps to ExampleOne.

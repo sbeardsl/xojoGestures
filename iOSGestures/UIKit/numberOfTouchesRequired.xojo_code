@@ -2,7 +2,7 @@
 Protected Module numberOfTouchesRequired
 	#tag Method, Flags = &h1
 		Protected Function get(objPtr as Ptr) As Integer
-		  Declare Function getNumberOfTouchesRequired lib "UIKit.Framework" selector "numberOfTouchesRequired" (objRef as ptr) as integer
+		  Declare Function getNumberOfTouchesRequired lib UIKitFramework selector "numberOfTouchesRequired" (objRef as ptr) as integer
 		  
 		  Dim nTouches as integer
 		  
@@ -19,7 +19,7 @@ Protected Module numberOfTouchesRequired
 
 	#tag Method, Flags = &h1
 		Protected Sub set(objPtr as Ptr, nTouches as integer, sourceMethodName as Text)
-		  Declare Sub setNumberOfTouchesRequired Lib "UIKit.Framework" selector "setNumberOfTouchesRequired:" (objRef As Ptr, value As integer)
+		  Declare Sub setNumberOfTouchesRequired Lib UIKitFramework selector "setNumberOfTouchesRequired:" (objRef As Ptr, value As integer)
 		  
 		  if (objPtr <> nil) then
 		    if (Foundation.TestObjRespondsToSelector(objPtr, "setNumberOfTouchesRequired:", sourceMethodName)) then

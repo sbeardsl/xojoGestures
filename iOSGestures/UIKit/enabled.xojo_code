@@ -2,7 +2,7 @@
 Protected Module enabled
 	#tag Method, Flags = &h1
 		Protected Function get(objPtr as Ptr) As Boolean
-		  Declare Function getIsEnabled lib "UIKit.Framework" selector "isEnabled" (objRef as ptr) as Boolean
+		  Declare Function getIsEnabled lib UIKitFramework selector "isEnabled" (objRef as ptr) as Boolean
 		  
 		  Dim bIsEnabled as Boolean
 		  
@@ -19,7 +19,7 @@ Protected Module enabled
 
 	#tag Method, Flags = &h1
 		Protected Sub set(objPtr as Ptr, bShouldBeEnabled as boolean, sourceMethodName as Text)
-		  Declare Sub setEnabled Lib "UIKit.Framework" selector "setEnabled:" (objRef As Ptr, value As Boolean)
+		  Declare Sub setEnabled Lib UIKitFramework selector "setEnabled:" (objRef As Ptr, value As Boolean)
 		  
 		  if (objPtr <> nil) then
 		    if (Foundation.TestObjRespondsToSelector(objPtr, "setEnabled:", sourceMethodName)) then

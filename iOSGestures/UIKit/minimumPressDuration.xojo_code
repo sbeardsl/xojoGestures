@@ -2,7 +2,7 @@
 Protected Module minimumPressDuration
 	#tag Method, Flags = &h1
 		Protected Function get(objPtr as Ptr) As Double
-		  Declare Function getMinDuration Lib "UIKit.Framework" selector "minimumPressDuration" (objRef As Ptr ) as Double
+		  Declare Function getMinDuration Lib UIKitFramework selector "minimumPressDuration" (objRef As Ptr ) as Double
 		  
 		  Dim fMinimumPressDuration as integer
 		  
@@ -19,7 +19,7 @@ Protected Module minimumPressDuration
 
 	#tag Method, Flags = &h1
 		Protected Sub set(objPtr as Ptr, minimumPressDuration as double, sourceMethodName as Text)
-		  Declare Sub setMinDuration Lib "UIKit.Framework" selector "setMinimumPressDuration:" (objRef As Ptr, duration as Double )
+		  Declare Sub setMinDuration Lib UIKitFramework selector "setMinimumPressDuration:" (objRef As Ptr, duration as Double )
 		  
 		  if (objPtr <> nil) then
 		    if (Foundation.TestObjRespondsToSelector(objPtr, "setMinimumPressDuration:", sourceMethodName)) then

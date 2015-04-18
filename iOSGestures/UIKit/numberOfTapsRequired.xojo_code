@@ -2,7 +2,7 @@
 Protected Module numberOfTapsRequired
 	#tag Method, Flags = &h1
 		Protected Function get(objPtr as Ptr) As Integer
-		  Declare Function getNumberOfTapsRequired lib "UIKit.Framework" selector "numberOfTapsRequired" (objRef as ptr) as integer
+		  Declare Function getNumberOfTapsRequired lib UIKitFramework selector "numberOfTapsRequired" (objRef as ptr) as integer
 		  
 		  Dim nTaps as integer
 		  
@@ -19,7 +19,7 @@ Protected Module numberOfTapsRequired
 
 	#tag Method, Flags = &h1
 		Protected Sub set(objPtr as Ptr, nTapsRequired as integer, sourceMethodName as Text)
-		  Declare Sub setNumberOfTapRequired Lib "UIKit.Framework" selector "setNumberOfTapsRequired:" (objRef As Ptr, nTaps As integer)
+		  Declare Sub setNumberOfTapRequired Lib UIKitFramework selector "setNumberOfTapsRequired:" (objRef As Ptr, nTaps As integer)
 		  
 		  if (objPtr <> nil) then
 		    if (Foundation.TestObjRespondsToSelector(objPtr, "setNumberOfTapsRequired:", sourceMethodName)) then

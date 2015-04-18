@@ -2,7 +2,7 @@
 Protected Module UIKit
 	#tag Method, Flags = &h1
 		Protected Sub addGestureRecognizer(viewObjPtr as Ptr, recognizerPtr as Ptr)
-		  Declare Sub addGestureRecognizer lib "UIKit.Framework" selector "addGestureRecognizer:" (target_view_handle as Ptr, recognizer as Ptr)
+		  Declare Sub addGestureRecognizer lib UIKitFramework selector "addGestureRecognizer:" (target_view_handle as Ptr, recognizer as Ptr)
 		  
 		  if (Foundation.objRespondsTo( viewObjPtr,"addGestureRecognizer:") ) then
 		    addGestureRecognizer( viewObjPtr, recognizerPtr )
@@ -14,13 +14,18 @@ Protected Module UIKit
 
 	#tag Method, Flags = &h1
 		Protected Function getLocationInView(objPtr as Ptr, referenceViewPtr as Ptr) As xojo.Core.Point
-		  Declare Function getLocationInView lib "UIKit.Framework" selector "locationInView:" (objRef As Ptr, viewPtr as Ptr) As CoreGraphics.CGPoint
+		  #if Target32Bit
+		    Dim cgp as CoreGraphics.CGPoint32
+		    Declare Function getLocationInView lib UIKitFramework selector "locationInView:" (objRef As Ptr, viewPtr as Ptr) As CoreGraphics.CGPoint32
+		  #else
+		    Dim cgp as CoreGraphics.CGPoint64
+		    Declare Function getLocationInView lib UIKitFramework selector "locationInView:" (objRef As Ptr, viewPtr as Ptr) As CoreGraphics.CGPoint64
+		  #endif
 		  
 		  Dim locationInView as xojo.Core.Point
 		  
 		  if (objPtr <> nil) then
 		    if (Foundation.objRespondsTo(objPtr, "locationInView:" )) then
-		      Dim cgp as CoreGraphics.CGPoint
 		      cgp = getLocationInView(objPtr,referenceViewPtr)
 		      locationInView = new xojo.Core.Point( cgp.x, cgp.y )
 		    end if
@@ -33,13 +38,18 @@ Protected Module UIKit
 
 	#tag Method, Flags = &h1
 		Protected Function getLocationOfTouchInView(objPtr as Ptr, nTouchIndex as Integer, referenceViewPtr as Ptr) As xojo.Core.Point
-		  Declare Function getLocationOfTouchInView lib "UIKit.Framework" selector "locationOfTouch:inView:" (objRef As Ptr, nIndex as integer, viewPtr as Ptr) As CoreGraphics.CGPoint
+		  #if Target32Bit
+		    Dim cgp as CoreGraphics.CGPoint32
+		    Declare Function getLocationOfTouchInView lib UIKitFramework selector "locationOfTouch:inView:" (objRef As Ptr, nIndex as integer, viewPtr as Ptr) As CoreGraphics.CGPoint32
+		  #else
+		    Dim cgp as CoreGraphics.CGPoint64
+		    Declare Function getLocationOfTouchInView lib UIKitFramework selector "locationOfTouch:inView:" (objRef As Ptr, nIndex as integer, viewPtr as Ptr) As CoreGraphics.CGPoint64
+		  #endif
 		  
 		  Dim locationOfTouchInView as xojo.Core.Point
 		  
 		  if (objPtr <> nil) then
 		    if (Foundation.objRespondsTo(objPtr, "locationOfTouch:inView:" )) then
-		      Dim cgp as CoreGraphics.CGPoint
 		      cgp = getLocationOfTouchInView(objPtr, nTouchIndex, referenceViewPtr)
 		      locationOfTouchInView = new xojo.Core.Point( cgp.x, cgp.y )
 		    end if
@@ -52,7 +62,7 @@ Protected Module UIKit
 
 	#tag Method, Flags = &h1
 		Protected Function getNumberOfTouches(objPtr as Ptr) As Integer
-		  Declare Function getNumberOfTouches lib "UIKit.Framework" selector "numberOfTouches" (objRef as ptr) as integer
+		  Declare Function getNumberOfTouches lib UIKitFramework selector "numberOfTouches" (objRef as ptr) as integer
 		  
 		  Dim nTouches as integer
 		  
@@ -69,7 +79,7 @@ Protected Module UIKit
 
 	#tag Method, Flags = &h1
 		Protected Function getRecognizerState(recognizer as Ptr) As UIKit.UIGestureRecognizerState
-		  declare function getRecognizerState lib "UIKit.Framework" selector "state" (objRef as ptr) as UIKit.UIGestureRecognizerState
+		  declare function getRecognizerState lib UIKitFramework selector "state" (objRef as ptr) as UIKit.UIGestureRecognizerState
 		  
 		  Dim recState as UIKit.UIGestureRecognizerState = UIKit.UIGestureRecognizerState.UIGestureRecognizerStateUnkown
 		  
@@ -85,7 +95,7 @@ Protected Module UIKit
 
 	#tag Method, Flags = &h1
 		Protected Function getRotation(objPtr as Ptr) As Single
-		  Declare Function getScale Lib "UIKit.Framework" selector "rotation" (objRef As Ptr ) as Single
+		  Declare Function getScale Lib UIKitFramework selector "rotation" (objRef As Ptr ) as Single
 		  
 		  Dim scale as Single
 		  
@@ -102,7 +112,7 @@ Protected Module UIKit
 
 	#tag Method, Flags = &h1
 		Protected Function getScale(objPtr as Ptr) As Single
-		  Declare Function getScale Lib "UIKit.Framework" selector "scale" (objRef As Ptr ) as Single
+		  Declare Function getScale Lib UIKitFramework selector "scale" (objRef As Ptr ) as Single
 		  
 		  Dim scale as Single
 		  
@@ -119,13 +129,18 @@ Protected Module UIKit
 
 	#tag Method, Flags = &h1
 		Protected Function getTranslationInView(objPtr as Ptr, referenceViewPtr as Ptr) As xojo.Core.Point
-		  Declare Function getTranslationInView Lib "UIKit.Framework" selector "translationInView:" (objRef As Ptr, referenceView as Ptr ) as CoreGraphics.CGPoint
+		  #if Target32Bit
+		    Dim cgp as CoreGraphics.CGPoint32
+		    Declare Function getTranslationInView Lib UIKitFramework selector "translationInView:" (objRef As Ptr, referenceView as Ptr ) as CoreGraphics.CGPoint32
+		  #else
+		    Dim cgp as CoreGraphics.CGPoint64
+		    Declare Function getTranslationInView Lib UIKitFramework selector "translationInView:" (objRef As Ptr, referenceView as Ptr ) as CoreGraphics.CGPoint64
+		  #endif
 		  
 		  Dim translationInView as xojo.Core.Point
 		  
 		  if (objPtr <> nil) then
 		    if (Foundation.objRespondsTo(objPtr, "translationInView:" )) then
-		      Dim cgp as CoreGraphics.CGPoint
 		      cgp = getTranslationInView(objPtr,referenceViewPtr)
 		      translationInView = new xojo.Core.Point( cgp.x, cgp.y )
 		    end if
@@ -137,7 +152,7 @@ Protected Module UIKit
 
 	#tag Method, Flags = &h1
 		Protected Function getVelocity(objPtr as Ptr) As Single
-		  Declare Function getVelocity Lib "UIKit.Framework" selector "velocity" (objRef As Ptr ) as Single
+		  Declare Function getVelocity Lib UIKitFramework selector "velocity" (objRef As Ptr ) as Single
 		  
 		  Dim velocity as Single
 		  
@@ -154,14 +169,19 @@ Protected Module UIKit
 
 	#tag Method, Flags = &h1
 		Protected Function getVelocityInView(objPtr as Ptr, referenceViewPtr as Ptr) As xojo.Core.Point
-		  Declare Function getVelocitynInView Lib "UIKit.Framework" selector "velocityInView:" (objRef As Ptr, referenceView as Ptr ) as CoreGraphics.CGPoint
+		  #if Target32Bit
+		    Dim cgp as CoreGraphics.CGPoint32
+		    Declare Function getVelocityInView Lib UIKitFramework selector "velocityInView:" (objRef As Ptr, referenceView as Ptr ) as CoreGraphics.CGPoint32
+		  #else
+		    Dim cgp as CoreGraphics.CGPoint64
+		    Declare Function getVelocityInView Lib UIKitFramework selector "velocityInView:" (objRef As Ptr, referenceView as Ptr ) as CoreGraphics.CGPoint64
+		  #endif
 		  
 		  Dim velocitynInView as xojo.Core.Point
 		  
 		  if (objPtr <> nil) then
 		    if (Foundation.objRespondsTo(objPtr, "velocityInView:" )) then
-		      Dim cgp as CoreGraphics.CGPoint
-		      cgp = getVelocitynInView(objPtr,referenceViewPtr)
+		      cgp = getVelocityInView(objPtr,referenceViewPtr)
 		      velocitynInView = new xojo.Core.Point( cgp.x, cgp.y )
 		    end if
 		  end if
@@ -172,7 +192,7 @@ Protected Module UIKit
 
 	#tag Method, Flags = &h1
 		Protected Function InitWithTargetAction(objPtr as Ptr, theDelegate as Ptr, theSelectorString as Text) As Ptr
-		  Declare Function doInitWithTargetAction Lib "UIKit.Framework" selector "initWithTarget:action:" (obj as Ptr, targetDelegate as Ptr, delegateSelector as Ptr ) as Ptr
+		  Declare Function doInitWithTargetAction Lib UIKitFramework selector "initWithTarget:action:" (obj as Ptr, targetDelegate as Ptr, delegateSelector as Ptr ) as Ptr
 		  
 		  Dim delegateMethodSelector as Ptr = Foundation.NSSelectorFromString(theSelectorString)
 		  
@@ -184,7 +204,7 @@ Protected Module UIKit
 
 	#tag Method, Flags = &h1
 		Protected Function isDescendantOfView(thisView as Ptr, theParentView as Ptr) As Boolean
-		  Declare Function isDescendantOfView lib "UIKit.Framework" selector "isDescendantOfView:" (objRef as Ptr, parentView as Ptr) as Boolean
+		  Declare Function isDescendantOfView lib UIKitFramework selector "isDescendantOfView:" (objRef as Ptr, parentView as Ptr) as Boolean
 		  
 		  Dim bIsDescendant as Boolean = false
 		  
@@ -200,7 +220,7 @@ Protected Module UIKit
 
 	#tag Method, Flags = &h1
 		Protected Sub removeGestureRecognizer(viewObjPtr as Ptr, recognizerPtr as Ptr)
-		  Declare Sub removeGestureRecognizer lib "UIKit.Framework" selector "removeGestureRecognizer:" (target_view_handle as Ptr, recognizer as Ptr)
+		  Declare Sub removeGestureRecognizer lib UIKitFramework selector "removeGestureRecognizer:" (target_view_handle as Ptr, recognizer as Ptr)
 		  
 		  if (Foundation.objRespondsTo( viewObjPtr,"removeGestureRecognizer:") ) then
 		    removeGestureRecognizer( viewObjPtr, recognizerPtr )
@@ -212,7 +232,7 @@ Protected Module UIKit
 
 	#tag Method, Flags = &h1
 		Protected Function view(objPtr as Ptr) As Ptr
-		  Declare Function viewFromObjPtr lib "Foundation.Framework" selector "view" (objPtr as Ptr) as Ptr
+		  Declare Function viewFromObjPtr lib UIKitFramework selector "view" (objPtr as Ptr) as Ptr
 		  
 		  Dim pView as Ptr
 		  
@@ -228,6 +248,10 @@ Protected Module UIKit
 		  
 		End Function
 	#tag EndMethod
+
+
+	#tag Constant, Name = UIKitFramework, Type = Text, Dynamic = False, Default = \"UIKit.Framework", Scope = Protected
+	#tag EndConstant
 
 
 	#tag Enum, Name = UIGestureRecognizerState, Flags = &h1

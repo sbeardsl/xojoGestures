@@ -2,7 +2,7 @@
 Protected Module minNumberOfTouches
 	#tag Method, Flags = &h1
 		Protected Function get(objPtr as Ptr) As Integer
-		  Declare Function getMinNumberOfTouchesRequired lib "UIKit.Framework" selector "minimumNumberOfTouches" (objRef as ptr) as integer
+		  Declare Function getMinNumberOfTouchesRequired lib UIKitFramework selector "minimumNumberOfTouches" (objRef as ptr) as integer
 		  
 		  Dim nMinTouches as integer
 		  
@@ -19,7 +19,7 @@ Protected Module minNumberOfTouches
 
 	#tag Method, Flags = &h1
 		Protected Sub set(objPtr as Ptr, nMinTouches as integer, sourceMethodName as Text)
-		  Declare Sub setMinNumberOfTouches Lib "UIKit.Framework" selector "setMinimumNumberOfTouches:" (objRef As Ptr, value As integer)
+		  Declare Sub setMinNumberOfTouches Lib UIKitFramework selector "setMinimumNumberOfTouches:" (objRef As Ptr, value As integer)
 		  
 		  if (objPtr <> nil) then
 		    if (Foundation.TestObjRespondsToSelector(objPtr, "setMinimumNumberOfTouches:", sourceMethodName)) then

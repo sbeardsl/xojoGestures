@@ -2,7 +2,7 @@
 Protected Module edges
 	#tag Method, Flags = &h1
 		Protected Function get(objPtr as Ptr) As UIRectEdge
-		  Declare Function getEdge Lib "UIKit.Framework" selector "edges" (objRef As Ptr ) as UIRectEdge
+		  Declare Function getEdge Lib UIKitFramework selector "edges" (objRef As Ptr ) as UIRectEdge
 		  
 		  Dim edge as UIRectEdge = UIRectEdge.UIRectEdgeNone
 		  
@@ -19,7 +19,7 @@ Protected Module edges
 
 	#tag Method, Flags = &h1
 		Protected Sub set(objPtr as Ptr, edge as UIRectEdge, sourceMethodName as Text)
-		  Declare Sub setEdge Lib "UIKit.Framework" selector "setEdges:" (objRef As Ptr, edge As UIRectEdge)
+		  Declare Sub setEdge Lib UIKitFramework selector "setEdges:" (objRef As Ptr, edge As UIRectEdge)
 		  
 		  if (objPtr <> nil) then
 		    if (Foundation.TestObjRespondsToSelector(objPtr, "setEdges:", sourceMethodName)) then

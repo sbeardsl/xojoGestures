@@ -337,11 +337,8 @@ Protected Class baseGestureRecognizer
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
-			  declare function getEnabled lib "UIKit.Framework" selector "isEnabled" (objRef as ptr) as Boolean
-			  
-			  'test to make sure we are in sync with the actual recognizer
 			  if (RecognizerRespondsTo( "isEnabled", CurrentMethodName)) then
-			    Dim bTestEnabled as Boolean = getEnabled( theRecognizer )
+			    Dim bTestEnabled as Boolean = UIKit.enabled.get( theRecognizer )
 			    if (bTestEnabled <> mEnabled) then
 			      break
 			    end if
@@ -352,10 +349,8 @@ Protected Class baseGestureRecognizer
 		#tag EndGetter
 		#tag Setter
 			Set
-			  Declare Sub setEnabled lib "UIKit.Framework" selector "setEnabled:" (objRef as ptr, enabled as Boolean )
-			  
 			  if (RecognizerRespondsTo( "setEnabled:", CurrentMethodName)) then
-			    setEnabled( theRecognizer, value )
+			    UIKit.enabled.set( theRecognizer, value, CurrentMethodName )
 			  end if
 			  
 			  mEnabled = value

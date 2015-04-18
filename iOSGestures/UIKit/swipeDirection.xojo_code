@@ -2,7 +2,7 @@
 Protected Module swipeDirection
 	#tag Method, Flags = &h1
 		Protected Function get(objPtr as Ptr) As UISwipeDirection
-		  Declare Function getSwipeDirection Lib "UIKit.Framework" selector "direction" (objRef As Ptr ) as UISwipeDirection
+		  Declare Function getSwipeDirection Lib UIKitFramework selector "direction" (objRef As Ptr ) as UISwipeDirection
 		  
 		  Dim dir as UISwipeDirection
 		  
@@ -19,7 +19,7 @@ Protected Module swipeDirection
 
 	#tag Method, Flags = &h1
 		Protected Sub set(objPtr as Ptr, direction as UISwipeDirection, sourceMethodName as Text)
-		  Declare Sub setSwipeDirection Lib "UIKit.Framework" selector "setDirection:" (objRef As Ptr, direction As UISwipeDirection)
+		  Declare Sub setSwipeDirection Lib UIKitFramework selector "setDirection:" (objRef As Ptr, direction As UISwipeDirection)
 		  
 		  if (objPtr <> nil) then
 		    if (Foundation.TestObjRespondsToSelector(objPtr, "setDirection:", sourceMethodName)) then
