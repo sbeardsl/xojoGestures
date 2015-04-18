@@ -3,6 +3,8 @@ xojoGestures
 
 iOSGestures will work with Xojo 2014 R3.2 and Xojo 2015 Release 2 and later.
 
+WARNING - as of this release 64 bit support is untested - PLEASE report any problems
+
 WARNING - iOSGestures is NOT compatible with Xojo 2015 Release 1.
 
 iOSGestures is a Xojo module designed to make detecting user gestures such as
