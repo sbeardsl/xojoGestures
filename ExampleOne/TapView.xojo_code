@@ -2,18 +2,20 @@
 Begin iosView TapView
    BackButtonTitle =   ""
    Compatibility   =   ""
+   LargeTitleMode  =   "2"
    Left            =   0
    NavigationBarVisible=   True
+   TabIcon         =   ""
    TabTitle        =   "Tap"
    Title           =   "Tap"
    Top             =   0
    Begin iOSSegmentedControl TapsControl
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   TapsControl, 1, TouchesControl, 1, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   TapsControl, 8, , 0, True, +1.00, 1, 1, 29, 
-      AutoLayout      =   TapsControl, 2, TouchesControl, 2, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   TapsControl, 4, TouchesControl, 3, False, +1.00, 1, 1, -*kStdControlGapV, 
+      AutoLayout      =   TapsControl, 1, TouchesControl, 1, False, +1.00, 1, 1, 0, , True
+      AutoLayout      =   TapsControl, 8, , 0, True, +1.00, 1, 1, 29, , True
+      AutoLayout      =   TapsControl, 2, TouchesControl, 2, False, +1.00, 2, 1, 0, , True
+      AutoLayout      =   TapsControl, 4, TouchesControl, 3, False, +1.00, 1, 1, -*kStdControlGapV, , True
       Caption         =   ""
       Enabled         =   True
       Height          =   29.0
@@ -29,10 +31,10 @@ Begin iosView TapView
    Begin iOSSegmentedControl TouchesControl
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   TouchesControl, 8, , 0, True, +1.00, 1, 1, 29, 
-      AutoLayout      =   TouchesControl, 9, <Parent>, 9, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   TouchesControl, 7, , 0, False, +1.00, 1, 1, 200, 
-      AutoLayout      =   TouchesControl, 4, BottomLayoutGuide, 3, False, +1.00, 1, 1, -5, 
+      AutoLayout      =   TouchesControl, 8, , 0, True, +1.00, 1, 1, 29, , True
+      AutoLayout      =   TouchesControl, 9, <Parent>, 9, False, +1.00, 2, 1, 0, , True
+      AutoLayout      =   TouchesControl, 7, , 0, False, +1.00, 1, 1, 200, , True
+      AutoLayout      =   TouchesControl, 4, BottomLayoutGuide, 3, False, +1.00, 1, 1, -5, , True
       Caption         =   ""
       Enabled         =   True
       Height          =   29.0
@@ -48,10 +50,10 @@ Begin iosView TapView
    Begin iosCanvas Canvas1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   Canvas1, 1, <Parent>, 1, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   Canvas1, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   Canvas1, 4, TapsControl, 3, False, +1.00, 1, 1, -*kStdControlGapV, 
-      AutoLayout      =   Canvas1, 3, TopLayoutGuide, 4, False, +1.00, 2, 1, 0, 
+      AutoLayout      =   Canvas1, 1, <Parent>, 1, False, +1.00, 2, 1, 0, , True
+      AutoLayout      =   Canvas1, 2, <Parent>, 2, False, +1.00, 2, 1, 0, , True
+      AutoLayout      =   Canvas1, 4, TapsControl, 3, False, +1.00, 1, 1, -*kStdControlGapV, , True
+      AutoLayout      =   Canvas1, 3, TopLayoutGuide, 4, False, +1.00, 2, 1, 0, , True
       Height          =   336.0
       Left            =   0
       LockedInPosition=   False
@@ -63,7 +65,7 @@ Begin iosView TapView
    Begin iOSGestures.tapGesture tapGesture1
       Enabled         =   True
       Gesture         =   "baseGesture"
-      Left            =   140
+      Left            =   0
       LockedInPosition=   False
       NumberOfTapsRequired=   1
       NumberOfTouchesRequired=   1
@@ -71,7 +73,7 @@ Begin iosView TapView
       Parent          =   ""
       RecognizerType  =   "baseClass"
       Scope           =   1
-      Top             =   140
+      Top             =   0
    End
 End
 #tag EndIOSView
@@ -122,8 +124,31 @@ End
 #tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
-		Name="BackButtonTitle"
+		Name="TabIcon"
+		Visible=false
 		Group="Behavior"
+		InitialValue=""
+		Type="iOSImage"
+		EditorType=""
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="LargeTitleMode"
+		Visible=true
+		Group="Behavior"
+		InitialValue="2"
+		Type="LargeTitleDisplayModes"
+		EditorType="Enum"
+		#tag EnumValues
+			"0 - Automatic"
+			"1 - Always"
+			"2 - Never"
+		#tag EndEnumValues
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="BackButtonTitle"
+		Visible=false
+		Group="Behavior"
+		InitialValue=""
 		Type="Text"
 		EditorType="MultiLineEditor"
 	#tag EndViewProperty
@@ -133,6 +158,7 @@ End
 		Group="ID"
 		InitialValue="-2147483648"
 		Type="Integer"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Left"
@@ -140,32 +166,45 @@ End
 		Group="Position"
 		InitialValue="0"
 		Type="Integer"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Name"
 		Visible=true
 		Group="ID"
+		InitialValue=""
 		Type="String"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="NavigationBarVisible"
+		Visible=false
 		Group="Behavior"
+		InitialValue=""
 		Type="Boolean"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Super"
 		Visible=true
 		Group="ID"
+		InitialValue=""
 		Type="String"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="TabTitle"
+		Visible=false
 		Group="Behavior"
+		InitialValue=""
 		Type="Text"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Title"
+		Visible=false
 		Group="Behavior"
+		InitialValue=""
 		Type="Text"
 		EditorType="MultiLineEditor"
 	#tag EndViewProperty
@@ -175,5 +214,6 @@ End
 		Group="Position"
 		InitialValue="0"
 		Type="Integer"
+		EditorType=""
 	#tag EndViewProperty
 #tag EndViewBehavior

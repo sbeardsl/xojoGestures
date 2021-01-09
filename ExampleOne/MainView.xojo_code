@@ -2,15 +2,17 @@
 Begin iosView MainView
    BackButtonTitle =   "Home"
    Compatibility   =   ""
+   LargeTitleMode  =   "2"
    Left            =   0
    NavigationBarVisible=   False
+   TabIcon         =   ""
    TabTitle        =   ""
    Title           =   ""
    Top             =   0
    Begin iOSGestures.edgePanLeftGesture edgePanLeftGesture1
       Enabled         =   True
       Gesture         =   "baseGesture"
-      Left            =   60
+      Left            =   0
       LockedInPosition=   False
       MaxNumberOfTouches=   1
       MinNumberOfTouches=   1
@@ -18,15 +20,15 @@ Begin iosView MainView
       Parent          =   ""
       RecognizerType  =   "baseClass"
       Scope           =   1
-      Top             =   60
+      Top             =   0
    End
    Begin iOSCanvas UnderRightEdgeCanvas
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   UnderRightEdgeCanvas, 1, <Parent>, 2, False, +1.00, 1, 1, 0, UnderRightEdgeCanvasLeft
-      AutoLayout      =   UnderRightEdgeCanvas, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   UnderRightEdgeCanvas, 4, BottomLayoutGuide, 3, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   UnderRightEdgeCanvas, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   UnderRightEdgeCanvas, 1, <Parent>, 2, False, +1.00, 1, 1, 0, UnderRightEdgeCanvasLeft, True
+      AutoLayout      =   UnderRightEdgeCanvas, 2, <Parent>, 2, False, +1.00, 2, 1, 0, , True
+      AutoLayout      =   UnderRightEdgeCanvas, 4, BottomLayoutGuide, 3, False, +1.00, 2, 1, 0, , True
+      AutoLayout      =   UnderRightEdgeCanvas, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, , True
       Height          =   460.0
       Left            =   320
       LockedInPosition=   False
@@ -38,7 +40,7 @@ Begin iosView MainView
    Begin iOSGestures.edgePanRightGesture edgePanRightGesture1
       Enabled         =   True
       Gesture         =   "baseGesture"
-      Left            =   140
+      Left            =   0
       LockedInPosition=   False
       MaxNumberOfTouches=   1
       MinNumberOfTouches=   1
@@ -46,15 +48,18 @@ Begin iosView MainView
       Parent          =   ""
       RecognizerType  =   "baseClass"
       Scope           =   1
-      Top             =   140
+      Top             =   0
    End
    Begin iOSTable Table1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   Table1, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   Table1, 4, BottomLabel, 3, False, +1.00, 2, 1, -*kStdControlGapV, 
-      AutoLayout      =   Table1, 2, UnderRightEdgeCanvas, 1, False, +1.00, 1, 1, 0, TableRightEdge
-      AutoLayout      =   Table1, 1, UnderLeftEdgeCanvas, 2, False, +1.00, 1, 1, 0, 
+      AllowRefresh    =   False
+      AutoLayout      =   Table1, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, , True
+      AutoLayout      =   Table1, 4, BottomLabel, 3, False, +1.00, 2, 1, -*kStdControlGapV, , True
+      AutoLayout      =   Table1, 2, UnderRightEdgeCanvas, 1, False, +1.00, 1, 1, 0, TableRightEdge, True
+      AutoLayout      =   Table1, 1, UnderLeftEdgeCanvas, 2, False, +1.00, 1, 1, 0, , True
+      EditingEnabled  =   False
+      EstimatedRowHeight=   -1
       Format          =   "0"
       Height          =   422.0
       Left            =   0
@@ -68,15 +73,13 @@ Begin iosView MainView
    Begin iOSCanvas UnderLeftEdgeCanvas
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   UnderLeftEdgeCanvas, 4, BottomLayoutGuide, 3, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   UnderLeftEdgeCanvas, 1, <Parent>, 1, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   UnderLeftEdgeCanvas, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   UnderLeftEdgeCanvas, 7, , 0, False, +1.00, 2, 1, 0, LeftEdgeCanvasWidth
+      AutoLayout      =   UnderLeftEdgeCanvas, 4, BottomLayoutGuide, 3, False, +1.00, 2, 1, 0, , True
+      AutoLayout      =   UnderLeftEdgeCanvas, 1, <Parent>, 1, False, +1.00, 1, 1, 0, , True
+      AutoLayout      =   UnderLeftEdgeCanvas, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, , True
+      AutoLayout      =   UnderLeftEdgeCanvas, 7, , 0, False, +1.00, 2, 1, 0, LeftEdgeCanvasWidth, True
       Height          =   460.0
       Left            =   0
       LockedInPosition=   False
-      PanelIndex      =   -1
-      Parent          =   "nil"
       Scope           =   0
       Top             =   20
       Visible         =   True
@@ -85,20 +88,19 @@ Begin iosView MainView
    Begin iOSLabel BottomLabel
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   BottomLabel, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   BottomLabel, 4, BottomLayoutGuide, 3, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   BottomLabel, 1, <Parent>, 1, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   BottomLabel, 8, , 0, False, +1.00, 1, 1, 30, 
+      AutoLayout      =   BottomLabel, 2, <Parent>, 2, False, +1.00, 2, 1, 0, , True
+      AutoLayout      =   BottomLabel, 4, BottomLayoutGuide, 3, False, +1.00, 1, 1, 0, , True
+      AutoLayout      =   BottomLabel, 1, <Parent>, 1, False, +1.00, 1, 1, 0, , True
+      AutoLayout      =   BottomLabel, 8, , 0, False, +1.00, 1, 1, 30, , True
       Enabled         =   True
       Height          =   30.0
       Left            =   0
+      LineBreakMode   =   "0"
       LockedInPosition=   False
-      PanelIndex      =   -1
-      Parent          =   "nil"
       Scope           =   0
       Text            =   "<  Drag from left and right edges >"
       TextAlignment   =   "1"
-      TextColor       =   &c00000000
+      TextColor       =   "&c00000000"
       TextFont        =   ""
       TextSize        =   0
       Top             =   450
@@ -270,8 +272,31 @@ End
 #tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
-		Name="BackButtonTitle"
+		Name="TabIcon"
+		Visible=false
 		Group="Behavior"
+		InitialValue=""
+		Type="iOSImage"
+		EditorType=""
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="LargeTitleMode"
+		Visible=true
+		Group="Behavior"
+		InitialValue="2"
+		Type="LargeTitleDisplayModes"
+		EditorType="Enum"
+		#tag EnumValues
+			"0 - Automatic"
+			"1 - Always"
+			"2 - Never"
+		#tag EndEnumValues
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="BackButtonTitle"
+		Visible=false
+		Group="Behavior"
+		InitialValue=""
 		Type="Text"
 		EditorType="MultiLineEditor"
 	#tag EndViewProperty
@@ -281,6 +306,7 @@ End
 		Group="ID"
 		InitialValue="-2147483648"
 		Type="Integer"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Left"
@@ -288,32 +314,45 @@ End
 		Group="Position"
 		InitialValue="0"
 		Type="Integer"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Name"
 		Visible=true
 		Group="ID"
+		InitialValue=""
 		Type="String"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="NavigationBarVisible"
+		Visible=false
 		Group="Behavior"
+		InitialValue=""
 		Type="Boolean"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Super"
 		Visible=true
 		Group="ID"
+		InitialValue=""
 		Type="String"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="TabTitle"
+		Visible=false
 		Group="Behavior"
+		InitialValue=""
 		Type="Text"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Title"
+		Visible=false
 		Group="Behavior"
+		InitialValue=""
 		Type="Text"
 		EditorType="MultiLineEditor"
 	#tag EndViewProperty
@@ -323,5 +362,6 @@ End
 		Group="Position"
 		InitialValue="0"
 		Type="Integer"
+		EditorType=""
 	#tag EndViewProperty
 #tag EndViewBehavior

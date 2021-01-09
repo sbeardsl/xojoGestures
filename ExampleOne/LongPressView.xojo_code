@@ -2,19 +2,21 @@
 Begin iosView LongPressView
    BackButtonTitle =   ""
    Compatibility   =   ""
+   LargeTitleMode  =   "2"
    Left            =   0
    NavigationBarVisible=   True
+   TabIcon         =   ""
    TabTitle        =   "LongPress"
    Title           =   "Long Press"
    Top             =   0
    Begin iOSSegmentedControl TouchesControl
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   TouchesControl, 1, <Parent>, 1, False, +1.00, 2, 1, *kStdGapCtlToViewH, 
-      AutoLayout      =   TouchesControl, 9, <Parent>, 9, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   TouchesControl, 4, DelayControl, 3, False, +1.00, 1, 1, -*kStdControlGapV, 
-      AutoLayout      =   TouchesControl, 8, , 0, True, +1.00, 1, 1, 29, 
-      AutoLayout      =   TouchesControl, 2, <Parent>, 2, False, +1.00, 2, 1, -*kStdGapCtlToViewH, 
+      AutoLayout      =   TouchesControl, 1, <Parent>, 1, False, +1.00, 2, 1, *kStdGapCtlToViewH, , True
+      AutoLayout      =   TouchesControl, 9, <Parent>, 9, False, +1.00, 2, 1, 0, , True
+      AutoLayout      =   TouchesControl, 4, DelayControl, 3, False, +1.00, 1, 1, -*kStdControlGapV, , True
+      AutoLayout      =   TouchesControl, 8, , 0, True, +1.00, 1, 1, 29, , True
+      AutoLayout      =   TouchesControl, 2, <Parent>, 2, False, +1.00, 2, 1, -*kStdGapCtlToViewH, , True
       Caption         =   ""
       Enabled         =   True
       Height          =   29.0
@@ -30,10 +32,10 @@ Begin iosView LongPressView
    Begin iosCanvas Canvas1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   Canvas1, 4, TouchesControl, 3, False, +1.00, 2, 1, -*kStdControlGapV, 
-      AutoLayout      =   Canvas1, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   Canvas1, 3, TopLayoutGuide, 4, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   Canvas1, 1, <Parent>, 1, False, +1.00, 2, 1, 0, 
+      AutoLayout      =   Canvas1, 4, TouchesControl, 3, False, +1.00, 2, 1, -*kStdControlGapV, , True
+      AutoLayout      =   Canvas1, 2, <Parent>, 2, False, +1.00, 2, 1, 0, , True
+      AutoLayout      =   Canvas1, 3, TopLayoutGuide, 4, False, +1.00, 2, 1, 0, , True
+      AutoLayout      =   Canvas1, 1, <Parent>, 1, False, +1.00, 2, 1, 0, , True
       Height          =   333.0
       Left            =   0
       LockedInPosition=   False
@@ -45,10 +47,10 @@ Begin iosView LongPressView
    Begin iOSSegmentedControl DelayControl
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   DelayControl, 8, , 0, True, +1.00, 1, 1, 29, 
-      AutoLayout      =   DelayControl, 2, <Parent>, 2, False, +1.00, 1, 1, -*kStdGapCtlToViewH, 
-      AutoLayout      =   DelayControl, 1, <Parent>, 1, False, +1.00, 1, 1, *kStdGapCtlToViewH, 
-      AutoLayout      =   DelayControl, 4, BottomLayoutGuide, 4, False, +1.00, 1, 1, -*kStdControlGapV, 
+      AutoLayout      =   DelayControl, 8, , 0, True, +1.00, 1, 1, 29, , True
+      AutoLayout      =   DelayControl, 2, <Parent>, 2, False, +1.00, 1, 1, -*kStdGapCtlToViewH, , True
+      AutoLayout      =   DelayControl, 1, <Parent>, 1, False, +1.00, 1, 1, *kStdGapCtlToViewH, , True
+      AutoLayout      =   DelayControl, 4, BottomLayoutGuide, 4, False, +1.00, 1, 1, -*kStdControlGapV, , True
       Caption         =   ""
       Enabled         =   True
       Height          =   29.0
@@ -64,7 +66,7 @@ Begin iosView LongPressView
    Begin iOSGestures.longPressGesture longPressGesture1
       Enabled         =   True
       Gesture         =   "baseGesture"
-      Left            =   140
+      Left            =   0
       LockedInPosition=   False
       MinimumPressDuration=   0.5
       NumberOfTapsRequired=   0
@@ -73,7 +75,7 @@ Begin iosView LongPressView
       Parent          =   ""
       RecognizerType  =   "baseClass"
       Scope           =   1
-      Top             =   140
+      Top             =   0
    End
 End
 #tag EndIOSView
@@ -150,8 +152,31 @@ End
 #tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
-		Name="BackButtonTitle"
+		Name="TabIcon"
+		Visible=false
 		Group="Behavior"
+		InitialValue=""
+		Type="iOSImage"
+		EditorType=""
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="LargeTitleMode"
+		Visible=true
+		Group="Behavior"
+		InitialValue="2"
+		Type="LargeTitleDisplayModes"
+		EditorType="Enum"
+		#tag EnumValues
+			"0 - Automatic"
+			"1 - Always"
+			"2 - Never"
+		#tag EndEnumValues
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="BackButtonTitle"
+		Visible=false
+		Group="Behavior"
+		InitialValue=""
 		Type="Text"
 		EditorType="MultiLineEditor"
 	#tag EndViewProperty
@@ -161,6 +186,7 @@ End
 		Group="ID"
 		InitialValue="-2147483648"
 		Type="Integer"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Left"
@@ -168,32 +194,45 @@ End
 		Group="Position"
 		InitialValue="0"
 		Type="Integer"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Name"
 		Visible=true
 		Group="ID"
+		InitialValue=""
 		Type="String"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="NavigationBarVisible"
+		Visible=false
 		Group="Behavior"
+		InitialValue=""
 		Type="Boolean"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Super"
 		Visible=true
 		Group="ID"
+		InitialValue=""
 		Type="String"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="TabTitle"
+		Visible=false
 		Group="Behavior"
+		InitialValue=""
 		Type="Text"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Title"
+		Visible=false
 		Group="Behavior"
+		InitialValue=""
 		Type="Text"
 		EditorType="MultiLineEditor"
 	#tag EndViewProperty
@@ -203,5 +242,6 @@ End
 		Group="Position"
 		InitialValue="0"
 		Type="Integer"
+		EditorType=""
 	#tag EndViewProperty
 #tag EndViewBehavior

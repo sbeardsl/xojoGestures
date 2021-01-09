@@ -2,18 +2,20 @@
 Begin iosView SwipeView
    BackButtonTitle =   ""
    Compatibility   =   ""
+   LargeTitleMode  =   "2"
    Left            =   0
    NavigationBarVisible=   True
+   TabIcon         =   ""
    TabTitle        =   "SwipeTab"
    Title           =   "Swipe"
    Top             =   0
    Begin iOSSegmentedControl TouchesControl
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   TouchesControl, 8, , 0, True, +1.00, 1, 1, 29, 
-      AutoLayout      =   TouchesControl, 7, , 0, False, +1.00, 1, 1, 200, 
-      AutoLayout      =   TouchesControl, 4, BottomLayoutGuide, 3, False, +1.00, 1, 1, -5, 
-      AutoLayout      =   TouchesControl, 9, <Parent>, 9, False, +1.00, 2, 1, 0, 
+      AutoLayout      =   TouchesControl, 8, , 0, True, +1.00, 1, 1, 29, , True
+      AutoLayout      =   TouchesControl, 7, , 0, False, +1.00, 1, 1, 200, , True
+      AutoLayout      =   TouchesControl, 4, BottomLayoutGuide, 3, False, +1.00, 1, 1, -5, , True
+      AutoLayout      =   TouchesControl, 9, <Parent>, 9, False, +1.00, 2, 1, 0, , True
       Caption         =   ""
       Enabled         =   True
       Height          =   29.0
@@ -29,58 +31,58 @@ Begin iosView SwipeView
    Begin iOSGestures.swipeDownGesture swipeDownGesture1
       Enabled         =   True
       Gesture         =   "baseGesture"
-      Left            =   60
+      Left            =   0
       LockedInPosition=   False
       NumberOfTouchesRequired=   1
       PanelIndex      =   -1
       Parent          =   ""
       RecognizerType  =   "baseClass"
       Scope           =   1
-      Top             =   60
+      Top             =   0
    End
    Begin iOSGestures.swipeLeftGesture swipeLeftGesture1
       Enabled         =   True
       Gesture         =   "baseGesture"
-      Left            =   80
+      Left            =   0
       LockedInPosition=   False
       NumberOfTouchesRequired=   1
       PanelIndex      =   -1
       Parent          =   ""
       RecognizerType  =   "baseClass"
       Scope           =   1
-      Top             =   80
+      Top             =   0
    End
    Begin iOSGestures.swipeRightGesture swipeRightGesture1
       Enabled         =   True
       Gesture         =   "baseGesture"
-      Left            =   100
+      Left            =   0
       LockedInPosition=   False
       NumberOfTouchesRequired=   1
       PanelIndex      =   -1
       Parent          =   ""
       RecognizerType  =   "baseClass"
       Scope           =   1
-      Top             =   100
+      Top             =   0
    End
    Begin iOSGestures.swipeUpGesture swipeUpGesture1
       Enabled         =   True
       Gesture         =   "baseGesture"
-      Left            =   120
+      Left            =   0
       LockedInPosition=   False
       NumberOfTouchesRequired=   1
       PanelIndex      =   -1
       Parent          =   ""
       RecognizerType  =   "baseClass"
       Scope           =   1
-      Top             =   120
+      Top             =   0
    End
    Begin iosCanvas Canvas1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   Canvas1, 1, <Parent>, 1, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   Canvas1, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   Canvas1, 4, TouchesControl, 3, False, +1.00, 2, 1, -*kStdControlGapV, 
-      AutoLayout      =   Canvas1, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   Canvas1, 1, <Parent>, 1, False, +1.00, 1, 1, 0, , True
+      AutoLayout      =   Canvas1, 2, <Parent>, 2, False, +1.00, 2, 1, 0, , True
+      AutoLayout      =   Canvas1, 4, TouchesControl, 3, False, +1.00, 2, 1, -*kStdControlGapV, , True
+      AutoLayout      =   Canvas1, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, , True
       Height          =   373.0
       Left            =   0
       LockedInPosition=   False
@@ -202,8 +204,31 @@ End
 #tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
-		Name="BackButtonTitle"
+		Name="TabIcon"
+		Visible=false
 		Group="Behavior"
+		InitialValue=""
+		Type="iOSImage"
+		EditorType=""
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="LargeTitleMode"
+		Visible=true
+		Group="Behavior"
+		InitialValue="2"
+		Type="LargeTitleDisplayModes"
+		EditorType="Enum"
+		#tag EnumValues
+			"0 - Automatic"
+			"1 - Always"
+			"2 - Never"
+		#tag EndEnumValues
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="BackButtonTitle"
+		Visible=false
+		Group="Behavior"
+		InitialValue=""
 		Type="Text"
 		EditorType="MultiLineEditor"
 	#tag EndViewProperty
@@ -213,6 +238,7 @@ End
 		Group="ID"
 		InitialValue="-2147483648"
 		Type="Integer"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Left"
@@ -220,32 +246,45 @@ End
 		Group="Position"
 		InitialValue="0"
 		Type="Integer"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Name"
 		Visible=true
 		Group="ID"
+		InitialValue=""
 		Type="String"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="NavigationBarVisible"
+		Visible=false
 		Group="Behavior"
+		InitialValue=""
 		Type="Boolean"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Super"
 		Visible=true
 		Group="ID"
+		InitialValue=""
 		Type="String"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="TabTitle"
+		Visible=false
 		Group="Behavior"
+		InitialValue=""
 		Type="Text"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Title"
+		Visible=false
 		Group="Behavior"
+		InitialValue=""
 		Type="Text"
 		EditorType="MultiLineEditor"
 	#tag EndViewProperty
@@ -255,5 +294,6 @@ End
 		Group="Position"
 		InitialValue="0"
 		Type="Integer"
+		EditorType=""
 	#tag EndViewProperty
 #tag EndViewBehavior

@@ -2,25 +2,27 @@
 Begin iosView MultiTapButtonView
    BackButtonTitle =   ""
    Compatibility   =   ""
+   LargeTitleMode  =   "2"
    Left            =   0
    NavigationBarVisible=   True
+   TabIcon         =   ""
    TabTitle        =   "MultiTapButtonTab"
    Title           =   "Multi-Tap Button"
    Top             =   0
    Begin iOSButton MultiTapBtn
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   MultiTapBtn, 7, , 0, False, +1.00, 2, 1, 300, 
-      AutoLayout      =   MultiTapBtn, 9, <Parent>, 9, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   MultiTapBtn, 10, <Parent>, 10, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   MultiTapBtn, 8, , 0, False, +1.00, 1, 1, 30, 
+      AutoLayout      =   MultiTapBtn, 7, , 0, False, +1.00, 2, 1, 300, , True
+      AutoLayout      =   MultiTapBtn, 9, <Parent>, 9, False, +1.00, 2, 1, 0, , True
+      AutoLayout      =   MultiTapBtn, 10, <Parent>, 10, False, +1.00, 2, 1, 0, , True
+      AutoLayout      =   MultiTapBtn, 8, , 0, False, +1.00, 1, 1, 30, , True
       Caption         =   "OneOrTwoTapButton"
       Enabled         =   True
       Height          =   30.0
       Left            =   10
       LockedInPosition=   False
       Scope           =   0
-      TextColor       =   &c007AFF00
+      TextColor       =   "&c007AFF00"
       TextFont        =   ""
       TextSize        =   0
       Top             =   225
@@ -30,18 +32,19 @@ Begin iosView MultiTapButtonView
    Begin iOSLabel Result
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   Result, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   Result, 4, MultiTapBtn, 3, False, +1.00, 2, 1, -50, 
-      AutoLayout      =   Result, 1, <Parent>, 1, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   Result, 8, , 0, False, +1.00, 1, 1, 30, 
+      AutoLayout      =   Result, 2, <Parent>, 2, False, +1.00, 2, 1, 0, , True
+      AutoLayout      =   Result, 4, MultiTapBtn, 3, False, +1.00, 2, 1, -50, , True
+      AutoLayout      =   Result, 1, <Parent>, 1, False, +1.00, 2, 1, 0, , True
+      AutoLayout      =   Result, 8, , 0, False, +1.00, 1, 1, 30, , True
       Enabled         =   True
       Height          =   30.0
       Left            =   0
+      LineBreakMode   =   "0"
       LockedInPosition=   False
       Scope           =   0
       Text            =   "<no taps yet>"
       TextAlignment   =   "1"
-      TextColor       =   &c00000000
+      TextColor       =   "&c00000000"
       TextFont        =   ""
       TextSize        =   0
       Top             =   145
@@ -51,18 +54,19 @@ Begin iosView MultiTapButtonView
    Begin iOSLabel Label1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   Label1, 3, MultiTapBtn, 4, False, +1.00, 1, 1, 50, 
-      AutoLayout      =   Label1, 8, , 0, False, +1.00, 1, 1, 30, 
-      AutoLayout      =   Label1, 2, <Parent>, 2, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   Label1, 1, <Parent>, 1, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   Label1, 3, MultiTapBtn, 4, False, +1.00, 1, 1, 50, , True
+      AutoLayout      =   Label1, 8, , 0, False, +1.00, 1, 1, 30, , True
+      AutoLayout      =   Label1, 2, <Parent>, 2, False, +1.00, 2, 1, 0, , True
+      AutoLayout      =   Label1, 1, <Parent>, 1, False, +1.00, 1, 1, 0, , True
       Enabled         =   True
       Height          =   30.0
       Left            =   0
+      LineBreakMode   =   "0"
       LockedInPosition=   False
       Scope           =   0
       Text            =   "The button responds to single and double taps"
       TextAlignment   =   "1"
-      TextColor       =   &c00000000
+      TextColor       =   "&c00000000"
       TextFont        =   ""
       TextSize        =   0
       Top             =   305
@@ -159,8 +163,31 @@ End
 #tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
-		Name="BackButtonTitle"
+		Name="TabIcon"
+		Visible=false
 		Group="Behavior"
+		InitialValue=""
+		Type="iOSImage"
+		EditorType=""
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="LargeTitleMode"
+		Visible=true
+		Group="Behavior"
+		InitialValue="2"
+		Type="LargeTitleDisplayModes"
+		EditorType="Enum"
+		#tag EnumValues
+			"0 - Automatic"
+			"1 - Always"
+			"2 - Never"
+		#tag EndEnumValues
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="BackButtonTitle"
+		Visible=false
+		Group="Behavior"
+		InitialValue=""
 		Type="Text"
 		EditorType="MultiLineEditor"
 	#tag EndViewProperty
@@ -170,6 +197,7 @@ End
 		Group="ID"
 		InitialValue="-2147483648"
 		Type="Integer"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Left"
@@ -177,32 +205,45 @@ End
 		Group="Position"
 		InitialValue="0"
 		Type="Integer"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Name"
 		Visible=true
 		Group="ID"
+		InitialValue=""
 		Type="String"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="NavigationBarVisible"
+		Visible=false
 		Group="Behavior"
+		InitialValue=""
 		Type="Boolean"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Super"
 		Visible=true
 		Group="ID"
+		InitialValue=""
 		Type="String"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="TabTitle"
+		Visible=false
 		Group="Behavior"
+		InitialValue=""
 		Type="Text"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Title"
+		Visible=false
 		Group="Behavior"
+		InitialValue=""
 		Type="Text"
 		EditorType="MultiLineEditor"
 	#tag EndViewProperty
@@ -212,5 +253,6 @@ End
 		Group="Position"
 		InitialValue="0"
 		Type="Integer"
+		EditorType=""
 	#tag EndViewProperty
 #tag EndViewBehavior
