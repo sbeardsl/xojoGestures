@@ -1,7 +1,7 @@
 xojoGestures 
 ============
 
-WARNING: iOSGestures does not currently work with Xojo 2019 R3.2 and later
+WARNING: iOSGestures does not currently work with Xojo  2020 R2 and later
 
 ============
 
