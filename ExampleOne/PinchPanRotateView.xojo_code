@@ -8,21 +8,23 @@ Begin MobileScreen PinchPanRotateView
    Left            =   0
    TabBarVisible   =   True
    TabIcon         =   0
-   TintColor       =   ""
+   TintColor       =   "&h00000000"
    Title           =   "Pinch, Pan, and Rotate"
    Top             =   0
    Begin MobileCanvas Canvas1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   Canvas1, 3, TopLayoutGuide, 4, False, +1.00, 2, 1, 0, , True
-      AutoLayout      =   Canvas1, 2, <Parent>, 2, False, +1.00, 2, 1, 0, , True
       AutoLayout      =   Canvas1, 1, <Parent>, 1, False, +1.00, 2, 1, 0, , True
-      AutoLayout      =   Canvas1, 4, BottomLayoutGuide, 3, False, +1.00, 2, 1, 0, , True
+      AutoLayout      =   Canvas1, 2, <Parent>, 2, False, +1.00, 2, 1, 0, , True
+      AutoLayout      =   Canvas1, 4, BottomLayoutGuide, 3, False, +1.00, 2, 1, -33, , True
+      AutoLayout      =   Canvas1, 3, TopLayoutGuide, 4, False, +1.00, 2, 1, 0, , True
+      ControlCount    =   0
       Enabled         =   True
-      Height          =   503
+      Height          =   470
       Left            =   0
       LockedInPosition=   False
       Scope           =   0
+      TintColor       =   ""
       Top             =   65
       Visible         =   True
       Width           =   320
@@ -62,6 +64,30 @@ Begin MobileScreen PinchPanRotateView
       Scope           =   1
       Top             =   0
    End
+   Begin MobileLabel StatusOutput
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      Alignment       =   1
+      AutoLayout      =   StatusOutput, 1, Canvas1, 1, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   StatusOutput, 7, , 0, False, +1.00, 4, 1, 313, , True
+      AutoLayout      =   StatusOutput, 4, BottomLayoutGuide, 4, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   StatusOutput, 8, , 0, False, +1.00, 4, 1, 30, , True
+      ControlCount    =   0
+      Enabled         =   True
+      Height          =   30
+      Left            =   0
+      LineBreakMode   =   0
+      LockedInPosition=   False
+      Scope           =   2
+      Text            =   "<drawing status>"
+      TextColor       =   &c000000
+      TextFont        =   ""
+      TextSize        =   0
+      TintColor       =   ""
+      Top             =   538
+      Visible         =   True
+      Width           =   313
+   End
 End
 #tag EndMobileScreen
 
@@ -97,6 +123,8 @@ End
 		  g.Rotate(m_DrawRotation, centerX, centerY)
 		  
 		  g.DrawRectangle( centerX-(rectSize/2), centerY-(rectSize/2), rectSize, rectSize )
+		  
+		  StatusOutput.Text = "Scale = " + m_DrawScale.toString( "#.000") + " : Rotation = " + m_DrawRotation.toString("#.000")
 		  
 		End Sub
 	#tag EndEvent
@@ -145,7 +173,7 @@ End
 #tag EndEvents
 #tag Events pinchGesture1
 	#tag Event
-		Sub PinchChanged(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, scale as Single, velocity as Single)
+		Sub PinchChanged(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, scale as CGFloat, velocity as CGFloat)
 		  #Pragma Unused pos
 		  #Pragma Unused eventInfo
 		  #Pragma Unused velocity
@@ -157,7 +185,7 @@ End
 #tag EndEvents
 #tag Events rotateGesture1
 	#tag Event
-		Sub rotationChanged(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, rotation as Single, velocity as Single)
+		Sub rotationChanged(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, rotation as CGFloat, velocity as CGFloat)
 		  #Pragma Unused pos
 		  #Pragma Unused eventInfo
 		  #Pragma Unused velocity
@@ -169,19 +197,27 @@ End
 #tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
-		Name="TabIcon"
-		Visible=false
+		Name="BackButtonCaption"
+		Visible=true
 		Group="Behavior"
 		InitialValue=""
-		Type="iOSImage"
+		Type="String"
+		EditorType="MultiLineEditor"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="HasNavigationBar"
+		Visible=true
+		Group="Behavior"
+		InitialValue="True"
+		Type="Boolean"
 		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
-		Name="LargeTitleMode"
+		Name="LargeTitleDisplayMode"
 		Visible=true
 		Group="Behavior"
 		InitialValue="2"
-		Type="LargeTitleDisplayModes"
+		Type="MobileScreen.LargeTitleDisplayModes"
 		EditorType="Enum"
 		#tag EnumValues
 			"0 - Automatic"
@@ -190,12 +226,36 @@ End
 		#tag EndEnumValues
 	#tag EndViewProperty
 	#tag ViewProperty
-		Name="BackButtonTitle"
+		Name="TabBarVisible"
+		Visible=true
+		Group="Behavior"
+		InitialValue="True"
+		Type="Boolean"
+		EditorType=""
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="TintColor"
 		Visible=false
 		Group="Behavior"
 		InitialValue=""
-		Type="Text"
-		EditorType="MultiLineEditor"
+		Type="ColorGroup"
+		EditorType=""
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="ControlCount"
+		Visible=false
+		Group="Behavior"
+		InitialValue=""
+		Type="Integer"
+		EditorType=""
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="TabIcon"
+		Visible=false
+		Group="Behavior"
+		InitialValue=""
+		Type="Picture"
+		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Index"
@@ -238,14 +298,6 @@ End
 		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
-		Name="NavigationBarVisible"
-		Visible=false
-		Group="Behavior"
-		InitialValue=""
-		Type="Boolean"
-		EditorType=""
-	#tag EndViewProperty
-	#tag ViewProperty
 		Name="Super"
 		Visible=true
 		Group="ID"
@@ -254,19 +306,11 @@ End
 		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
-		Name="TabTitle"
-		Visible=false
-		Group="Behavior"
-		InitialValue=""
-		Type="Text"
-		EditorType=""
-	#tag EndViewProperty
-	#tag ViewProperty
 		Name="Title"
 		Visible=false
 		Group="Behavior"
 		InitialValue=""
-		Type="Text"
+		Type="String"
 		EditorType="MultiLineEditor"
 	#tag EndViewProperty
 	#tag ViewProperty

@@ -33,15 +33,15 @@ Inherits iosGestures.baseGestureRecognizer
 	#tag EndMethod
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub panBeginsDelegate(recognizer as iosGestures . panGesture, pos as xojo . Core . Point, eventInfo as iosGestures . gestureEventInfo, translationInView as xojo . Core . Point, velocityInView as xojo . Core . Point)
+		Delegate Sub panBeginsDelegate(recognizer as iosGestures.panGesture, pos as Xojo.Point, eventInfo as iosGestures.gestureEventInfo, translationInView as xojo.Core.Point, velocityInView as xojo.Core.Point)
 	#tag EndDelegateDeclaration
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub panChangedDelegate(recognizer as iosGestures . panGesture, pos as xojo . Core . Point, eventInfo as iosGestures . gestureEventInfo, translationInView as xojo . Core . Point, velocityInView as xojo . Core . Point)
+		Delegate Sub panChangedDelegate(recognizer as iosGestures.panGesture, pos as Xojo.Point, eventInfo as iosGestures.gestureEventInfo, translationInView as xojo.Core.Point, velocityInView as xojo.Core.Point)
 	#tag EndDelegateDeclaration
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub panEndsDelegate(recognizer as iosGestures . panGesture, pos as xojo . Core . Point, eventInfo as iosGestures . gestureEventInfo, translationInView as xojo . Core . Point, velocityInView as xojo . Core . Point)
+		Delegate Sub panEndsDelegate(recognizer as iosGestures.panGesture, pos as Xojo.Point, eventInfo as iosGestures.gestureEventInfo, translationInView as xojo.Core.Point, velocityInView as xojo.Core.Point)
 	#tag EndDelegateDeclaration
 
 	#tag Method, Flags = &h0
