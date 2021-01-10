@@ -1,28 +1,31 @@
-#tag IOSView
-Begin iosView PinchPanRotateView
-   BackButtonTitle =   ""
+#tag MobileScreen
+Begin MobileScreen PinchPanRotateView
+   BackButtonCaption=   ""
    Compatibility   =   ""
-   LargeTitleMode  =   "2"
+   ControlCount    =   0
+   HasNavigationBar=   True
+   LargeTitleDisplayMode=   2
    Left            =   0
-   NavigationBarVisible=   True
-   TabIcon         =   ""
-   TabTitle        =   "Tap"
+   TabBarVisible   =   True
+   TabIcon         =   0
+   TintColor       =   ""
    Title           =   "Pinch, Pan, and Rotate"
    Top             =   0
-   Begin iosCanvas Canvas1
+   Begin MobileCanvas Canvas1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       AutoLayout      =   Canvas1, 3, TopLayoutGuide, 4, False, +1.00, 2, 1, 0, , True
       AutoLayout      =   Canvas1, 2, <Parent>, 2, False, +1.00, 2, 1, 0, , True
       AutoLayout      =   Canvas1, 1, <Parent>, 1, False, +1.00, 2, 1, 0, , True
       AutoLayout      =   Canvas1, 4, BottomLayoutGuide, 3, False, +1.00, 2, 1, 0, , True
-      Height          =   415.0
+      Enabled         =   True
+      Height          =   503
       Left            =   0
       LockedInPosition=   False
       Scope           =   0
       Top             =   65
       Visible         =   True
-      Width           =   320.0
+      Width           =   320
    End
    Begin iOSGestures.panGesture panGesture1
       Enabled         =   True
@@ -60,7 +63,7 @@ Begin iosView PinchPanRotateView
       Top             =   0
    End
 End
-#tag EndIOSView
+#tag EndMobileScreen
 
 #tag WindowCode
 	#tag Property, Flags = &h0
@@ -72,7 +75,7 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		m_DrawTranslation As xojo.Core.Point
+		m_DrawTranslation As xojo.Point
 	#tag EndProperty
 
 
@@ -80,7 +83,7 @@ End
 
 #tag Events Canvas1
 	#tag Event
-		Sub Paint(g As iOSGraphics)
+		Sub Paint(g As Graphics)
 		  App.DrawBorder( g )
 		  
 		  if (m_DrawTranslation <> nil) then
@@ -93,12 +96,12 @@ End
 		  
 		  g.Rotate(m_DrawRotation, centerX, centerY)
 		  
-		  g.DrawRect( centerX-(rectSize/2), centerY-(rectSize/2), rectSize, rectSize )
+		  g.DrawRectangle( centerX-(rectSize/2), centerY-(rectSize/2), rectSize, rectSize )
 		  
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Sub Open()
+		Sub Opening()
 		  panGesture1.Attach( Me )
 		  pinchGesture1.Attach( Me )
 		  rotateGesture1.Attach( Me )
@@ -107,60 +110,60 @@ End
 #tag EndEvents
 #tag Events panGesture1
 	#tag Event
-		Sub PanChanged(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo, translation as xojo.core.Point, velocity as xojo.core.Point)
+		Sub PanChanged(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, translation as xojo.Point, velocity as xojo.Point)
 		  #Pragma Unused pos
 		  #Pragma Unused eventInfo
 		  #Pragma Unused velocity
 		  
 		  m_DrawTranslation = translation
 		  
-		  Canvas1.Invalidate()
+		  Canvas1.Refresh
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Sub PanEnds(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo, translation as xojo.core.Point, velocity as xojo.core.Point)
+		Sub PanEnds(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, translation as xojo.Point, velocity as xojo.Point)
 		  #Pragma Unused pos
 		  #Pragma Unused eventInfo
 		  #Pragma Unused velocity
 		  
 		  m_DrawTranslation = translation
 		  
-		  Canvas1.Invalidate()
+		  Canvas1.Refresh()
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Sub PanBegins(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo, translation as xojo.core.Point, velocity as xojo.core.Point)
+		Sub PanBegins(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, translation as xojo.Point, velocity as xojo.Point)
 		  #Pragma Unused pos
 		  #Pragma Unused eventInfo
 		  #Pragma Unused velocity
 		  
 		  m_DrawTranslation = translation
 		  
-		  Canvas1.Invalidate()
+		  Canvas1.Refresh()
 		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag Events pinchGesture1
 	#tag Event
-		Sub PinchChanged(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo, scale as Single, velocity as Single)
+		Sub PinchChanged(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, scale as Single, velocity as Single)
 		  #Pragma Unused pos
 		  #Pragma Unused eventInfo
 		  #Pragma Unused velocity
 		  
 		  m_DrawScale = scale
-		  Canvas1.Invalidate
+		  Canvas1.Refresh()
 		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag Events rotateGesture1
 	#tag Event
-		Sub rotationChanged(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo, rotation as Single, velocity as Single)
+		Sub rotationChanged(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, rotation as Single, velocity as Single)
 		  #Pragma Unused pos
 		  #Pragma Unused eventInfo
 		  #Pragma Unused velocity
 		  
 		  m_DrawRotation = rotation
-		  Canvas1.Invalidate
+		  Canvas1.Refresh()
 		End Sub
 	#tag EndEvent
 #tag EndEvents

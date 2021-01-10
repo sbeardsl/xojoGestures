@@ -15,7 +15,7 @@ Inherits iosGestures.baseGestureRecognizer
 		  Dim fScale as Single = Scale()
 		  Dim fVelocity as Single = Velocity()
 		  
-		  Dim pos as xojo.Core.Point = Position()
+		  Dim pos as xojo.Point = Position()
 		  Dim eventInfo as gestureEventInfo = CurrentEventInfo()
 		  
 		  Select Case recState
@@ -58,30 +58,34 @@ Inherits iosGestures.baseGestureRecognizer
 
 
 	#tag Hook, Flags = &h0
-		Event PinchBegins(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo, scale as Single, velocity as Single)
+		Event PinchBegins(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, scale as Single, velocity as Single)
 	#tag EndHook
 
 	#tag Hook, Flags = &h0
-		Event PinchChanged(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo, scale as Single, velocity as Single)
+		Event PinchChanged(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, scale as Single, velocity as Single)
 	#tag EndHook
 
 	#tag Hook, Flags = &h0
-		Event PinchEnds(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo, scale as Single, velocity as Single)
+		Event PinchEnds(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, scale as Single, velocity as Single)
 	#tag EndHook
 
 
 	#tag ViewBehavior
 		#tag ViewProperty
 			Name="Enabled"
+			Visible=false
 			Group="Behavior"
 			InitialValue="false"
 			Type="Boolean"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Gesture"
+			Visible=false
 			Group="Behavior"
 			InitialValue="baseGesture"
 			Type="Text"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
@@ -89,6 +93,7 @@ Inherits iosGestures.baseGestureRecognizer
 			Group="ID"
 			InitialValue="-2147483648"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
@@ -96,24 +101,31 @@ Inherits iosGestures.baseGestureRecognizer
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
+			InitialValue=""
 			Type="String"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="RecognizerType"
+			Visible=false
 			Group="Behavior"
 			InitialValue="baseClass"
 			Type="Text"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
+			InitialValue=""
 			Type="String"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
@@ -121,6 +133,7 @@ Inherits iosGestures.baseGestureRecognizer
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

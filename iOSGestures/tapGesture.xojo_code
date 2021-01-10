@@ -10,7 +10,7 @@ Inherits iosGestures.baseGestureRecognizer
 	#tag EndMethod
 
 	#tag Method, Flags = &h1000, CompatibilityFlags = (TargetIOS)
-		Sub Constructor(theView as Ptr, handler as iOSGestures.tapGesture.tapEventDelegate, taps as integer, touches as integer = 1, gestureName as Text = "")
+		Sub Constructor(theView as Ptr, handler as iOSGestures.tapGesture.tapEventDelegate, taps as integer, touches as integer = 1, gestureName as String = "")
 		  Super.Constructor("UITapGestureRecognizer")
 		  
 		  Name = gestureName
@@ -30,7 +30,7 @@ Inherits iosGestures.baseGestureRecognizer
 		  
 		  if (recState = UIKit.UIGestureRecognizerState.UIGestureRecognizerStateRecognized) then
 		    
-		    Dim pos as xojo.Core.Point = Position()
+		    Dim pos as xojo.Point = Position()
 		    Dim eventInfo as gestureEventInfo = CurrentEventInfo()
 		    
 		    RaiseEvent Tap( pos, eventInfo )
@@ -40,12 +40,12 @@ Inherits iosGestures.baseGestureRecognizer
 	#tag EndMethod
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub tapEventDelegate(recognizer as iosGestures . tapGesture, pos as xojo . Core . Point, eventInfo as iosGestures . gestureEventInfo)
+		Delegate Sub tapEventDelegate(recognizer as iosGestures.tapGesture, pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo)
 	#tag EndDelegateDeclaration
 
 
 	#tag Hook, Flags = &h0
-		Event Tap(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo)
+		Event Tap(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo)
 	#tag EndHook
 
 
@@ -97,15 +97,19 @@ Inherits iosGestures.baseGestureRecognizer
 	#tag ViewBehavior
 		#tag ViewProperty
 			Name="Enabled"
+			Visible=false
 			Group="Behavior"
 			InitialValue="false"
 			Type="Boolean"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Gesture"
+			Visible=false
 			Group="Behavior"
 			InitialValue="baseGesture"
 			Type="Text"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
@@ -113,6 +117,7 @@ Inherits iosGestures.baseGestureRecognizer
 			Group="ID"
 			InitialValue="-2147483648"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
@@ -120,12 +125,15 @@ Inherits iosGestures.baseGestureRecognizer
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
+			InitialValue=""
 			Type="String"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="NumberOfTapsRequired"
@@ -133,6 +141,7 @@ Inherits iosGestures.baseGestureRecognizer
 			Group="Behavior"
 			InitialValue="1"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="NumberOfTouchesRequired"
@@ -140,18 +149,23 @@ Inherits iosGestures.baseGestureRecognizer
 			Group="Behavior"
 			InitialValue="1"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="RecognizerType"
+			Visible=false
 			Group="Behavior"
 			InitialValue="baseClass"
 			Type="Text"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
+			InitialValue=""
 			Type="String"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
@@ -159,6 +173,7 @@ Inherits iosGestures.baseGestureRecognizer
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

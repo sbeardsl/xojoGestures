@@ -1,15 +1,17 @@
-#tag IOSView
-Begin iosView MultiTapButtonView
-   BackButtonTitle =   ""
+#tag MobileScreen
+Begin MobileScreen MultiTapButtonView
+   BackButtonCaption=   ""
    Compatibility   =   ""
-   LargeTitleMode  =   "2"
+   ControlCount    =   0
+   HasNavigationBar=   True
+   LargeTitleDisplayMode=   2
    Left            =   0
-   NavigationBarVisible=   True
-   TabIcon         =   ""
-   TabTitle        =   "MultiTapButtonTab"
+   TabBarVisible   =   True
+   TabIcon         =   0
+   TintColor       =   ""
    Title           =   "Multi-Tap Button"
    Top             =   0
-   Begin iOSButton MultiTapBtn
+   Begin MobileButton MultiTapBtn
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       AutoLayout      =   MultiTapBtn, 7, , 0, False, +1.00, 2, 1, 300, , True
@@ -17,68 +19,72 @@ Begin iosView MultiTapButtonView
       AutoLayout      =   MultiTapBtn, 10, <Parent>, 10, False, +1.00, 2, 1, 0, , True
       AutoLayout      =   MultiTapBtn, 8, , 0, False, +1.00, 1, 1, 30, , True
       Caption         =   "OneOrTwoTapButton"
+      CaptionColor    =   &c000000
       Enabled         =   True
-      Height          =   30.0
+      Height          =   30
       Left            =   10
       LockedInPosition=   False
       Scope           =   0
-      TextColor       =   "&c007AFF00"
       TextFont        =   ""
       TextSize        =   0
-      Top             =   225
+      Top             =   269
       Visible         =   True
-      Width           =   300.0
+      Width           =   300
    End
-   Begin iOSLabel Result
+   Begin MobileLabel Result
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
+      Alignment       =   1
       AutoLayout      =   Result, 2, <Parent>, 2, False, +1.00, 2, 1, 0, , True
       AutoLayout      =   Result, 4, MultiTapBtn, 3, False, +1.00, 2, 1, -50, , True
       AutoLayout      =   Result, 1, <Parent>, 1, False, +1.00, 2, 1, 0, , True
       AutoLayout      =   Result, 8, , 0, False, +1.00, 1, 1, 30, , True
+      ControlCount    =   0
       Enabled         =   True
-      Height          =   30.0
+      Height          =   30
       Left            =   0
-      LineBreakMode   =   "0"
+      LineBreakMode   =   0
       LockedInPosition=   False
       Scope           =   0
       Text            =   "<no taps yet>"
-      TextAlignment   =   "1"
-      TextColor       =   "&c00000000"
+      TextColor       =   &c00000000
       TextFont        =   ""
       TextSize        =   0
-      Top             =   145
+      TintColor       =   ""
+      Top             =   189
       Visible         =   True
-      Width           =   320.0
+      Width           =   320
    End
-   Begin iOSLabel Label1
+   Begin MobileLabel Label1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
+      Alignment       =   0
       AutoLayout      =   Label1, 3, MultiTapBtn, 4, False, +1.00, 1, 1, 50, , True
       AutoLayout      =   Label1, 8, , 0, False, +1.00, 1, 1, 30, , True
       AutoLayout      =   Label1, 2, <Parent>, 2, False, +1.00, 2, 1, 0, , True
       AutoLayout      =   Label1, 1, <Parent>, 1, False, +1.00, 1, 1, 0, , True
+      ControlCount    =   0
       Enabled         =   True
-      Height          =   30.0
+      Height          =   30
       Left            =   0
-      LineBreakMode   =   "0"
+      LineBreakMode   =   0
       LockedInPosition=   False
       Scope           =   0
       Text            =   "The button responds to single and double taps"
-      TextAlignment   =   "1"
-      TextColor       =   "&c00000000"
+      TextColor       =   &c00000000
       TextFont        =   ""
       TextSize        =   0
-      Top             =   305
+      TintColor       =   ""
+      Top             =   349
       Visible         =   True
-      Width           =   320.0
+      Width           =   320
    End
 End
-#tag EndIOSView
+#tag EndMobileScreen
 
 #tag WindowCode
 	#tag Event
-		Sub Close()
+		Sub Closing()
 		  iOSGestures.removeRecognizersIncludingSubViews( Me )
 		  
 		  if (tapHandlerForButton <> nil) then
@@ -89,32 +95,25 @@ End
 	#tag EndEvent
 
 	#tag Event
-		Sub Deactivate()
-		  
-		End Sub
-	#tag EndEvent
-
-	#tag Event
-		Sub Open()
+		Sub Opening()
 		  if (tapHandlerForButton = nil) then
 		    Dim numTaps as integer = 2  ' for double tap
 		    Dim numTouches as integer = 1 ' for one finger tap
-		    Dim gestureName as text = "the Button"
+		    Dim gestureName as String  = "the Button"
 		    tapHandlerForButton = new iOSGestures.tapGesture( MultiTapBtn.Handle,  AddressOf tapHandler, numTaps, numTouches, gestureName )
 		  end if
 		  
-		  'Dim bButtonIsSubView as Boolean = iOSGestures.UIKit.isDescendantOfView( MultiTapBtn.Handle, iOSGestures.UIViewPtrFromView(self) )
 		End Sub
 	#tag EndEvent
 
 
 	#tag Method, Flags = &h1
-		Protected Sub tapHandler(recognizer as iosGestures.tapGesture, pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo)
+		Protected Sub tapHandler(recognizer as iosGestures.tapGesture, pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo)
 		  #pragma unused recognizer
 		  #pragma unused pos
 		  #pragma unused eventInfo
 		  
-		  Dim sTapType as Text
+		  Dim sTapType as  String
 		  
 		  if (recognizer.NumberOfTapsRequired = 1) then
 		    sTapType = "Single Tap! "
@@ -122,7 +121,9 @@ End
 		    sTapType = "Double Tap! "
 		  end if
 		  
-		  Result.Text = sTapType + " on " + recognizer.Name
+		  Result.Text =  recognizer.Name
+		  Result.Text = " on "
+		  Result.Text = sTapType
 		End Sub
 	#tag EndMethod
 
@@ -156,7 +157,7 @@ End
 
 #tag Events MultiTapBtn
 	#tag Event
-		Sub Action()
+		Sub Pressed()
 		  Result.Text = "Button's Action Event!"
 		End Sub
 	#tag EndEvent

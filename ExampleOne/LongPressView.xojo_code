@@ -1,12 +1,14 @@
-#tag IOSView
-Begin iosView LongPressView
-   BackButtonTitle =   ""
+#tag MobileScreen
+Begin MobileScreen LongPressView
+   BackButtonCaption=   ""
    Compatibility   =   ""
-   LargeTitleMode  =   "2"
+   ControlCount    =   0
+   HasNavigationBar=   True
+   LargeTitleDisplayMode=   2
    Left            =   0
-   NavigationBarVisible=   True
-   TabIcon         =   ""
-   TabTitle        =   "LongPress"
+   TabBarVisible   =   True
+   TabIcon         =   0
+   TintColor       =   ""
    Title           =   "Long Press"
    Top             =   0
    Begin iOSSegmentedControl TouchesControl
@@ -24,25 +26,26 @@ Begin iosView LongPressView
       LockedInPosition=   False
       Scope           =   0
       Segments        =   "One Finger\n\nTrue\rTwo Fingers\n\nFalse"
-      Top             =   406
+      Top             =   494
       Value           =   0
       Visible         =   True
       Width           =   280.0
    End
-   Begin iosCanvas Canvas1
+   Begin MobileCanvas Canvas1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       AutoLayout      =   Canvas1, 4, TouchesControl, 3, False, +1.00, 2, 1, -*kStdControlGapV, , True
       AutoLayout      =   Canvas1, 2, <Parent>, 2, False, +1.00, 2, 1, 0, , True
       AutoLayout      =   Canvas1, 3, TopLayoutGuide, 4, False, +1.00, 2, 1, 0, , True
       AutoLayout      =   Canvas1, 1, <Parent>, 1, False, +1.00, 2, 1, 0, , True
-      Height          =   333.0
+      Enabled         =   True
+      Height          =   421
       Left            =   0
       LockedInPosition=   False
       Scope           =   0
       Top             =   65
       Visible         =   True
-      Width           =   320.0
+      Width           =   320
    End
    Begin iOSSegmentedControl DelayControl
       AccessibilityHint=   ""
@@ -58,7 +61,7 @@ Begin iosView LongPressView
       LockedInPosition=   False
       Scope           =   0
       Segments        =   ".5 seconds\n\nTrue\r2 seconds\n\nFalse\r5 seconds\n\nFalse"
-      Top             =   443
+      Top             =   531
       Value           =   0
       Visible         =   True
       Width           =   280.0
@@ -78,11 +81,11 @@ Begin iosView LongPressView
       Top             =   0
    End
 End
-#tag EndIOSView
+#tag EndMobileScreen
 
 #tag WindowCode
 	#tag Event
-		Sub Open()
+		Sub Opening()
 		  longPressGesture1.Attach( Canvas1 )
 		End Sub
 	#tag EndEvent
@@ -99,7 +102,7 @@ End
 #tag EndEvents
 #tag Events Canvas1
 	#tag Event
-		Sub Paint(g As iOSGraphics)
+		Sub Paint(g As Graphics)
 		  App.DrawBorder( g )
 		  
 		  if (App.LatestEventPos <> nil) then
@@ -120,16 +123,16 @@ End
 #tag EndEvents
 #tag Events longPressGesture1
 	#tag Event
-		Sub LongPressBegins(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo)
+		Sub LongPressBegins(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo)
 		  App.LatestEventPos = pos
 		  App.LatestEventInfo = eventInfo
 		  App.LatestNumTaps = 0
 		  
-		  Canvas1.Invalidate()
+		  Canvas1.Refresh
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Sub LongPressEnds(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo)
+		Sub LongPressEnds(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo)
 		  #Pragma Unused pos
 		  #Pragma Unused eventInfo
 		  
@@ -137,16 +140,16 @@ End
 		  App.LatestEventInfo = nil
 		  App.LatestNumTaps = 0
 		  
-		  Canvas1.Invalidate()
+		  Canvas1.Refresh()
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Sub LongPressChanged(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo)
+		Sub LongPressChanged(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo)
 		  App.LatestEventPos = pos
 		  App.LatestEventInfo = eventInfo
 		  App.LatestNumTaps = 0
 		  
-		  Canvas1.Invalidate()
+		  Canvas1.Refresh()
 		End Sub
 	#tag EndEvent
 #tag EndEvents
