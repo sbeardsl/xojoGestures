@@ -12,13 +12,13 @@ Protected Class baseGestureRecognizer
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Attach(theControl as iOSControl)
+		Sub Attach(theControl as MobileControl)
 		  Attach( theControl.Handle )
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Attach(theView as iOSView)
+		Sub Attach(theView as MobileScreen)
 		  Attach( theView.Handle )
 		End Sub
 	#tag EndMethod
@@ -131,18 +131,18 @@ Protected Class baseGestureRecognizer
 		Protected Function CurrentEventInfo() As gestureEventInfo
 		  Dim eventInfo as gestureEventInfo
 		  
-		  Dim locations() as xojo.Core.Point
+		  Dim locations() as xojo.Point
 		  
 		  For nPointerNum as Integer = 1 to NumberOfTouches
 		    Dim nIndex as integer = nPointerNum - 1
-		    Dim location as xojo.Core.Point = LocationOfTouchInView( nIndex )
+		    Dim location as xojo.Point = LocationOfTouchInView( nIndex )
 		    debug.ASSERT( location <> nil, "NumberOfTouches was " + NumberOfTouches.ToText() + " and asked for location of touch #" + nIndex.toText() + " but got NIL", CurrentMethodName )
 		    if (location <> nil) then
 		      locations.Append( location )
 		    end if
 		  next
 		  
-		  eventInfo = new gestureEventInfo( Date.Now.SecondsFrom1970(), locations )
+		  eventInfo = new gestureEventInfo( DateTime.Now.SecondsFrom1970(), locations )
 		  
 		  return eventInfo
 		End Function
@@ -198,8 +198,8 @@ Protected Class baseGestureRecognizer
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function LocationOfTouchInView(nTouchIndex as Integer) As xojo.Core.Point
-		  Dim pLocation as xojo.Core.Point
+		Function LocationOfTouchInView(nTouchIndex as Integer) As xojo.Point
+		  Dim pLocation as xojo.Point
 		  
 		  Debug.ASSERT( nTouchIndex < NumberOfTouches, "Asking for Touch with index >= NumberOfTouches", CurrentMethodName )
 		  
@@ -218,14 +218,14 @@ Protected Class baseGestureRecognizer
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function Position() As xojo.Core.Point
+		Function Position() As xojo.Point
 		  return UIKit.getLocationInView( theRecognizer, GetTheTargetViewHandle())
 		  
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		 Shared Function recognizerByName(sName as Text) As baseGestureRecognizer
+		Shared Function recognizerByName(sName as Text) As baseGestureRecognizer
 		  Dim theRecognizer as baseGestureRecognizer
 		  
 		  For Each thisRecognizerAsEntry As DictionaryEntry In m_dictOfRecognizers
@@ -284,7 +284,7 @@ Protected Class baseGestureRecognizer
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		 Shared Sub RemoveRecognizers(theUIViewPtr as Ptr)
+		Shared Sub RemoveRecognizers(theUIViewPtr as Ptr)
 		  Dim recognizersToRemove() as baseGestureRecognizer
 		  
 		  For Each thisRecognizerAsEntry As DictionaryEntry In m_dictOfRecognizers
@@ -303,7 +303,7 @@ Protected Class baseGestureRecognizer
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		 Shared Sub RemoveRecognizersIncludingSubViews(theUIViewPtr as Ptr)
+		Shared Sub RemoveRecognizersIncludingSubViews(theUIViewPtr as Ptr)
 		  Dim recognizersToRemove() as baseGestureRecognizer
 		  
 		  For Each thisRecognizerAsEntry As DictionaryEntry In m_dictOfRecognizers
@@ -382,7 +382,7 @@ Protected Class baseGestureRecognizer
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
-		Private mName As Text
+		Private mName As String
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -435,7 +435,7 @@ Protected Class baseGestureRecognizer
 			  mName = value
 			End Set
 		#tag EndSetter
-		Name As Text
+		Name As String
 	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
@@ -480,15 +480,19 @@ Protected Class baseGestureRecognizer
 	#tag ViewBehavior
 		#tag ViewProperty
 			Name="Enabled"
+			Visible=false
 			Group="Behavior"
 			InitialValue="false"
 			Type="Boolean"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Gesture"
+			Visible=false
 			Group="Behavior"
 			InitialValue="baseGesture"
 			Type="Text"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
@@ -496,6 +500,7 @@ Protected Class baseGestureRecognizer
 			Group="ID"
 			InitialValue="-2147483648"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
@@ -503,24 +508,31 @@ Protected Class baseGestureRecognizer
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
+			InitialValue=""
 			Type="String"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="RecognizerType"
+			Visible=false
 			Group="Behavior"
 			InitialValue="baseClass"
 			Type="Text"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
+			InitialValue=""
 			Type="String"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
@@ -528,6 +540,7 @@ Protected Class baseGestureRecognizer
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

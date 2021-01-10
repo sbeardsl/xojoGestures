@@ -12,16 +12,16 @@ Inherits IOSApplication
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub DrawBorder(g as iOSGraphics)
+		Sub DrawBorder(g as Graphics)
 		  g.SaveState
-		  g.LineWidth = 2.0
-		  g.DrawRect( 0, 0, g.Width-1, g.Height-1 )
+		  g.Pensize = 2.0
+		  g.DrawRectangle( 0, 0, g.Width-1, g.Height-1 )
 		  g.RestoreState
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub DrawPress(g as iOSGraphics)
+		Sub DrawPress(g as Graphics)
 		  g.SaveState
 		  
 		  Dim thisRectSize as integer = 80
@@ -35,7 +35,7 @@ Inherits IOSApplication
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub DrawSwipeDown(g as iOSGraphics)
+		Sub DrawSwipeDown(g as Graphics)
 		  g.SaveState
 		  
 		  Dim x as Double = App.LatestEventPos.X
@@ -55,7 +55,7 @@ Inherits IOSApplication
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub DrawSwipeLeft(g as iOSGraphics)
+		Sub DrawSwipeLeft(g as Graphics)
 		  g.SaveState
 		  
 		  Dim x as Double = 0
@@ -75,7 +75,7 @@ Inherits IOSApplication
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub DrawSwipeRight(g as iOSGraphics)
+		Sub DrawSwipeRight(g as Graphics)
 		  g.SaveState
 		  
 		  Dim x as Double = g.Width
@@ -95,7 +95,7 @@ Inherits IOSApplication
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub DrawSwipeTouches(g as iOSGraphics, x as double, y as double)
+		Sub DrawSwipeTouches(g as Graphics, x as double, y as double)
 		  g.SaveState
 		  
 		  if (LatestEventInfo.PointerCount > 1) then
@@ -113,7 +113,7 @@ Inherits IOSApplication
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub DrawSwipeUp(g as iOSGraphics)
+		Sub DrawSwipeUp(g as Graphics)
 		  g.SaveState
 		  
 		  Dim x as Double = App.LatestEventPos.X
@@ -132,7 +132,7 @@ Inherits IOSApplication
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub DrawTap(g as iOSGraphics)
+		Sub DrawTap(g as Graphics)
 		  g.SaveState
 		  
 		  Dim tapRectSize as integer = 20
@@ -140,7 +140,7 @@ Inherits IOSApplication
 		  for i as integer = LatestNumTaps DownTo 1
 		    Dim thisRectSize as integer = tapRectSize * i
 		    Dim halfSize as Integer = thisRectSize / 2
-		    g.DrawRect( LatestEventPos.X - halfSize, LatestEventPos.Y - halfSize, thisRectSize, thisRectSize )
+		    g.DrawRectangle( LatestEventPos.X - halfSize, LatestEventPos.Y - halfSize, thisRectSize, thisRectSize )
 		  next
 		  
 		  DrawTouches( g )
@@ -150,7 +150,7 @@ Inherits IOSApplication
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub DrawTouches(g as iOSGraphics)
+		Sub DrawTouches(g as Graphics)
 		  g.SaveState
 		  
 		  if (LatestEventInfo.PointerCount > 1) then
@@ -173,7 +173,7 @@ Inherits IOSApplication
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		LatestEventPos As xojo.Core.Point
+		LatestEventPos As xojo.Point
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -184,8 +184,11 @@ Inherits IOSApplication
 	#tag ViewBehavior
 		#tag ViewProperty
 			Name="LatestNumTaps"
+			Visible=false
 			Group="Behavior"
+			InitialValue=""
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

@@ -1,7 +1,7 @@
 #tag Module
 Protected Module Debug
 	#tag Method, Flags = &h1
-		Protected Sub ASSERT(testPassed as Boolean, errorMsg as Text, sourceMethodName as Text)
+		Protected Sub ASSERT(testPassed as Boolean, errorMsg as String, sourceMethodName as Text)
 		  if (not testPassed) then
 		    ASSERT_FAILED( errorMsg, sourceMethodName )
 		  end if
@@ -9,13 +9,13 @@ Protected Module Debug
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Sub ASSERT_FAILED(errorMsg as Text, sourceMethodName as Text)
+		Protected Sub ASSERT_FAILED(errorMsg as String, sourceMethodName as String)
 		  errorMsg = "ASSERT - " + ErrorMsg
-		  if (not sourceMethodName.Empty()) then
+		  if (sourceMethodName.Length()>0) then
 		    errorMsg = ErrorMsg + " from " + sourceMethodName
 		  end if
 		  
-		  errorMsg = errorMsg + "@" + Date.Now().ToText(Locale.Current, Date.FormatStyles.None, Date.FormatStyles.Medium)
+		  errorMsg = errorMsg + "@" + DateTime.Now().ToString(Locale.Current, DateTime.FormatStyles.None, DateTime.FormatStyles.Medium)
 		  
 		  System.DebugLog( errorMsg )
 		  
@@ -26,7 +26,7 @@ Protected Module Debug
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Sub ASSERT_FAILED_RESPONDS_TO(objPtr as Ptr, selector as Text)
+		Protected Sub ASSERT_FAILED_RESPONDS_TO(objPtr as Ptr, selector as String)
 		  ASSERT_FAILED( "Object of class: " + Foundation.objPtrToClassName(objPtr) + " doesn't respond to selector: " + selector, "" )
 		  
 		End Sub
@@ -40,6 +40,7 @@ Protected Module Debug
 			Group="ID"
 			InitialValue="-2147483648"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
@@ -47,18 +48,23 @@ Protected Module Debug
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
+			InitialValue=""
 			Type="String"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
+			InitialValue=""
 			Type="String"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
@@ -66,6 +72,7 @@ Protected Module Debug
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module

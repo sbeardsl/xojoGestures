@@ -1,0 +1,32 @@
+Turn off "Simple References":
+To to "Build Settings: Shared"
+Under "Build" turn "Simple References" to OFF
+
+Now build and you will be able to see the actual errors
+
+From this point you will just need to clean up API 2.0 related issues.
+
+Some of the common ones I had to fix in ExampleOne:
+
+Date -> DateTime
+
+Xojo.Core.Point -> Xojo.Point
+
+Strange, I found a LOT of "xojo . Core . Point" <<< note the spaces
+Many of these are tucked in hard to see locations, do a Find: xojo . Core . Point and replace with Xojo.Point or you will get strange results
+
+You can assign a String directly to a CString so you can now do:
+
+Dim sMyString = "Hello World"
+Dim sMyStringAsCString as CString = sMyString
+
+Then all the rest of the API 2.0 fixup
+
+iosView -> MobileScreen (Open Event -> Opening Event, Invalidate -> Refresh, ect)
+iosControl -> MobileControl
+iosGraphics -> Graphics  (LineWidth -> PenSize, DrawRect -> DrawRectangle, FillColor -> DrawingColor, FillRect -> FillRectangle, ect)
+iosButton -> MobileButton (Action Event -> Pressed)
+and anything else you run into
+
+
+

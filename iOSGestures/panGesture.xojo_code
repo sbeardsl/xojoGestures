@@ -12,10 +12,10 @@ Inherits iosGestures.baseGestureRecognizer
 		Sub DoGesture(recognizer as Ptr)
 		  Dim recState as UIKit.UIGestureRecognizerState = UIKit.getRecognizerState( recognizer )
 		  
-		  Dim translation as xojo.core.Point = TranslationInView()
-		  Dim velocity as xojo.core.Point = VelocityinView()
+		  Dim translation as xojo.Point = TranslationInView()
+		  Dim velocity as xojo.Point = VelocityinView()
 		  
-		  Dim pos as xojo.Core.Point = Position()
+		  Dim pos as xojo.Point = Position()
 		  Dim eventInfo as gestureEventInfo = CurrentEventInfo()
 		  
 		  Select Case recState
@@ -33,15 +33,15 @@ Inherits iosGestures.baseGestureRecognizer
 	#tag EndMethod
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub panBeginsDelegate(recognizer as iosGestures . panGesture, pos as xojo . Core . Point, eventInfo as iosGestures . gestureEventInfo, translationInView as xojo . Core . Point, velocityInView as xojo . Core . Point)
+		Delegate Sub panBeginsDelegate(recognizer as iosGestures.panGesture, pos as Xojo.Point, eventInfo as iosGestures.gestureEventInfo, translationInView as xojo.Core.Point, velocityInView as xojo.Core.Point)
 	#tag EndDelegateDeclaration
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub panChangedDelegate(recognizer as iosGestures . panGesture, pos as xojo . Core . Point, eventInfo as iosGestures . gestureEventInfo, translationInView as xojo . Core . Point, velocityInView as xojo . Core . Point)
+		Delegate Sub panChangedDelegate(recognizer as iosGestures.panGesture, pos as Xojo.Point, eventInfo as iosGestures.gestureEventInfo, translationInView as xojo.Core.Point, velocityInView as xojo.Core.Point)
 	#tag EndDelegateDeclaration
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub panEndsDelegate(recognizer as iosGestures . panGesture, pos as xojo . Core . Point, eventInfo as iosGestures . gestureEventInfo, translationInView as xojo . Core . Point, velocityInView as xojo . Core . Point)
+		Delegate Sub panEndsDelegate(recognizer as iosGestures.panGesture, pos as Xojo.Point, eventInfo as iosGestures.gestureEventInfo, translationInView as xojo.Core.Point, velocityInView as xojo.Core.Point)
 	#tag EndDelegateDeclaration
 
 	#tag Method, Flags = &h0
@@ -51,28 +51,28 @@ Inherits iosGestures.baseGestureRecognizer
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function TranslationInView() As xojo.Core.Point
+		Function TranslationInView() As xojo.Point
 		  return UIKit.getTranslationInView( theRecognizer, ReferenceView() )
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function VelocityInView() As xojo.Core.Point
+		Function VelocityInView() As xojo.Point
 		  return UIKit.getVelocityInView( theRecognizer, ReferenceView())
 		End Function
 	#tag EndMethod
 
 
 	#tag Hook, Flags = &h0
-		Event PanBegins(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo, translation as xojo.core.Point, velocity as xojo.core.Point)
+		Event PanBegins(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, translation as xojo.Point, velocity as xojo.Point)
 	#tag EndHook
 
 	#tag Hook, Flags = &h0
-		Event PanChanged(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo, translation as xojo.core.Point, velocity as xojo.core.Point)
+		Event PanChanged(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, translation as xojo.Point, velocity as xojo.Point)
 	#tag EndHook
 
 	#tag Hook, Flags = &h0
-		Event PanEnds(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo, translation as xojo.core.Point, velocity as xojo.core.Point)
+		Event PanEnds(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, translation as xojo.Point, velocity as xojo.Point)
 	#tag EndHook
 
 
@@ -124,15 +124,19 @@ Inherits iosGestures.baseGestureRecognizer
 	#tag ViewBehavior
 		#tag ViewProperty
 			Name="Enabled"
+			Visible=false
 			Group="Behavior"
 			InitialValue="false"
 			Type="Boolean"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Gesture"
+			Visible=false
 			Group="Behavior"
 			InitialValue="baseGesture"
 			Type="Text"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
@@ -140,6 +144,7 @@ Inherits iosGestures.baseGestureRecognizer
 			Group="ID"
 			InitialValue="-2147483648"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
@@ -147,6 +152,7 @@ Inherits iosGestures.baseGestureRecognizer
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="MaxNumberOfTouches"
@@ -154,6 +160,7 @@ Inherits iosGestures.baseGestureRecognizer
 			Group="Behavior"
 			InitialValue="1"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="MinNumberOfTouches"
@@ -161,24 +168,31 @@ Inherits iosGestures.baseGestureRecognizer
 			Group="Behavior"
 			InitialValue="1"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
+			InitialValue=""
 			Type="String"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="RecognizerType"
+			Visible=false
 			Group="Behavior"
 			InitialValue="baseClass"
 			Type="Text"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
+			InitialValue=""
 			Type="String"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
@@ -186,6 +200,7 @@ Inherits iosGestures.baseGestureRecognizer
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

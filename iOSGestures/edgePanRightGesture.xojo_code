@@ -21,15 +21,19 @@ Inherits iosGestures.baseEdgePanGesture
 	#tag ViewBehavior
 		#tag ViewProperty
 			Name="Enabled"
+			Visible=false
 			Group="Behavior"
 			InitialValue="false"
 			Type="Boolean"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Gesture"
+			Visible=false
 			Group="Behavior"
 			InitialValue="baseGesture"
 			Type="Text"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
@@ -37,6 +41,7 @@ Inherits iosGestures.baseEdgePanGesture
 			Group="ID"
 			InitialValue="-2147483648"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
@@ -44,6 +49,7 @@ Inherits iosGestures.baseEdgePanGesture
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="MaxNumberOfTouches"
@@ -51,6 +57,7 @@ Inherits iosGestures.baseEdgePanGesture
 			Group="Behavior"
 			InitialValue="1"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="MinNumberOfTouches"
@@ -58,24 +65,31 @@ Inherits iosGestures.baseEdgePanGesture
 			Group="Behavior"
 			InitialValue="1"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
+			InitialValue=""
 			Type="String"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="RecognizerType"
+			Visible=false
 			Group="Behavior"
 			InitialValue="baseClass"
 			Type="Text"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
+			InitialValue=""
 			Type="String"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
@@ -83,6 +97,7 @@ Inherits iosGestures.baseEdgePanGesture
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

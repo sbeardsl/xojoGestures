@@ -1,7 +1,7 @@
 #tag Class
 Protected Class gestureEventInfo
 	#tag Method, Flags = &h0
-		Sub Constructor(fTimeStamp as Double, touches() as xojo.core.Point)
+		Sub Constructor(fTimeStamp as Double, touches() as xojo.Point)
 		  m_fTimeOfEvent = fTimeStamp
 		  m_PointerLocations = touches
 		End Sub
@@ -14,8 +14,8 @@ Protected Class gestureEventInfo
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function PointerPosition(nIndex as integer) As Xojo.Core.Point
-		  Dim nPos as xojo.Core.Point
+		Function PointerPosition(nIndex as integer) As xojo.Point
+		  Dim nPos as xojo.Point
 		  
 		  if (nIndex < PointerCount()) then
 		    nPos = m_PointerLocations(nIndex)
@@ -52,6 +52,7 @@ Protected Class gestureEventInfo
 			Group="ID"
 			InitialValue="-2147483648"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
@@ -59,18 +60,23 @@ Protected Class gestureEventInfo
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
+			InitialValue=""
 			Type="String"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
+			InitialValue=""
 			Type="String"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
@@ -78,6 +84,7 @@ Protected Class gestureEventInfo
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

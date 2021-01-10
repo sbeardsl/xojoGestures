@@ -19,10 +19,10 @@ Inherits iosGestures.baseGestureRecognizer
 		Sub DoGesture(recognizer as Ptr)
 		  Dim recState as UIKit.UIGestureRecognizerState = UIKit.getRecognizerState( recognizer )
 		  
-		  Dim fRotation as Single = Rotation( )
-		  Dim fVelocity as Single = Velocity( )
+		  Dim fRotation as CGFloat = Rotation( )
+		  Dim fVelocity as CGFloat = Velocity( )
 		  
-		  Dim pos as xojo.Core.Point = Position()
+		  Dim pos as xojo.Point = Position()
 		  Dim eventInfo as gestureEventInfo = CurrentEventInfo()
 		  
 		  Select Case recState
@@ -40,55 +40,59 @@ Inherits iosGestures.baseGestureRecognizer
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function Rotation() As Single
+		Function Rotation() As CGFloat
 		  return UIKit.getRotation( theRecognizer )
 		End Function
 	#tag EndMethod
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub rotationBeginsDelegate(recognizer as iosGestures . rotateGesture, pos as xojo . Core . Point, eventInfo as iosGestures . gestureEventInfo, rotation as Single, velocity as Single)
+		Delegate Sub rotationBeginsDelegate(recognizer as iosGestures.rotateGesture, pos as Xojo.Point, eventInfo as iosGestures.gestureEventInfo, rotation as CGFloat, velocity as CGFloat)
 	#tag EndDelegateDeclaration
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub rotationChangedDelegate(recognizer as iosGestures . rotateGesture, pos as xojo . Core . Point, eventInfo as iosGestures . gestureEventInfo, rotation as Single, velocity as Single)
+		Delegate Sub rotationChangedDelegate(recognizer as iosGestures.rotateGesture, pos as Xojo.Point, eventInfo as iosGestures.gestureEventInfo, rotation as CGFloat, velocity as CGFloat)
 	#tag EndDelegateDeclaration
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub rotationEndsDelegate(recognizer as iosGestures . rotateGesture, pos as xojo . Core . Point, eventInfo as iosGestures . gestureEventInfo, rotation as Single, velocity as Single)
+		Delegate Sub rotationEndsDelegate(recognizer as iosGestures.rotateGesture, pos as Xojo.Point, eventInfo as iosGestures.gestureEventInfo, rotation as CGFloat, velocity as CGFloat)
 	#tag EndDelegateDeclaration
 
 	#tag Method, Flags = &h0
-		Function Velocity() As Single
+		Function Velocity() As CGFloat
 		  return UIKit.getVelocity(theRecognizer)
 		End Function
 	#tag EndMethod
 
 
 	#tag Hook, Flags = &h0
-		Event rotationBegins(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo, rotation as Single, velocity as Single)
+		Event rotationBegins(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, rotation as CGFloat, velocity as CGFloat)
 	#tag EndHook
 
 	#tag Hook, Flags = &h0
-		Event rotationChanged(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo, rotation as Single, velocity as Single)
+		Event rotationChanged(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, rotation as CGFloat, velocity as CGFloat)
 	#tag EndHook
 
 	#tag Hook, Flags = &h0
-		Event rotationEnds(pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo, rotation as Single, velocity as Single)
+		Event rotationEnds(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, rotation as CGFloat, velocity as CGFloat)
 	#tag EndHook
 
 
 	#tag ViewBehavior
 		#tag ViewProperty
 			Name="Enabled"
+			Visible=false
 			Group="Behavior"
 			InitialValue="false"
 			Type="Boolean"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Gesture"
+			Visible=false
 			Group="Behavior"
 			InitialValue="baseGesture"
 			Type="Text"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
@@ -96,6 +100,7 @@ Inherits iosGestures.baseGestureRecognizer
 			Group="ID"
 			InitialValue="-2147483648"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
@@ -103,24 +108,31 @@ Inherits iosGestures.baseGestureRecognizer
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
+			InitialValue=""
 			Type="String"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="RecognizerType"
+			Visible=false
 			Group="Behavior"
 			InitialValue="baseClass"
 			Type="Text"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
+			InitialValue=""
 			Type="String"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
@@ -128,6 +140,7 @@ Inherits iosGestures.baseGestureRecognizer
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

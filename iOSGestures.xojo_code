@@ -13,7 +13,7 @@ Protected Module iOSGestures
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Sub removeRecognizers(extends theView as iOSView)
+		Protected Sub removeRecognizers(extends theView as MobileScreen)
 		  iOSGestures.baseGestureRecognizer.RemoveRecognizers( UIViewPtrFromView( theView ) )
 		End Sub
 	#tag EndMethod
@@ -25,7 +25,7 @@ Protected Module iOSGestures
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Sub removeRecognizersIncludingSubViews(theView as iOSView)
+		Protected Sub removeRecognizersIncludingSubViews(theView as MobileScreen)
 		  iOSGestures.baseGestureRecognizer.RemoveRecognizersIncludingSubViews( UIViewPtrFromView( theView ) )
 		End Sub
 	#tag EndMethod
@@ -56,7 +56,7 @@ Protected Module iOSGestures
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub respondsToTap(extends theView as iOSView, handler as iOSGestures.tapGesture.tapEventDelegate, taps as integer, touches as integer, name as Text)
+		Sub respondsToTap(extends theView as MobileScreen, handler as iOSGestures.tapGesture.tapEventDelegate, taps as integer, touches as integer, name as Text)
 		  Dim newRecognizer as iOSGestures.tapGesture = new iOSGestures.tapGesture( theView.Handle, handler, taps, touches, name )
 		  
 		  'A reference to the recognizer is kept in baseGestureRecognizer.m_dictofRecognizers so this won't go away when we exit the method
@@ -69,7 +69,7 @@ Protected Module iOSGestures
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub respondsToTap(extends theView as iOSView, handler as iOSGestures.tapGesture.tapEventDelegate, taps as integer, name as Text)
+		Sub respondsToTap(extends theView as MobileScreen, handler as iOSGestures.tapGesture.tapEventDelegate, taps as integer, name as Text)
 		  Dim newRecognizer as iOSGestures.tapGesture = new iOSGestures.tapGesture( theView.Handle, handler, taps, 1, name )
 		  
 		  'A reference to the recognizer is kept in baseGestureRecognizer.m_dictofRecognizers so this won't go away when we exit the method
@@ -82,7 +82,7 @@ Protected Module iOSGestures
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function UIViewPtrFromView(theView as iOSView) As Ptr
+		Protected Function UIViewPtrFromView(theView as MobileScreen) As Ptr
 		  Dim theViewPtr as Ptr = theView.Handle
 		  
 		  if (not Foundation.isKindOfClass( theViewPtr, "UIView" )) then
@@ -147,7 +147,7 @@ Protected Module iOSGestures
 		from the gesture’s EventDelegate for the corresponding event.
 		For example, to get the parameter list for swipeLeftGesture’s Swipe event
 		copy the parameter list from baseSwipeGesture’s swipeEventDelegate
-		“recognizer as iosGestures.baseSwipeGesture, pos as xojo.Core.Point, eventInfo as iosGestures.gestureEventInfo”]
+		“recognizer as iosGestures.baseSwipeGesture, pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo”]
 		
 		' finally, attach the gesture recognizer to a canvas or view
 		myGesture.Attach( myView )

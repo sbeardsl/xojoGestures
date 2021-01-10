@@ -13,21 +13,21 @@ Protected Module UIKit
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function getLocationInView(objPtr as Ptr, referenceViewPtr as Ptr) As xojo.Core.Point
+		Protected Function getLocationInView(objPtr as Ptr, referenceViewPtr as Ptr) As xojo.Point
 		  #if Target32Bit
 		    Dim cgp as CoreGraphics.CGPoint32
 		    Declare Function getLocationInView lib UIKitFramework selector "locationInView:" (objRef As Ptr, viewPtr as Ptr) As CoreGraphics.CGPoint32
 		  #else
-		    Dim cgp as CoreGraphics.CGPoint64
-		    Declare Function getLocationInView lib UIKitFramework selector "locationInView:" (objRef As Ptr, viewPtr as Ptr) As CoreGraphics.CGPoint64
+		    Dim cgp as CoreGraphics.CGPoint
+		    Declare Function getLocationInView lib UIKitFramework selector "locationInView:" (objRef As Ptr, viewPtr as Ptr) As CoreGraphics.CGPoint
 		  #endif
 		  
-		  Dim locationInView as xojo.Core.Point
+		  Dim locationInView as xojo.Point
 		  
 		  if (objPtr <> nil) then
 		    if (Foundation.objRespondsTo(objPtr, "locationInView:" )) then
 		      cgp = getLocationInView(objPtr,referenceViewPtr)
-		      locationInView = new xojo.Core.Point( cgp.x, cgp.y )
+		      locationInView = new xojo.Point( cgp.x, cgp.y )
 		    end if
 		  end if
 		  
@@ -37,21 +37,21 @@ Protected Module UIKit
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function getLocationOfTouchInView(objPtr as Ptr, nTouchIndex as Integer, referenceViewPtr as Ptr) As xojo.Core.Point
+		Protected Function getLocationOfTouchInView(objPtr as Ptr, nTouchIndex as Integer, referenceViewPtr as Ptr) As xojo.Point
 		  #if Target32Bit
 		    Dim cgp as CoreGraphics.CGPoint32
 		    Declare Function getLocationOfTouchInView lib UIKitFramework selector "locationOfTouch:inView:" (objRef As Ptr, nIndex as integer, viewPtr as Ptr) As CoreGraphics.CGPoint32
 		  #else
-		    Dim cgp as CoreGraphics.CGPoint64
-		    Declare Function getLocationOfTouchInView lib UIKitFramework selector "locationOfTouch:inView:" (objRef As Ptr, nIndex as integer, viewPtr as Ptr) As CoreGraphics.CGPoint64
+		    Dim cgp as CoreGraphics.CGPoint
+		    Declare Function getLocationOfTouchInView lib UIKitFramework selector "locationOfTouch:inView:" (objRef As Ptr, nIndex as integer, viewPtr as Ptr) As CoreGraphics.CGPoint
 		  #endif
 		  
-		  Dim locationOfTouchInView as xojo.Core.Point
+		  Dim locationOfTouchInView as xojo.Point
 		  
 		  if (objPtr <> nil) then
 		    if (Foundation.objRespondsTo(objPtr, "locationOfTouch:inView:" )) then
 		      cgp = getLocationOfTouchInView(objPtr, nTouchIndex, referenceViewPtr)
-		      locationOfTouchInView = new xojo.Core.Point( cgp.x, cgp.y )
+		      locationOfTouchInView = new xojo.Point( cgp.x, cgp.y )
 		    end if
 		  end if
 		  
@@ -94,10 +94,10 @@ Protected Module UIKit
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function getRotation(objPtr as Ptr) As Single
-		  Declare Function getScale Lib UIKitFramework selector "rotation" (objRef As Ptr ) as Single
+		Protected Function getRotation(objPtr as Ptr) As CGFloat
+		  Declare Function getScale Lib UIKitFramework selector "rotation" (objRef As Ptr ) as CGFloat
 		  
-		  Dim scale as Single
+		  Dim scale as CGFloat
 		  
 		  if (objPtr <> nil) then
 		    if (Foundation.objRespondsTo(objPtr, "rotation" )) then
@@ -111,10 +111,10 @@ Protected Module UIKit
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function getScale(objPtr as Ptr) As Single
-		  Declare Function getScale Lib UIKitFramework selector "scale" (objRef As Ptr ) as Single
+		Protected Function getScale(objPtr as Ptr) As CGFloat
+		  Declare Function getScale Lib UIKitFramework selector "scale" (objRef As Ptr ) as CGFloat
 		  
-		  Dim scale as Single
+		  Dim scale as CGFloat
 		  
 		  if (objPtr <> nil) then
 		    if (Foundation.objRespondsTo(objPtr, "scale" )) then
@@ -128,21 +128,21 @@ Protected Module UIKit
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function getTranslationInView(objPtr as Ptr, referenceViewPtr as Ptr) As xojo.Core.Point
+		Protected Function getTranslationInView(objPtr as Ptr, referenceViewPtr as Ptr) As xojo.Point
 		  #if Target32Bit
 		    Dim cgp as CoreGraphics.CGPoint32
 		    Declare Function getTranslationInView Lib UIKitFramework selector "translationInView:" (objRef As Ptr, referenceView as Ptr ) as CoreGraphics.CGPoint32
 		  #else
-		    Dim cgp as CoreGraphics.CGPoint64
-		    Declare Function getTranslationInView Lib UIKitFramework selector "translationInView:" (objRef As Ptr, referenceView as Ptr ) as CoreGraphics.CGPoint64
+		    Dim cgp as CoreGraphics.CGPoint
+		    Declare Function getTranslationInView Lib UIKitFramework selector "translationInView:" (objRef As Ptr, referenceView as Ptr ) as CoreGraphics.CGPoint
 		  #endif
 		  
-		  Dim translationInView as xojo.Core.Point
+		  Dim translationInView as xojo.Point
 		  
 		  if (objPtr <> nil) then
 		    if (Foundation.objRespondsTo(objPtr, "translationInView:" )) then
 		      cgp = getTranslationInView(objPtr,referenceViewPtr)
-		      translationInView = new xojo.Core.Point( cgp.x, cgp.y )
+		      translationInView = new xojo.Point( cgp.x, cgp.y )
 		    end if
 		  end if
 		  
@@ -151,10 +151,10 @@ Protected Module UIKit
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function getVelocity(objPtr as Ptr) As Single
-		  Declare Function getVelocity Lib UIKitFramework selector "velocity" (objRef As Ptr ) as Single
+		Protected Function getVelocity(objPtr as Ptr) As CGFloat
+		  Declare Function getVelocity Lib UIKitFramework selector "velocity" (objRef As Ptr ) as CGFloat
 		  
-		  Dim velocity as Single
+		  Dim velocity as CGFloat
 		  
 		  if (objPtr <> nil) then
 		    if (Foundation.objRespondsTo(objPtr, "velocity" )) then
@@ -168,21 +168,21 @@ Protected Module UIKit
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function getVelocityInView(objPtr as Ptr, referenceViewPtr as Ptr) As xojo.Core.Point
+		Protected Function getVelocityInView(objPtr as Ptr, referenceViewPtr as Ptr) As xojo.Point
 		  #if Target32Bit
 		    Dim cgp as CoreGraphics.CGPoint32
 		    Declare Function getVelocityInView Lib UIKitFramework selector "velocityInView:" (objRef As Ptr, referenceView as Ptr ) as CoreGraphics.CGPoint32
 		  #else
-		    Dim cgp as CoreGraphics.CGPoint64
-		    Declare Function getVelocityInView Lib UIKitFramework selector "velocityInView:" (objRef As Ptr, referenceView as Ptr ) as CoreGraphics.CGPoint64
+		    Dim cgp as CoreGraphics.CGPoint
+		    Declare Function getVelocityInView Lib UIKitFramework selector "velocityInView:" (objRef As Ptr, referenceView as Ptr ) as CoreGraphics.CGPoint
 		  #endif
 		  
-		  Dim velocitynInView as xojo.Core.Point
+		  Dim velocitynInView as xojo.Point
 		  
 		  if (objPtr <> nil) then
 		    if (Foundation.objRespondsTo(objPtr, "velocityInView:" )) then
 		      cgp = getVelocityInView(objPtr,referenceViewPtr)
-		      velocitynInView = new xojo.Core.Point( cgp.x, cgp.y )
+		      velocitynInView = new xojo.Point( cgp.x, cgp.y )
 		    end if
 		  end if
 		  
@@ -290,6 +290,7 @@ Protected Module UIKit
 			Group="ID"
 			InitialValue="-2147483648"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
@@ -297,18 +298,23 @@ Protected Module UIKit
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
+			InitialValue=""
 			Type="String"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
+			InitialValue=""
 			Type="String"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
@@ -316,6 +322,7 @@ Protected Module UIKit
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module

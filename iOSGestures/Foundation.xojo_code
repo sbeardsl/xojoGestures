@@ -26,11 +26,11 @@ Protected Module Foundation
 	#tag EndMethod
 
 	#tag Method, Flags = &h1
-		Protected Function class_addMethod(classPtr as Ptr, selector as Text, implementationPtr as Ptr, types as Text, sourceMethodName as Text) As Boolean
+		Protected Function class_addMethod(classPtr as Ptr, selector as String, implementationPtr as Ptr, types as String, sourceMethodName as Text) As Boolean
 		  Declare Function class_addMethod Lib FoundationFramework (cls as Ptr, name as Ptr, imp as Ptr, types as CString) As Boolean
 		  
 		  Dim selectorPtr as Ptr = Foundation.NSSelectorFromString( selector )
-		  Dim typesAsCString as CString = types.ToCString(TextEncoding.ASCII)
+		  Dim typesAsCString as CString = types
 		  Dim bAdded as Boolean = class_addMethod( classPtr, selectorPtr, implementationPtr, typesAsCString )
 		  
 		  debug.ASSERT( bAdded, CurrentMethodName + "-Failed to add method: " + selector + " to class: " + NSStringFromClass( classPtr ), sourceMethodName )
@@ -45,7 +45,7 @@ Protected Module Foundation
 		Protected Function isKindOfClass(objRef as Ptr, superClassName as Text) As Boolean
 		  ' return TRUE if the objRef is an object of superClass or a sub-class of superClass
 		  ' e.g. a pointer to a UIView isKindOfClass UIView
-		  ' e.g. a pointer to a XojoiOSView isKindOfClass UIView
+		  ' e.g. a pointer to a MobileScreen isKindOfClass UIView
 		  
 		  Declare Function isKindOfClass lib FoundationFramework selector "isKindOfClass:" (objRef as Ptr, superClassObj as Ptr) as Boolean
 		  
@@ -74,10 +74,10 @@ Protected Module Foundation
 	#tag EndExternalMethod
 
 	#tag Method, Flags = &h1
-		Protected Function objc_allocateClassPair(superclass as Ptr, className as Text, optional extraBytes as integer = 0) As Ptr
+		Protected Function objc_allocateClassPair(superclass as Ptr, className as String, optional extraBytes as integer = 0) As Ptr
 		  Declare Function objc_allocateClassPair Lib FoundationFramework (superclass As Ptr, className As CString, extraBytes As Integer) As Ptr
 		  
-		  Dim classNameAsCString as CString =  className.ToCString(TextEncoding.ASCII())
+		  Dim classNameAsCString as CString =  className
 		  
 		  Dim classPairPtr as Ptr = objc_allocateClassPair( superclass, classNameAsCString, extraBytes )
 		  
@@ -173,6 +173,7 @@ Protected Module Foundation
 			Group="ID"
 			InitialValue="-2147483648"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
@@ -180,18 +181,23 @@ Protected Module Foundation
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Name"
 			Visible=true
 			Group="ID"
+			InitialValue=""
 			Type="String"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"
+			InitialValue=""
 			Type="String"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
@@ -199,6 +205,7 @@ Protected Module Foundation
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Module
