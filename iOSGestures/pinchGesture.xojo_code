@@ -12,8 +12,8 @@ Inherits iosGestures.baseGestureRecognizer
 		Sub DoGesture(recognizer as Ptr)
 		  Dim recState as UIKit.UIGestureRecognizerState = UIKit.getRecognizerState( recognizer )
 		  
-		  Dim fScale as Single = Scale()
-		  Dim fVelocity as Single = Velocity()
+		  Dim fScale as CGFloat = Scale()
+		  Dim fVelocity as CGFloat = Velocity()
 		  
 		  Dim pos as xojo.Point = Position()
 		  Dim eventInfo as gestureEventInfo = CurrentEventInfo()
@@ -33,40 +33,40 @@ Inherits iosGestures.baseGestureRecognizer
 	#tag EndMethod
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub pinchBeginsDelegate(recognizer as iosGestures . pinchGesture, pos as xojo . Core . Point, eventInfo as iosGestures . gestureEventInfo, scale as Single, velocity as Single)
+		Delegate Sub pinchBeginsDelegate(recognizer as iosGestures.pinchGesture, pos as Xojo.Point, eventInfo as iosGestures.gestureEventInfo, scale as CGFloat, velocity as CGFloat)
 	#tag EndDelegateDeclaration
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub pinchChangedDelegate(recognizer as iosGestures . pinchGesture, pos as xojo . Core . Point, eventInfo as iosGestures . gestureEventInfo, scale as Single, velocity as Single)
+		Delegate Sub pinchChangedDelegate(recognizer as iosGestures.pinchGesture, pos as Xojo.Point, eventInfo as iosGestures.gestureEventInfo, scale as CGFloat, velocity as CGFloat)
 	#tag EndDelegateDeclaration
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub pinchEndsDelegate(recognizer as iosGestures . pinchGesture, pos as xojo . Core . Point, eventInfo as iosGestures . gestureEventInfo, scale as Single, velocity as Single)
+		Delegate Sub pinchEndsDelegate(recognizer as iosGestures.pinchGesture, pos as Xojo.Point, eventInfo as iosGestures.gestureEventInfo, scale as CGFloat, velocity as CGFloat)
 	#tag EndDelegateDeclaration
 
 	#tag Method, Flags = &h0
-		Function Scale() As Single
+		Function Scale() As CGFloat
 		  return UIKit.getScale( theRecognizer )
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function Velocity() As Single
+		Function Velocity() As CGFloat
 		  return UIKit.getVelocity( theRecognizer )
 		End Function
 	#tag EndMethod
 
 
 	#tag Hook, Flags = &h0
-		Event PinchBegins(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, scale as Single, velocity as Single)
+		Event PinchBegins(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, scale as CGFloat, velocity as CGFloat)
 	#tag EndHook
 
 	#tag Hook, Flags = &h0
-		Event PinchChanged(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, scale as Single, velocity as Single)
+		Event PinchChanged(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, scale as CGFloat, velocity as CGFloat)
 	#tag EndHook
 
 	#tag Hook, Flags = &h0
-		Event PinchEnds(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, scale as Single, velocity as Single)
+		Event PinchEnds(pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo, scale as CGFloat, velocity as CGFloat)
 	#tag EndHook
 
 

@@ -1,38 +1,18 @@
 #tag Module
 Protected Module CoreGraphics
 	#tag Structure, Name = CGPoint, Flags = &h1, Attributes = \"StructureAlignment \x3D 1"
-		x as single
-		y as single
+		x as CGFloat
+		y as CGFloat
 	#tag EndStructure
 
-	#tag Structure, Name = CGPoint32, Flags = &h1, Attributes = \"StructureAlignment \x3D 1"
-		x as single
-		y as single
+	#tag Structure, Name = CGRect, Flags = &h1, Attributes = \"StructureAlignment \x3D 1"
+		location as CoreGraphics.CGPoint
+		rsize As CoreGraphics.CGSize
 	#tag EndStructure
 
-	#tag Structure, Name = CGPoint64, Flags = &h1, Attributes = \"StructureAlignment \x3D 1"
-		x as double
-		y as double
-	#tag EndStructure
-
-	#tag Structure, Name = CGRect32, Flags = &h1, Attributes = \"StructureAlignment \x3D 1"
-		location as CoreGraphics.CGPoint32
-		rsize As CoreGraphics.CGSize32
-	#tag EndStructure
-
-	#tag Structure, Name = CGRect64, Flags = &h1, Attributes = \"StructureAlignment \x3D 1"
-		location as CoreGraphics.CGPoint64
-		rsize As CoreGraphics.CGSize64
-	#tag EndStructure
-
-	#tag Structure, Name = CGSize32, Flags = &h1, Attributes = \"StructureAlignment \x3D 1"
-		width as single
-		height as single
-	#tag EndStructure
-
-	#tag Structure, Name = CGSize64, Flags = &h1, Attributes = \"StructureAlignment \x3D 1"
-		width as double
-		height as double
+	#tag Structure, Name = CGSize, Flags = &h1, Attributes = \"StructureAlignment \x3D 1"
+		width as CGFloat
+		height as CGFloat
 	#tag EndStructure
 
 
