@@ -8,7 +8,7 @@ Begin MobileScreen PinchPanRotateView
    Left            =   0
    TabBarVisible   =   True
    TabIcon         =   0
-   TintColor       =   "&h00000000"
+   TintColor       =   0
    Title           =   "Pinch, Pan, and Rotate"
    Top             =   0
    Begin MobileCanvas Canvas1
