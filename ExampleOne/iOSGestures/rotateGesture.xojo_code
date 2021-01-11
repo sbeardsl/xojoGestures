@@ -46,15 +46,15 @@ Inherits iosGestures.baseGestureRecognizer
 	#tag EndMethod
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub rotationBeginsDelegate(recognizer as iosGestures.rotateGesture, pos as Xojo.Point, eventInfo as iosGestures.gestureEventInfo, rotation as CGFloat, velocity as CGFloat)
+		Delegate Sub rotationBeginsDelegate(recognizer as iosGestures . rotateGesture, pos as Xojo . Point, eventInfo as iosGestures . gestureEventInfo, rotation as CGFloat, velocity as CGFloat)
 	#tag EndDelegateDeclaration
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub rotationChangedDelegate(recognizer as iosGestures.rotateGesture, pos as Xojo.Point, eventInfo as iosGestures.gestureEventInfo, rotation as CGFloat, velocity as CGFloat)
+		Delegate Sub rotationChangedDelegate(recognizer as iosGestures . rotateGesture, pos as Xojo . Point, eventInfo as iosGestures . gestureEventInfo, rotation as CGFloat, velocity as CGFloat)
 	#tag EndDelegateDeclaration
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub rotationEndsDelegate(recognizer as iosGestures.rotateGesture, pos as Xojo.Point, eventInfo as iosGestures.gestureEventInfo, rotation as CGFloat, velocity as CGFloat)
+		Delegate Sub rotationEndsDelegate(recognizer as iosGestures . rotateGesture, pos as Xojo . Point, eventInfo as iosGestures . gestureEventInfo, rotation as CGFloat, velocity as CGFloat)
 	#tag EndDelegateDeclaration
 
 	#tag Method, Flags = &h0

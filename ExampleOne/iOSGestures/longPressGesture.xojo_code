@@ -32,15 +32,15 @@ Inherits iosGestures.baseGestureRecognizer
 	#tag EndMethod
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub longPressBeginsDelegate(recognizer as iosGestures.longPressGesture, pos as Xojo.Point, eventInfo as iosGestures.gestureEventInfo)
+		Delegate Sub longPressBeginsDelegate(recognizer as iosGestures . longPressGesture, pos as Xojo . Point, eventInfo as iosGestures . gestureEventInfo)
 	#tag EndDelegateDeclaration
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub longPressChangedDelegate(recognizer as iosGestures.longPressGesture, pos as Xojo.Point, eventInfo as iosGestures.gestureEventInfo)
+		Delegate Sub longPressChangedDelegate(recognizer as iosGestures . longPressGesture, pos as Xojo . Point, eventInfo as iosGestures . gestureEventInfo)
 	#tag EndDelegateDeclaration
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub longPressEndsDelegate(recognizer as iosGestures.longPressGesture, pos as Xojo.Point, eventInfo as iosGestures.gestureEventInfo)
+		Delegate Sub longPressEndsDelegate(recognizer as iosGestures . longPressGesture, pos as Xojo . Point, eventInfo as iosGestures . gestureEventInfo)
 	#tag EndDelegateDeclaration
 
 

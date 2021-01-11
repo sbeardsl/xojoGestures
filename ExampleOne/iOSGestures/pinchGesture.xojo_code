@@ -33,15 +33,15 @@ Inherits iosGestures.baseGestureRecognizer
 	#tag EndMethod
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub pinchBeginsDelegate(recognizer as iosGestures.pinchGesture, pos as Xojo.Point, eventInfo as iosGestures.gestureEventInfo, scale as CGFloat, velocity as CGFloat)
+		Delegate Sub pinchBeginsDelegate(recognizer as iosGestures . pinchGesture, pos as Xojo . Point, eventInfo as iosGestures . gestureEventInfo, scale as CGFloat, velocity as CGFloat)
 	#tag EndDelegateDeclaration
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub pinchChangedDelegate(recognizer as iosGestures.pinchGesture, pos as Xojo.Point, eventInfo as iosGestures.gestureEventInfo, scale as CGFloat, velocity as CGFloat)
+		Delegate Sub pinchChangedDelegate(recognizer as iosGestures . pinchGesture, pos as Xojo . Point, eventInfo as iosGestures . gestureEventInfo, scale as CGFloat, velocity as CGFloat)
 	#tag EndDelegateDeclaration
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub pinchEndsDelegate(recognizer as iosGestures.pinchGesture, pos as Xojo.Point, eventInfo as iosGestures.gestureEventInfo, scale as CGFloat, velocity as CGFloat)
+		Delegate Sub pinchEndsDelegate(recognizer as iosGestures . pinchGesture, pos as Xojo . Point, eventInfo as iosGestures . gestureEventInfo, scale as CGFloat, velocity as CGFloat)
 	#tag EndDelegateDeclaration
 
 	#tag Method, Flags = &h0

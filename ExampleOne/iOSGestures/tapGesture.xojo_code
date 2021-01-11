@@ -40,7 +40,7 @@ Inherits iosGestures.baseGestureRecognizer
 	#tag EndMethod
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub tapEventDelegate(recognizer as iosGestures.tapGesture, pos as xojo.Point, eventInfo as iosGestures.gestureEventInfo)
+		Delegate Sub tapEventDelegate(recognizer as iosGestures . tapGesture, pos as xojo . Point, eventInfo as iosGestures . gestureEventInfo)
 	#tag EndDelegateDeclaration
 
 

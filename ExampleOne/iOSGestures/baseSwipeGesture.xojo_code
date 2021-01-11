@@ -24,7 +24,7 @@ Inherits iosGestures.baseGestureRecognizer
 	#tag EndMethod
 
 	#tag DelegateDeclaration, Flags = &h0
-		Delegate Sub swipeEventDelegate(recognizer as iosGestures.baseSwipeGesture, pos as Xojo.Point, eventInfo as iosGestures.gestureEventInfo)
+		Delegate Sub swipeEventDelegate(recognizer as iosGestures . baseSwipeGesture, pos as Xojo . Point, eventInfo as iosGestures . gestureEventInfo)
 	#tag EndDelegateDeclaration
 
 
