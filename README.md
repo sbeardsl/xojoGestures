@@ -1,7 +1,25 @@
 xojoGestures 
 ============
 
-WARNING: iOSGestures does not currently work with Xojo  2020 R2 and later
+xojoGestures
+============
+
+This update should bring iOSGestures back online for Xojo 2020 R2+
+I also found a fixed a couple of bugs with the output of Pinch and Rotate gestures.
+
+iOSGestures.xojo_binary_code is a binary export of the latest iOSGestures module.
+It may be easier to incorporate into some peoples projects.
+
+The update is till a bit messy but should work for those in need.
+If you have issues with this update post here on gitHub or @Stephen J. Beardslee on the Xojo forums. 
+
+============
+
+If you build with an older version of iosGestures and get a pile of "Issue: Members of inner modules cannot be global" errors
+1) Click on Settings at the bottom of the left hand column in the IDS
+2) Look down the list and find "Simple References"
+3) Make sure it is OFF then Build and you will probably see a lot of API 2.0 type errors.
+There is a longer API 2 Updates.txt with some further notes but iOSGestures should be compatiable now.
 
 ============
 
