@@ -10,6 +10,8 @@ It may be easier to incorporate into some peoples projects.
 The update is till a bit messy but should work for those in need.
 If you have issues with this update post here on gitHub or @Stephen J. Beardslee on the Xojo forums. 
 
+[Still making minor cleanup changes]
+
 ============
 
 If you build with an older version of iosGestures and get a pile of "Issue: Members of inner modules cannot be global" errors.
